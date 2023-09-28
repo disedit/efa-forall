@@ -2,6 +2,13 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
+  runtimeConfig: {
+    public: {
+      wpApiEndpoint: 'https://content.forall2024.eu/wp-json',
+      manifestoPage: 22
+    }
+  },
+
   css: ['~/assets/scss/main.scss'],
 
   vite: {
