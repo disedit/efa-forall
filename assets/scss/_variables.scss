@@ -1,0 +1,27 @@
+/* Colors */
+$purple: #652B80;
+$beige: #E9D5CA;
+$black: #000;
+$white: #fff;
+$orange: #FB7959;
+
+/* Color variables */
+$primary: $purple;
+$secondary: $orange;
+$bg-color: $beige;
+
+/* Typography */
+$base-font: 'DM Sans', sans-serif;
+$headline-font: 'Franklin Gothic Std', sans-serif;
+
+/* Media breakpoints */
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+/* Spacing */
+$navbar-safe-area: 3rem;
