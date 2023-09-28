@@ -22,5 +22,13 @@ export default defineNuxtConfig({
         }
       }
     }
+  },
+
+  modules: ['@nuxtjs/google-fonts'],
+
+  googleFonts: {
+    families: {
+      'DM+Sans': [400, 700]
+    }
   }
 })
