@@ -1,6 +1,6 @@
 <template>
   <header class="nav">
-    <NuxtLink to="/">
+    <NuxtLink to="/" class="hidden">
       <LogoEfa class="logo-efa" aria-label="European Free Alliance" />
       <LogoForAll class="logo-for-all" aria-label="For all" />
       <div class="title">EU Elections 2024</div>
@@ -18,11 +18,13 @@
 </template>
 
 <style lang="scss" scoped>
-.nav {
-  display: flex;
-}
+@layer component {
+  .nav {
+    display: flex;
+  }
 
-.logo-for-all {
-  height: 2rem;
+  .logo-for-all {
+    height: 2rem;
+  }
 }
 </style>
