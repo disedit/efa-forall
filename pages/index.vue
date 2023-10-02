@@ -25,11 +25,9 @@ const { data } = await useAsyncData(
 </script>
 
 <template>
-  <div>
-    <h1>
-      Index
-      <LogoAll />
-    </h1>
+  <main>
+    <HomeHero />
+    <HomeBlocks />
     <pre>Result: {{ data }}</pre>
-  </div>
+  </main>
 </template>

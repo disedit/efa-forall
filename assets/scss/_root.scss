@@ -3,10 +3,15 @@
   --secondary: #{$secondary};
   --bg-color: #{$bg-color};
   --black: #{$black};
+  --text-color: #{$black};
   --white: #{$white};
   --base-font: #{$base-font};
   --headline-font: #{$headline-font};
   --navbar-safe-area: #{$navbar-safe-area};
+  --site-padding: #{$site-padding-lg};
+  --text-sm: #{$text-sm};
+  --text-md: #{$text-md};
+  --text-2xl: #{$text-2xl};
 }
 
 @media (prefers-reduced-motion: no-preference) {

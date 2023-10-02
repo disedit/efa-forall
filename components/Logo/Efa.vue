@@ -20,11 +20,11 @@ defineProps({
 
 <style lang="scss" scoped>
 .text {
-  fill: #777779;
+  fill: var(--black);
 }
 
 .icon {
-  fill: #80379B;
+  fill: var(--primary);
 }
 
 .mono {

@@ -20,5 +20,7 @@ useHead({
 </script>
 
 <template>
-  <pre>{{ candidates }}</pre>
+  <main>
+    <pre>{{ candidates }}</pre>
+  </main>
 </template>

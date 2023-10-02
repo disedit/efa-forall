@@ -2,4 +2,33 @@
   .hidden {
     display: none;
   }
+
+  .p-site {
+    padding: var(--site-padding);
+  }
+
+  .border-top {
+    @include border-top;
+  }
+
+  .border-left {
+    @include border-left;
+  }
+
+  .border-right {
+    @include border-right;
+  }
+
+  .border-bottom {
+    @include border-bottom;
+  }
+
+  .border {
+    @include border;
+  }
+
+  .headline-font {
+    font-family: var(--headline-font);
+    text-transform: uppercase;
+  }
 }

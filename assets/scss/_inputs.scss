@@ -1,0 +1,28 @@
+.button {
+  appearance: none;
+  background: var(--primary);
+  color: var(--white);
+  font-weight: bold;
+  padding: .5rem .75rem;
+  border-radius: 0;
+  border: 0;
+
+  &:hover {
+    background: var(--black);
+    cursor: pointer;
+  }
+}
+
+.text-input {
+  appearance: none;
+  background: var(--white);
+  @include border;
+  border-radius: 0;
+  padding: .5em .75em;
+
+  &:focus {
+    outline: 0;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 .25em rgba($primary, .25);
+  }
+}

@@ -13,6 +13,11 @@ $bg-color: $beige;
 /* Typography */
 $base-font: 'DM Sans', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
 $headline-font: 'Franklin Gothic Std', sans-serif;
+$text-sm: .85rem;
+$text-md: 1rem;
+$text-lg: 1.1rem;
+$text-xl: 1.25rem;
+$text-2xl: 2rem;
 
 /* Media breakpoints */
 $breakpoints: (
@@ -24,4 +29,5 @@ $breakpoints: (
 );
 
 /* Spacing */
-$navbar-safe-area: 3rem;
+$navbar-safe-area: 4.5625rem;
+$site-padding-lg: 1rem;
