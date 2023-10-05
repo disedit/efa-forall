@@ -70,13 +70,12 @@
   .donate {
     display: flex;
     background: var(--primary);
-    @include border-left;
     color: var(--white);
     text-decoration: none;
-    padding: 2rem;
-    height: calc(var(--navbar-safe-area) - 1px);
+    padding: 1rem;
     align-items: center;
     font-weight: bold;
+    margin-right: var(--site-padding);
 
     &:hover {
       background: var(--black);
