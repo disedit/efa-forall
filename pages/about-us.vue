@@ -20,7 +20,9 @@ useHead({
 </script>
 
 <template>
-  <div>
-    <pre>{{ data }}</pre>
-  </div>
+  <main>
+    <AboutHeader :fields="data[0].acf" />
+    <AboutBlocks :fields="data[0].acf" />
+    <AboutValues :fields="data[0].acf" />
+  </main>
 </template>

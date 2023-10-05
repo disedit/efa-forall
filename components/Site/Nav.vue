@@ -55,9 +55,10 @@
         text-decoration: none;
         white-space: nowrap;
 
-        &:hover {
+        &:hover:not(.button) {
           color: var(--primary);
           font-weight: bold;
+          letter-spacing: -.04em;
         }
       }
     }

@@ -15,12 +15,13 @@ useHead({
 /* Retreive Manifesto chapters */
 const config = useRuntimeConfig()
 const { $wp } = useNuxtApp()
-const { data } = await useAsyncData(
+const { data: chapters } = await useAsyncData(
   'manifesto-chapters',
   () => $wp.pages()
-    .param('_fields', 'id,title,link,acf')
+    .param('_fields', 'id,title,link,acf.home_text,acf.icon.url,acf.icon.alt,slug,')
     .param('order', 'asc')
     .param('parent', config.public.manifestoPage)
+    .param('acf_format', 'standard')
 )
 </script>
 
@@ -28,6 +29,7 @@ const { data } = await useAsyncData(
   <main>
     <HomeHero />
     <HomeBlocks />
-    <pre>Result: {{ data }}</pre>
+    <HomeVideo />
+    <HomeManifesto :chapters="chapters" />
   </main>
 </template>

@@ -11,7 +11,8 @@ const year = 2023
         <address class="details-address">
           Boomkwekerijstraat, 11000 Brussels
         </address>
-        <tel class="details-tel">+32 (0) 2513 34 76</tel>
+        <div class="details-tel">
+          <a href="tel:003225133476">+32 (0) 2513 34 76</a></div>
         <div class="details-emails">
           <a href="mailto:info@e-f-a.org">info@e-f-a.org</a> ·
           <a href="mailto:press@e-f-a.org">press@e-f-a.org</a>

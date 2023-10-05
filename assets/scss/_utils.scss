@@ -31,4 +31,17 @@
     font-family: var(--headline-font);
     text-transform: uppercase;
   }
+
+  .visually-hidden,
+  .visually-hidden-focusable:not(:focus):not(:focus-within) {
+    @include visually-hidden();
+  }
+
+  .color-primary {
+    --color: var(--primary);
+  }
+
+  .color-secondary {
+    --color: var(--secondary);
+  }
 }
