@@ -10,11 +10,11 @@ defineProps({
 <template>
   <SitePageHeader>
     <template #title>
-      About us
+      Manifesto
     </template>
 
     <template #heading>
-      {{ fields.headline }}
+      2024 EU<br>Elections<br>Manifesto
     </template>
 
     <template #subheading>
@@ -22,16 +22,20 @@ defineProps({
     </template>
 
     <template #aside>
-      <div class="video">
-        Video
+      <div class="for-all-circle p-site">
+        <LogoForAllBig />
       </div>
     </template>
   </SitePageHeader>
 </template>
 
 <style lang="scss" scoped>
-.video {
-  background: black;
-  width: 100%;
+.for-all-circle {
+  color: var(--primary);
+
+  svg {
+    height: 100%;
+    width: 100%;
+  }
 }
 </style>

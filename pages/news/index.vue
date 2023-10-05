@@ -1,4 +1,17 @@
 <script setup>
+useServerSeoMeta({
+  title: 'EFA',
+  ogTitle: 'EFA',
+  description: 'Desc',
+  ogDescription: 'Desc',
+  ogImage: '/',
+  twitterCard: 'summary_large_image',
+})
+
+useHead({
+  title: 'EFA - For All',
+})
+
 const { $wp } = useNuxtApp()
 const articles = ref([])
 const page = ref(1)
@@ -39,17 +52,10 @@ const otherArticles = computed(() => {
 </script>
 
 <template>
-  <div>
-    <div>Headers: {{ headers }}</div>
-    <h2>Highlighted {{ highlighted.length }}</h2>
-    <pre>{{ highlighted }}</pre>
-
-    <h2>Rest {{ otherArticles.length }}</h2>
-    <pre>{{ otherArticles }}</pre>
-
-    <hr />
-    <div v-if="lastPage > page">
-      <button @click="loadMorePosts">Load more</button>
-    </div>
-  </div>
+  <main>
+    <NewsHeader />
+    <NewsHighlights :stories="highlighted" />
+    <NewsArticles :stories="otherArticles" />
+    <NewsPagination :page="page" :last-page="lastPage" @load="loadMorePosts" />
+  </main>
 </template>

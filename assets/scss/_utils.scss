@@ -44,4 +44,27 @@
   .color-secondary {
     --color: var(--secondary);
   }
+
+  .list-unstyled {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .link-black-underlined {
+    color: var(--black);
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+
+  .link-black-to-underlined {
+    color: var(--black);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

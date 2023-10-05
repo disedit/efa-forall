@@ -1,6 +1,6 @@
 <template>
   <header class="nav">
-    <NuxtLink to="/" class="nav-brand">
+    <NuxtLink to="/" class="nav-brand p-site">
       <LogoEfa class="logo-efa" aria-label="European Free Alliance" />
       <LogoForAll class="logo-for-all" aria-label="For all" />
       <div class="title">EU Elections 2024</div>
@@ -12,8 +12,8 @@
       <NuxtLink to="/candidates">Candidates</NuxtLink>
       <NuxtLink to="/news">News</NuxtLink>
       <NuxtLink to="/events">Events</NuxtLink>
-      <a href="/" class="button">Donate</a>
     </nav>
+    <a href="/" class="donate">Donate</a>
   </header>
   <div class="safe-area" />
 </template>
@@ -23,7 +23,6 @@
   .nav {
     display: flex;
     align-items: center;
-    padding: var(--site-padding);
     border-bottom: 1px solid var(--black);
     background: var(--bg-color);
     position: fixed;
@@ -38,15 +37,16 @@
       gap: .5rem;
       color: var(--black);
       text-decoration: none;
+      @include border-right;
         
       &:hover {
-        text-decoration: underline;
+        background: var(--white);
       }
     }
 
     &-menu {
       display: flex;
-      margin-left: auto;
+      margin: 0 auto;
       gap: 1.5rem;
       align-items: center;
 
@@ -54,13 +54,31 @@
         color: var(--text-color);
         text-decoration: none;
         white-space: nowrap;
+        padding: .5rem;
 
-        &:hover:not(.button) {
+        &:hover:not(.button),
+        &.router-link-active {
           color: var(--primary);
           font-weight: bold;
           letter-spacing: -.04em;
         }
       }
+    }
+  }
+
+  .donate {
+    display: flex;
+    background: var(--primary);
+    @include border-left;
+    color: var(--white);
+    text-decoration: none;
+    padding: 2rem;
+    height: calc(var(--navbar-safe-area) - 1px);
+    align-items: center;
+    font-weight: bold;
+
+    &:hover {
+      background: var(--black);
     }
   }
 

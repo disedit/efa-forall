@@ -1,11 +1,17 @@
 <script setup>
+const config = useRuntimeConfig()
 const { $wp } = useNuxtApp()
 const { params } = useRoute()
 const { data: chapter } = await useAsyncData(
   `manifesto-${params.slug}`,
+  () => $wp.pages().slug(params.slug)
+)
+const { data: chapters } = await useAsyncData(
+  'manifesto-chapters',
   () => $wp.pages()
-    .param('_fields', 'id,title,link,acf')
-    .slug(params.slug)
+    .param('_fields', 'id,title,slug,acf')
+    .param('order', 'asc')
+    .param('parent', config.public.manifestoPage)
 )
 
 useServerSeoMeta({
@@ -23,5 +29,13 @@ useHead({
 </script>
 
 <template>
-  <pre>{{ chapter }}</pre>
+  <main>
+    <SitePageHeader collapse>
+      <template #title>
+        <nuxt-link to="/manifesto" class="link-black-to-underlined">Manifesto</nuxt-link>
+      </template>
+    </SitePageHeader>
+    <ManifestoNav :chapters="chapters" />
+    <ManifestoChapter :chapter="chapter[0]" /> 
+  </main>
 </template>

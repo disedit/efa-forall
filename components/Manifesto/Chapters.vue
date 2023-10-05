@@ -3,18 +3,15 @@ import { posters } from '@/assets/images/manifesto'
 
 defineProps({
   chapters: {
-    type: Array,
+    type: Object,
     required: true
   }
 })
 </script>
 
 <template>
-  <section class="manifesto">
-    <h2 class="visually-hidden">
-      Manifesto
-    </h2>
-    <HomeManifestoChapter
+  <section class="chapters">
+    <ManifestoChapterSummary
       v-for="chapter in chapters"
       :key="chapter.id"
       :chapter="chapter"
@@ -24,7 +21,8 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
-.manifesto {
-  padding: var(--site-padding);
+.chapters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 </style>

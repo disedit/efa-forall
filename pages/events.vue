@@ -20,5 +20,8 @@ useHead({
 </script>
 
 <template>
-  <pre>{{ events }}</pre>
+  <main>
+    <EventsHeader />
+    <EventsGrid :events="events" />
+  </main>
 </template>

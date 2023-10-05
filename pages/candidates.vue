@@ -21,6 +21,7 @@ useHead({
 
 <template>
   <main>
+    <CandidatesHeader />
     <pre>{{ candidates }}</pre>
   </main>
 </template>

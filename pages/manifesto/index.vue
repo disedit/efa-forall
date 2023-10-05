@@ -25,18 +25,17 @@ const manifesto = data.value[0]
 const { data: chapters } = await useAsyncData(
   'manifesto-chapters',
   () => $wp.pages()
-    .param('_fields', 'id,title,link,acf')
+    .param('_fields', 'id,title,slug,acf')
     .param('order', 'asc')
     .param('parent', manifesto.id)
 )
 </script>
 
 <template>
-  <pre>
-    Manifesto:
-    {{ manifesto }}
-
-    Chapters:
-    {{ chapters }}
-  </pre>
+  <main>
+    <ManifestoHeader :fields="manifesto.acf" />
+    <ManifestoNav :chapters="chapters" />
+    <ManifestoLanguages :fields="manifesto.acf" />
+    <ManifestoChapters :chapters="chapters" />
+  </main>
 </template>

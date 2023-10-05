@@ -38,12 +38,12 @@ const text = computed(() => fields.our_values.replaceAll("\n\r", "<br><br>"))
   @include border-right;
 
   h3 {
-    font-size: clamp(1.5rem, 2.5vw, 3.5rem);
+    font-size: clamp(1.5rem, 3vw, 3.5rem);
   }
 
   .text {
     font-size: var(--text-xl);
-    line-height: 1.25;
+    line-height: 1.5;
     max-width: 60ch;
   }
 }
