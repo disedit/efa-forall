@@ -14,10 +14,10 @@
 .hero {
   display: flex;
   align-items: center;
-  min-height: calc(100vh - var(--navbar-safe-area) - 100px);
+  min-height: calc(100vh - var(--navbar-safe-area) - 7rem);
 
   &-title {
-    font-size: clamp(4rem, 8vw, 15rem);
+    font-size: var(--headline-home);
     line-height: .85;
 
     .highlight {

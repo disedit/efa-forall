@@ -13,11 +13,14 @@ $bg-color: $beige;
 /* Typography */
 $base-font: 'DM Sans', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
 $headline-font: 'Franklin Gothic Std', sans-serif;
-$text-sm: .85rem;
-$text-md: 1rem;
+$text-sm: .95rem;
+$text-md: 1.1rem;
 $text-lg: 1.25rem;
 $text-xl: 1.5rem;
 $text-2xl: 2rem;
+$headline-home: clamp(4rem, 8vw, 15rem);
+$headline-page: clamp(3rem, 7vw, 9rem);
+$headline-block: clamp(1.5rem, 3vw, 3.5rem);
 
 /* Media breakpoints */
 $breakpoints: (
@@ -30,4 +33,6 @@ $breakpoints: (
 
 /* Spacing */
 $navbar-safe-area: 4.5625rem;
-$site-padding-lg: 1rem;
+$site-padding-sm: 1rem;
+$site-padding: 1.75rem;
+$site-padding-xl: 2rem;

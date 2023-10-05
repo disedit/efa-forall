@@ -7,6 +7,24 @@
     padding: var(--site-padding);
   }
 
+  .p-xl {
+    padding: var(--site-padding-xl);
+  }
+
+  .p-sm {
+    padding: var(--site-padding-sm);
+  }
+
+  .py-sm {
+    padding-top: var(--site-padding-sm);
+    padding-bottom: var(--site-padding-sm);
+  }
+
+  .px-site {
+    padding-left: var(--site-padding);
+    padding-right: var(--site-padding);
+  }
+
   .border-top {
     @include border-top;
   }

@@ -11,7 +11,7 @@ defineProps({
   <nav aria-label="Manifesto index" class="manifesto-nav border-bottom">
     <ul class="chapters list-unstyled">
       <li v-for="chapter in chapters">
-        <nuxt-link :to="`/manifesto/${chapter.slug}`" class="chapter p-site">
+        <nuxt-link :to="`/manifesto/${chapter.slug}`" class="chapter py-sm px-site">
           {{ chapter.title.rendered }}
         </nuxt-link>
       </li>

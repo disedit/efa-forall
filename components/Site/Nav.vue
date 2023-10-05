@@ -1,6 +1,6 @@
 <template>
   <header class="nav">
-    <NuxtLink to="/" class="nav-brand p-site">
+    <NuxtLink to="/" class="nav-brand p-sm px-site">
       <LogoEfa class="logo-efa" aria-label="European Free Alliance" />
       <LogoForAll class="logo-for-all" aria-label="For all" />
       <div class="title">EU Elections 2024</div>
@@ -30,6 +30,7 @@
     top: 0;
     left: 0;
     right: 0;
+    font-size: var(--text-md);
 
     &-brand {
       display: flex;

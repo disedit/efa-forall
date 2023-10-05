@@ -23,6 +23,6 @@ useHead({
   <main>
     <AboutHeader :fields="data[0].acf" />
     <AboutBlocks :fields="data[0].acf" />
-    <AboutValues :fields="data[0].acf" />
+    <AboutValues :content="data[0].content.rendered" />
   </main>
 </template>

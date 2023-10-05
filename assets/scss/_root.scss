@@ -8,12 +8,17 @@
   --base-font: #{$base-font};
   --headline-font: #{$headline-font};
   --navbar-safe-area: #{$navbar-safe-area};
-  --site-padding: #{$site-padding-lg};
+  --site-padding-sm: #{$site-padding-sm};
+  --site-padding: #{$site-padding};
+  --site-padding-xl: #{$site-padding-xl};
   --text-sm: #{$text-sm};
   --text-md: #{$text-md};
   --text-lg: #{$text-lg};
   --text-xl: #{$text-xl};
   --text-2xl: #{$text-2xl};
+  --headline-home: #{$headline-home};
+  --headline-page: #{$headline-page};
+  --headline-block: #{$headline-block};
 }
 
 @media (prefers-reduced-motion: no-preference) {

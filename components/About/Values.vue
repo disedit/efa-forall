@@ -1,19 +1,19 @@
+
+import { resolveDirective } from 'nuxt/dist/app/compat/capi';
 <script setup>
-const { fields } = defineProps({
-  fields: {
+defineProps({
+  content: {
     type: Object,
     required: true
   }
 })
-
-const text = computed(() => fields.our_values.replaceAll("\n\r", "<br><br>"))
 </script>
 
 <template>
   <section class="values">
     <div class="content p-site">
-      <h3>Our values</h3>
-      <div class="text" v-html="text" />
+      <h3>Our<br>values</h3>
+      <div class="text" v-html="content" />
     </div>
     <div class="video">
       <div class="placeholder" />
@@ -38,13 +38,24 @@ const text = computed(() => fields.our_values.replaceAll("\n\r", "<br><br>"))
   @include border-right;
 
   h3 {
-    font-size: clamp(1.5rem, 3vw, 3.5rem);
+    font-size: var(--headline-block);
+    line-height: .9;
+    margin-top: .15em;
   }
 
   .text {
     font-size: var(--text-xl);
     line-height: 1.5;
     max-width: 60ch;
+
+    :deep(p) {
+      margin-top: 0;
+      margin-bottom: .85em;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }
 

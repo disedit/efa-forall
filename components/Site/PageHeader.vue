@@ -13,7 +13,7 @@ defineProps({
 
 <template>
   <header :class="['page-header', { 'border-bottom': !borderless }, { collapse }, { 'single-column': !$slots.aside }]">
-    <div class="column content p-site">
+    <div class="column content py-sm p-site">
       <h1 class="title" v-if="$slots.title">
         <slot name="title" />
       </h1>
@@ -75,7 +75,7 @@ defineProps({
 
     h2 {
       margin: 0;
-      font-size: clamp(3rem, 7vw, 9rem);
+      font-size: var(--headline-page);
       line-height: .9;
     }
 

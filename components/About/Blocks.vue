@@ -35,7 +35,7 @@ defineProps({
     color: var(--color);
     line-height: .5;
     margin: .4em 0 .5em;
-    font-size: clamp(1.5rem, 3vw, 3.5rem);
+    font-size: var(--headline-block);
 
     .logo-all {
       transform: translateY(.1em);

@@ -39,3 +39,12 @@ useHead({
     <ManifestoChapter :chapter="chapter[0]" /> 
   </main>
 </template>
+
+<style lang="scss" scoped>
+.manifesto-nav {
+  position: sticky;
+  top: var(--navbar-safe-area);
+  background: var(--bg-color);
+  z-index: 500;
+}
+</style>
