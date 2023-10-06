@@ -32,7 +32,9 @@ useHead({
   <main>
     <SitePageHeader collapse>
       <template #title>
-        <nuxt-link to="/manifesto" class="link-black-to-underlined">Manifesto</nuxt-link>
+        <nuxt-link to="/manifesto" class="link-black-to-underlined">
+          Manifesto
+        </nuxt-link>
       </template>
     </SitePageHeader>
     <ManifestoNav :chapters="chapters" />

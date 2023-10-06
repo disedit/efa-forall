@@ -47,7 +47,7 @@ onMounted(() => {
     setTimeout(() => {
       showCursor.value = false
       showLogo.value = true
-    }, delay + (speed * letters.value.length) + 500)
+    }, delay + (speed * letters.value.length) + 350)
   }
 })
 </script>
@@ -61,7 +61,7 @@ onMounted(() => {
       {{ letter }}
     </span>
     <span :class="['cursor', { hide: !showCursor, 'with-transition': cursorHasTransition }]" />
-    <LogoAll v-if="endsInLogo" :class="['logo-all', { hide: !showLogo }]" />
+    <LogoAll v-if="endsInLogo" :class="['logo-all', { 'hide-logo': !showLogo }]" />
   </div>
 </template>
 
@@ -92,11 +92,20 @@ onMounted(() => {
 
 .ends-in-logo .cursor,
 .logo-all {
-  transform: translate(.15em, 0);
+  transform: translate(.15em, 0) scale(var(--scale, 1));
+}
+
+.logo-all {
+  transition: transform .25s ease;
 }
 
 .hide {
   opacity: 0;
+}
+
+.hide-logo {
+  opacity: 0;
+  --scale: 0;
 }
 
 .ends-in-logo {

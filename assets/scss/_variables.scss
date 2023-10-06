@@ -20,7 +20,8 @@ $text-xl: 1.5rem;
 $text-2xl: 2rem;
 $headline-home: clamp(4rem, 8vw, 15rem);
 $headline-page: clamp(3rem, 7vw, 9rem);
-$headline-block: clamp(1.5rem, 3vw, 3.5rem);
+$headline-block: clamp(1.5rem, 4vw, 4.25rem);
+$headline-chapter: clamp(2rem, 5vw, 6rem);
 
 /* Media breakpoints */
 $breakpoints: (

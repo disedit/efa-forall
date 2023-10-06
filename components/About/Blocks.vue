@@ -11,13 +11,15 @@ defineProps({
   <section class="about-blocks border-bottom">
     <article class="block p-site color-primary">
       <h3 :aria-label="fields.box_1_text">
-        Democracy<br>for <LogoAll />
+        Democracy
+        <div>for <LogoAll /></div>
       </h3>
       <p>{{ fields.box_1_text }}</p>
     </article>
     <article class="block p-site color-secondary">
       <h3 :aria-label="fields.box_2_text">
-        Diversity<br>for <LogoAll />
+        Diversity
+        <div>for <LogoAll /></div>
       </h3>
       <p>{{ fields.box_2_text }}</p>
     </article>
@@ -32,10 +34,13 @@ defineProps({
 
 .block {
   h3 {
-    color: var(--color);
     line-height: .5;
     margin: .4em 0 .5em;
     font-size: var(--headline-block);
+
+    div {
+      color: var(--color);
+    }
 
     .logo-all {
       transform: translateY(.1em);

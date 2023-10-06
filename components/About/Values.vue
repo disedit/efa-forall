@@ -17,7 +17,7 @@ defineProps({
     </div>
     <div class="video">
       <div class="placeholder" />
-      <nuxt-link to="/manifesto" class="manifesto p-site">
+      <nuxt-link to="/manifesto" class="manifesto py-sm p-site">
         Read the 2024 Manifesto
         <IconArrow />
       </nuxt-link>
@@ -46,7 +46,7 @@ defineProps({
   .text {
     font-size: var(--text-xl);
     line-height: 1.5;
-    max-width: 60ch;
+    max-width: 50ch;
 
     :deep(p) {
       margin-top: 0;
@@ -74,7 +74,7 @@ defineProps({
     color: var(--black);
     justify-content: space-between;
     text-decoration: none;
-    font-size: var(--text-xl);
+    font-size: var(--text-lg);
 
     svg {
       height: 1em;
