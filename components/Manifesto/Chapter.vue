@@ -10,7 +10,7 @@ defineProps({
 </script>
 
 <template>
-  <article :class="['chapter', `color-${chapter.acf.color}`]">
+  <article :class="['chapter', `chapter-${chapter.slug}`, `color-${chapter.acf.color}`]">
     <header class="chapter-poster">
       <div class="chapter-poster-title">
         <h2 class="p-site" :aria-label="chapter.title.rendered">
@@ -36,7 +36,7 @@ defineProps({
 <style lang="scss" scoped>
 .chapter {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 2.5fr;
   grid-template-areas:
     "poster content"
     "poster next";
@@ -48,6 +48,7 @@ defineProps({
 
     &-image {
       color: var(--color);
+      overflow: hidden;
     }
 
     &-title {

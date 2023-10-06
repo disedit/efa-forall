@@ -1,7 +1,7 @@
 <script setup>
 defineProps({
-  fields: {
-    type: Object,
+  text: {
+    type: String,
     required: true
   }
 })
@@ -18,7 +18,7 @@ defineProps({
     </template>
 
     <template #subheading>
-      Lorem
+      {{ text }}
     </template>
   </SitePageHeader>
 </template>

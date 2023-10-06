@@ -10,16 +10,20 @@ defineProps({
 <template>
   <section class="about-blocks border-bottom">
     <article class="block p-site color-primary">
-      <h3 :aria-label="fields.box_1_text">
-        Democracy
-        <div>for <LogoAll /></div>
+      <h3 :aria-label="fields.box_1_title">
+        <div aria-hidden="true">
+          Democracy
+          <div class="for-all">for <LogoAll /></div>
+        </div>
       </h3>
       <p>{{ fields.box_1_text }}</p>
     </article>
     <article class="block p-site color-secondary">
-      <h3 :aria-label="fields.box_2_text">
-        Diversity
-        <div>for <LogoAll /></div>
+      <h3 :aria-label="fields.box_2_title">
+        <div aria-hidden="true">
+          Diversity
+          <div class="for-all">for <LogoAll /></div>
+        </div>
       </h3>
       <p>{{ fields.box_2_text }}</p>
     </article>
@@ -38,7 +42,7 @@ defineProps({
     margin: .4em 0 .5em;
     font-size: var(--headline-block);
 
-    div {
+    .for-all {
       color: var(--color);
     }
 

@@ -25,7 +25,7 @@ defineProps({
           <IconArrow />
         </div>
       </div>
-      <div class="chapter-poster" v-html="poster" aria-hidden="true" />
+      <div class="chapter-poster-image" v-html="poster" aria-hidden="true" />
     </nuxt-link>
   </article>
 </template>
@@ -104,7 +104,7 @@ defineProps({
     }
   }
 
-  &-poster {
+  &-poster-image {
     transition: .25s ease;
     grid-are: poster;
     color: var(--color);
@@ -114,7 +114,7 @@ defineProps({
   a:hover,
   a:focus-within {
     .chapter-title,
-    .chapter-poster,
+    .chapter-poster-image,
     .chapter-summary {
       background: var(--white);
     }
@@ -124,23 +124,5 @@ defineProps({
       color: var(--white);
     }
   }
-}
-
-.chapter-democracy-for-all .chapter-poster :deep(svg) {
-  transform: translate(-2rem, 3rem) scale(1.1);
-}
-
-.chapter-sustainability-for-all .chapter-poster :deep(svg) {
-  transform: translate(2rem, 10rem) scale(1.2);
-}
-
-.chapter-solidarity-for-all .chapter-poster :deep(svg) {
-  transform: translate(-3rem, 0) scale(1.2);
-  transform-origin: 0 0;
-}
-
-.chapter-prosperity-for-all .chapter-poster :deep(svg) {
-  transform: translate(-3rem, 0) scale(1.4);
-  transform-origin: 0 0;
 }
 </style>
