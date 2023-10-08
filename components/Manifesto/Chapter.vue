@@ -5,6 +5,10 @@ defineProps({
   chapter: {
     type: Object,
     required: true
+  },
+  chapters: {
+    type: Array,
+    required: true
   }
 })
 </script>
@@ -23,13 +27,7 @@ defineProps({
     <div class="chapter-content p-site">
       <div v-html="chapter.content.rendered" />
     </div>
-    <nuxt-link to="/" class="chapter-next p-site">
-      <span>Next chapter</span>
-      <span class="chapter-next-title">
-        Diveristy for all
-        <IconArrow />
-      </span>
-    </nuxt-link>
+    <ManifestoNext :chapter="chapter" :chapters="chapters" />
   </article>
 </template>
 
@@ -81,32 +79,6 @@ defineProps({
 
     :deep(p) {
       margin-top: 0;
-    }
-  }
-
-  &-next {
-    display: flex;
-    grid-area: next;
-    @include border-top;
-    justify-content: space-between;
-    text-decoration: none;
-    font-size: var(--text-lg);
-    color: var(--black);
-
-    svg {
-      height: 1em;
-      width: 1em;
-    }
-
-    &-title {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    &:hover {
-      background: var(--black);
-      color: var(--white);
     }
   }
 }

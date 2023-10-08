@@ -54,9 +54,11 @@ useHead({ title })
       <div class="story-picture" v-if="thumbnail">
         <img :src="thumbnail.src" :alt="thumbnail.alt">
       </div>
-      <p>{{ date }}</p>
-      <h1 v-html="story.title.rendered" />
-      <div v-html="story.content.rendered" />
+      <div class="p-site">
+        <p>{{ date }}</p>
+        <h1 v-html="story.title.rendered" />
+        <div v-html="story.content.rendered" />
+      </div>
     </article>
     <aisde>
       <NewsPressCorner in-story />

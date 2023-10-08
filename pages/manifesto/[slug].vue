@@ -14,12 +14,12 @@ const { data: chapters } = await useAsyncData(
     .param('parent', config.public.manifestoPage)
 )
 
-const title = `${chapter.value.title.rendered} - 2024 EU Elections Manifesto - EFA European Free Alliance`
+const title = `${chapter.value[0].title.rendered} - 2024 EU Elections Manifesto - EFA European Free Alliance`
 useServerSeoMeta({
   title,
   ogTitle: title,
-  description: chapter.value.exceprt.rendered,
-  ogDescription: chapter.value.exceprt.rendered,
+  description: chapter.value[0].exceprt,
+  ogDescription: chapter.value[0].exceprt,
   ogImage: '/',
   twitterCard: 'summary_large_image',
 })
@@ -37,7 +37,7 @@ useHead({ title })
       </template>
     </SitePageHeader>
     <ManifestoNav :chapters="chapters" />
-    <ManifestoChapter :chapter="chapter[0]" /> 
+    <ManifestoChapter :chapter="chapter[0]" :chapters="chapters" /> 
   </main>
 </template>
 
