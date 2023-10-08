@@ -14,18 +14,17 @@ const { data: chapters } = await useAsyncData(
     .param('parent', config.public.manifestoPage)
 )
 
+const title = `${chapter.value.title.rendered} - 2024 EU Elections Manifesto - EFA European Free Alliance`
 useServerSeoMeta({
-  title: 'EFA',
-  ogTitle: 'EFA',
-  description: 'Desc',
-  ogDescription: 'Desc',
+  title,
+  ogTitle: title,
+  description: chapter.value.exceprt.rendered,
+  ogDescription: chapter.value.exceprt.rendered,
   ogImage: '/',
   twitterCard: 'summary_large_image',
 })
 
-useHead({
-  title: 'EFA - For All',
-})
+useHead({ title })
 </script>
 
 <template>

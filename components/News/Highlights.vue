@@ -8,14 +8,18 @@ defineProps({
 </script>
 
 <template>
-  <section class="highlights">
-    <article
+  <section class="highlights p-site">
+    <NewsHighlightedStory
       v-for="story in stories"
       :key="story.id"
-    >
-      <nuxt-link :to="`/news/${story.slug}`">
-        {{ story.title.rendered }}
-      </nuxt-link>
-    </article>
+      :story="story"
+    />
   </section>
 </template>
+
+<style lang="scss" scoped>
+.highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+</style>

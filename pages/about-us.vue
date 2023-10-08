@@ -5,18 +5,17 @@ const { data } = await useAsyncData(
   () => $wp.pages().slug('about-us')
 )
 
+const title = 'About us - EFA European Free Alliance - For All: EU Elections 2024'
 useServerSeoMeta({
-  title: 'EFA',
-  ogTitle: 'EFA',
+  title,
+  ogTitle: title,
   description: 'Desc',
   ogDescription: 'Desc',
   ogImage: '/',
   twitterCard: 'summary_large_image',
 })
 
-useHead({
-  title: 'EFA - For All',
-})
+useHead({ title })
 </script>
 
 <template>

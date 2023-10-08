@@ -7,6 +7,10 @@ defineProps({
   collapse: {
     type: Boolean,
     default: false
+  },
+  presentational: {
+    type: Boolean,
+    default: false
   }
 })
 </script>
@@ -14,9 +18,10 @@ defineProps({
 <template>
   <header :class="['page-header', { 'border-bottom': !borderless }, { collapse }, { 'single-column': !$slots.aside }]">
     <div class="column content py-sm p-site">
-      <h1 class="title" v-if="$slots.title">
+      <Component :is="presentational ? 'div' : 'h1'" class="title" v-if="$slots.title">
         <slot name="title" />
-      </h1>
+        <slot name="category" />
+      </Component>
       <div class="heading" v-if="$slots.heading || $slots.subheading">
         <h2 v-if="$slots.heading">
           <slot name="heading" />

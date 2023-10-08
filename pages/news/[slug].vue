@@ -1,33 +1,66 @@
 <script setup>
 const { $wp } = useNuxtApp()
 const { params } = useRoute()
+
+/* Get the story */
 const { data: post } = await useAsyncData(
   `post-${params.slug}`,
   () => $wp.posts()
+    .embed()
     .slug(params.slug)
 )
 
+const story = post.value[0]
+const { thumbnail, category, date } = useStory(story)
+
+/* Latest posts */
+const { data: latest } = await useAsyncData(
+  `related-posts`,
+  () => $wp.posts()
+    .embed()
+    .perPage(5)
+    .param('_fields', 'id,title,excerpt,date,slug,_links.wp:featuredmedia,_embedded')
+)
+
+const latestPosts = computed(() => {
+  return latest.value.filter(post => post.id !== story.id).slice(0, 4)
+})
+
+/* Meta tags */
+const title = `${story.title.rendered} - News - For All: EU Elections 2024 - EFA European Free Alliance`
 useServerSeoMeta({
-  title: 'EFA',
-  ogTitle: 'EFA',
-  description: 'Desc',
-  ogDescription: 'Desc',
-  ogImage: '/',
+  title,
+  ogTitle: title,
+  description: story.excerpt.rendered,
+  ogDescription: story.excerpt.rendered,
+  ogImage: thumbnail.src,
   twitterCard: 'summary_large_image',
 })
 
-useHead({
-  title: 'EFA - For All',
-})
+useHead({ title })
 </script>
 
 <template>
   <main>
-    <SitePageHeader collapse>
+    <SitePageHeader collapse presentational>
       <template #title>
         <nuxt-link to="/news" class="link-black-to-underlined">News</nuxt-link>
       </template>
+      <template #category>
+        <div :class="`category-${category.slug}`">{{ category.name }}</div>
+      </template>
     </SitePageHeader>
-    <pre>{{ post }}</pre>
+    <article>
+      <div class="story-picture" v-if="thumbnail">
+        <img :src="thumbnail.src" :alt="thumbnail.alt">
+      </div>
+      <p>{{ date }}</p>
+      <h1 v-html="story.title.rendered" />
+      <div v-html="story.content.rendered" />
+    </article>
+    <aisde>
+      <NewsPressCorner in-story />
+      <NewsOther :stories="latestPosts" />
+    </aisde>
   </main>
 </template>

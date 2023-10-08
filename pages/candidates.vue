@@ -14,18 +14,17 @@ const { data: candidates } = await useAsyncData(
     .param('acf_format', 'standard')
 )
 
+const title = 'Candidates - For All: EU Elections 2024 - EFA European Free Alliance'
 useServerSeoMeta({
-  title: 'EFA',
-  ogTitle: 'EFA',
+  title,
+  ogTitle: title,
   description: 'Desc',
   ogDescription: 'Desc',
   ogImage: '/',
   twitterCard: 'summary_large_image',
 })
 
-useHead({
-  title: 'EFA - For All',
-})
+useHead({ title })
 </script>
 
 <template>

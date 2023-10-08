@@ -8,5 +8,10 @@ defineProps({
 </script>
 
 <template>
-  <pre>{{ stories }}</pre>
+  <section class="p-site">
+    <NewsStory
+      v-for="story in stories"
+      :key="story.id"
+      :story="story" />
+  </section>
 </template>

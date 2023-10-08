@@ -1,30 +1,29 @@
 <script setup>
+const title = 'News - For All: EU Elections 2024 - EFA European Free Alliance'
 useServerSeoMeta({
-  title: 'EFA',
-  ogTitle: 'EFA',
+  title,
+  ogTitle: title,
   description: 'Desc',
   ogDescription: 'Desc',
   ogImage: '/',
   twitterCard: 'summary_large_image',
 })
 
-useHead({
-  title: 'EFA - For All',
-})
+useHead({ title })
 
 const { $wp } = useNuxtApp()
 const articles = ref([])
 const page = ref(1)
-const lastPage = ref(0)
-const perPage = 3
+const lastPage = ref(0) // Fix this!
+const perPage = 10
 
 /* Fetch posts */
 const loadPosts = async () => {
-  return await $wp.posts().embed()
+  return await $wp.posts()
+    .embed()
     .perPage(perPage)
     .page(page.value)
-    .param('_embed', 'wp:featuredmedia')
-    .param('_fields', 'id,title,excerpt,date,slug,_links.wp:featuredmedia,_embedded')
+    .param('_fields', 'id,title,excerpt,date,slug,_links,_embedded')
 }
 
 /* Fetch initial posts */
@@ -55,6 +54,7 @@ const otherArticles = computed(() => {
   <main>
     <NewsHeader />
     <NewsHighlights :stories="highlighted" />
+    <NewsPressCorner />
     <NewsArticles :stories="otherArticles" />
     <NewsPagination :page="page" :last-page="lastPage" @load="loadMorePosts" />
   </main>

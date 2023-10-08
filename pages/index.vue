@@ -1,16 +1,16 @@
 <script setup>
+const title = 'For All - EFA European Free Alliance - EU Elections 2024'
+const description = 'We are looking for a new Europe for all'
 useServerSeoMeta({
-  title: 'EFA',
-  ogTitle: 'EFA',
-  description: 'Desc',
-  ogDescription: 'Desc',
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
   ogImage: '/',
   twitterCard: 'summary_large_image',
 })
 
-useHead({
-  title: 'EFA - For All',
-})
+useHead({ title })
 
 /* Retreive Manifesto chapters */
 const config = useRuntimeConfig()

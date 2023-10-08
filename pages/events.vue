@@ -5,18 +5,17 @@ const { data: events } = await useAsyncData(
   () => $wp.events().param('_fields', 'title,acf')
 )
 
+const title = 'Events - For All: EU Elections 2024 - EFA European Free Alliance'
 useServerSeoMeta({
-  title: 'EFA',
-  ogTitle: 'EFA',
+  title,
+  ogTitle: title,
   description: 'Desc',
   ogDescription: 'Desc',
   ogImage: '/',
   twitterCard: 'summary_large_image',
 })
 
-useHead({
-  title: 'EFA - For All',
-})
+useHead({ title })
 </script>
 
 <template>
