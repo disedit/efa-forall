@@ -4,7 +4,7 @@ export const useStory = (story) => {
   const thumbnail = computed(() => {
     if (!featuredmedia.value) return false
     return {
-      src: featuredmedia.value[0].media_details.sizes.medium.source_url,
+      src: featuredmedia.value[0].media_details.sizes.medium_large.source_url,
       alt: featuredmedia.value[0].alt_text
     }
   })

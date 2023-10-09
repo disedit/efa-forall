@@ -41,28 +41,83 @@ useHead({ title })
 </script>
 
 <template>
-  <main>
+  <main class="story-single">
     <SitePageHeader collapse presentational>
       <template #title>
         <nuxt-link to="/news" class="link-black-to-underlined">News</nuxt-link>
       </template>
       <template #category>
-        <div :class="`story-category category-${category.slug}`">{{ category.name }}</div>
+        <NewsCategory :category="category" />
       </template>
     </SitePageHeader>
-    <article>
-      <div class="story-picture" v-if="thumbnail">
-        <img :src="thumbnail.src" :alt="thumbnail.alt">
-      </div>
-      <div class="p-site">
-        <p>{{ date }}</p>
-        <h1 v-html="story.title.rendered" />
-        <div v-html="story.content.rendered" />
-      </div>
-    </article>
-    <aside>
-      <NewsPressCorner in-story />
-      <NewsOther :stories="latestPosts" />
-    </aside>
+    <div class="story-picture" v-if="thumbnail">
+      <img :src="thumbnail.src" :alt="thumbnail.alt">
+    </div>
+    <div class="story-page">
+      <article class="story p-site">
+        <div class="story-date">{{ date }}</div>
+        <h1 class="story-title" v-html="story.title.rendered" />
+        <div class="story-text" v-html="story.content.rendered" />
+      </article>
+      <aside class="aside p-site">
+        <div class="sticky">
+          <NewsPressCorner in-story />
+          <NewsOther :stories="latestPosts" />
+        </div>
+      </aside>
+    </div>
   </main>
 </template>
+
+<style lang="scss" scoped>
+.story {
+  &-single {
+    :deep(.page-header .title) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &-page {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  &-picture {
+    @include border-bottom;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 50vh;
+      object-fit: cover;
+    }
+  }
+
+  &-date {
+    color: var(--muted);
+  }
+
+  &-title {
+    font-size: 6rem;
+    line-height: 1;
+    margin-top: 1rem;
+    text-wrap: balance;
+  }
+
+  &-text {
+    font-size: var(--text-xl);
+    line-height: 1.5;
+    max-width: 80ch;
+  }
+}
+
+.press-corner {
+  margin-bottom: var(--site-padding);
+}
+
+.sticky {
+  position: sticky;
+  top: calc(var(--navbar-safe-area) + var(--site-padding));
+}
+</style>

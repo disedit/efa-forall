@@ -4,6 +4,7 @@
   --bg-color: #{$bg-color};
   --black: #{$black};
   --text-color: #{$black};
+  --muted: #{rgba($black, .5)};
   --white: #{$white};
   --base-font: #{$base-font};
   --headline-font: #{$headline-font};
@@ -20,6 +21,8 @@
   --headline-page: #{$headline-page};
   --headline-block: #{$headline-block};
   --headline-chapter: #{$headline-chapter};
+  --headline-story: #{$headline-story};
+  --headline-story-sm: #{$headline-story-sm};
 }
 
 @media (prefers-reduced-motion: no-preference) {

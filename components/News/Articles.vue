@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-  <section class="p-site">
+  <section aria-label="Rest of stories">
     <NewsStory
       v-for="story in stories"
       :key="story.id"

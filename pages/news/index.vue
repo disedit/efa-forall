@@ -55,7 +55,6 @@ const otherArticles = computed(() => {
   <main>
     <NewsHeader />
     <NewsHighlights :stories="highlighted" />
-    <NewsPressCorner />
     <NewsArticles :stories="otherArticles" />
     <NewsPagination :page="page" :last-page="lastPage" @load="loadMorePosts" />
   </main>
