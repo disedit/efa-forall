@@ -16,7 +16,11 @@ export const useStory = (story) => {
   })
 
   const date = computed(() => {
-    return story.date
+    const postDate = new Date(story.date)
+    const day = postDate.getDay().toString().padStart(2, '0')
+    const month = (postDate.getMonth() + 1).toString().padStart(2, '0')
+    const year = postDate.getFullYear()
+    return `${day}.${month}.${year}`
   })
 
   return { thumbnail, category, date }

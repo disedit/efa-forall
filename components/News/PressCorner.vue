@@ -13,7 +13,10 @@ defineProps({
     <p>Text</p>
     <p>press@e-f-a.org</p>
     <p>
-      <a href="" download>Download Press Kit</a>
+      <a href="" download>
+        <IconPressKit />
+        Download Press Kit
+      </a>
     </p>
   </article>
 </template>

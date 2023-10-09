@@ -47,7 +47,7 @@ useHead({ title })
         <nuxt-link to="/news" class="link-black-to-underlined">News</nuxt-link>
       </template>
       <template #category>
-        <div :class="`category-${category.slug}`">{{ category.name }}</div>
+        <div :class="`story-category category-${category.slug}`">{{ category.name }}</div>
       </template>
     </SitePageHeader>
     <article>
@@ -60,9 +60,9 @@ useHead({ title })
         <div v-html="story.content.rendered" />
       </div>
     </article>
-    <aisde>
+    <aside>
       <NewsPressCorner in-story />
       <NewsOther :stories="latestPosts" />
-    </aisde>
+    </aside>
   </main>
 </template>

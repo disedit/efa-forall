@@ -18,8 +18,8 @@ const title = 'Candidates - For All: EU Elections 2024 - EFA European Free Allia
 useServerSeoMeta({
   title,
   ogTitle: title,
-  description: 'Desc',
-  ogDescription: 'Desc',
+  description: candidatesPage.value[0].acf.subheading,
+  ogDescription: candidatesPage.value[0].acf.subheading,
   ogImage: '/',
   twitterCard: 'summary_large_image',
 })

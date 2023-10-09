@@ -1,10 +1,11 @@
 <script setup>
 const title = 'News - For All: EU Elections 2024 - EFA European Free Alliance'
+const description = 'Keep up to date with the latest news from EFA'
 useServerSeoMeta({
   title,
   ogTitle: title,
-  description: 'Desc',
-  ogDescription: 'Desc',
+  description,
+  ogDescription: description,
   ogImage: '/',
   twitterCard: 'summary_large_image',
 })

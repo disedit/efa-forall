@@ -81,7 +81,7 @@ defineProps({
     }
 
     &:hover {
-      background: var(--primary);
+      background: var(--black);
       color: var(--white);
     }
   }

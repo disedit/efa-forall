@@ -6,11 +6,12 @@ const { data: events } = await useAsyncData(
 )
 
 const title = 'Events - For All: EU Elections 2024 - EFA European Free Alliance'
+const description = 'Join us at campaign events'
 useServerSeoMeta({
   title,
   ogTitle: title,
-  description: 'Desc',
-  ogDescription: 'Desc',
+  description,
+  ogDescription: description,
   ogImage: '/',
   twitterCard: 'summary_large_image',
 })
