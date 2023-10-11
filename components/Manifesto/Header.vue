@@ -22,7 +22,7 @@ defineProps({
     </template>
 
     <template #aside>
-      <div class="for-all-circle p-site">
+      <div class="for-all-circle ml-auto p-site">
         <LogoForAllBig />
       </div>
     </template>

@@ -5,39 +5,54 @@ const { $gsap } = useNuxtApp()
 
 onMounted(() => {
   setTimeout(() => {
-    const rellax = new Rellax('.blocks .block')
+    const rellax = new Rellax('.block-wrapper')
+
+    $gsap.fromTo('.block', {
+      y: 100
+    }, {
+      y: 0,
+      duration: .5,
+      delay: 3.75,
+      stagger: .25
+    })
   }, 500)
 })
 </script>
 
 <template>
   <section class="blocks">
-    <nuxt-link to="/about-us" class="block about" data-rellax-speed="5">
-      <p class="block-title">
-        About us
-      </p>
-      <h2 class="block-heading">
-        European <br> Free <br> Alliance
-      </h2>
-    </nuxt-link>
+    <div class="block-wrapper" data-rellax-speed="5">
+      <nuxt-link to="/about-us" class="block about">
+        <p class="block-title">
+          About us
+        </p>
+        <h2 class="block-heading">
+          European <br> Free <br> Alliance
+        </h2>
+      </nuxt-link>
+    </div>
 
-    <nuxt-link to="/manifesto" class="block manifesto" data-rellax-speed="3.5">
-      <p class="block-title">
-        For all
-      </p>
-      <h2 class="block-heading">
-        2024 <br> Election <br> Manifesto
-      </h2>
-    </nuxt-link>
+    <div class="block-wrapper" data-rellax-speed="3.5">
+      <nuxt-link to="/manifesto" class="block manifesto">
+        <p class="block-title">
+          For all
+        </p>
+        <h2 class="block-heading">
+          2024 <br> Election <br> Manifesto
+        </h2>
+      </nuxt-link>
+    </div>
 
-    <nuxt-link to="/candidates" class="block candidates" data-rellax-speed=".5">
-      <p class="block-title">
-        Meet the candidates
-      </p>
-      <h2 class="block-heading">
-        Candidates
-      </h2>
-    </nuxt-link>
+    <div class="block-wrapper" data-rellax-speed=".5">
+      <nuxt-link to="/candidates" class="block candidates">
+        <p class="block-title">
+          Meet the candidates
+        </p>
+        <h2 class="block-heading">
+          Candidates
+        </h2>
+      </nuxt-link>
+    </div>
   </section>
 </template>
 

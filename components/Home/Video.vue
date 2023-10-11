@@ -16,19 +16,15 @@ onMounted(() => {
         end: 'top 100px',
         scrub: 1,
         onLeave: () => {
-          console.log('onleave')
           document.documentElement.classList.add('dark')
         },
         onLeaveBack: () => {
-          console.log('onenter')
           document.documentElement.classList.remove('dark')
         },
         onEnterBack: () => {
-          console.log('onenterback')
           document.documentElement.classList.add('dark')
         },
         onEnter: () => {
-          console.log('onenter')
           document.documentElement.classList.remove('dark')
         }
       }
@@ -55,7 +51,7 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 .video {
-  height: 125vh;
+  height: 150vh;
   background: var(--black);
   position: relative;
 
@@ -70,6 +66,7 @@ onUnmounted(() => {
     max-height: calc(100vh - var(--navbar-safe-area) - var(--site-padding) * 2);
     margin: 0 auto;
     background-image: url(https://tenproposals.e-f-a.org/images/proposals/2.jpg);
+    opacity: .5;
   }
 
   &-title {

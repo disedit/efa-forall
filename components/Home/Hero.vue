@@ -26,8 +26,8 @@ onMounted(() => {
 .hero {
   display: flex;
   align-items: center;
-  min-height: calc(100vh - var(--navbar-safe-area));
-  min-height: calc(100svh - var(--navbar-safe-area));
+  min-height: calc(100vh - var(--navbar-safe-area) - 120px);
+  min-height: calc(100svh - var(--navbar-safe-area) - 120px);
   position: relative;
 
   &-title {

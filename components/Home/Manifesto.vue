@@ -42,30 +42,27 @@ onMounted(() => {
           document.documentElement.classList.remove('dark')
         },
         onLeaveBack: () => {
-          console.log('man-onleaveback')
           document.documentElement.classList.add('dark')
         },
         onEnterBack: () => {
-          console.log('man-onetnerback')
+          document.documentElement.classList.remove('dark')
         },
         onLeave: () => {
-          console.log('man-onleave')
+          document.documentElement.classList.remove('dark')
         }
       })
 
       $gsap.fromTo('.manifesto-chapters .chapter', {
-        y: 0,
-        x: 0,
-        opacity: .5
+        y: 100,
       }, {
         y: 0,
-        x: 0,
-        opacity: 1,
+        stagger: .1,
         ease: "Power4.in",
         duration: .25,
         scrollTrigger: {
           trigger: items.value,
-          start: 'top 90%'
+          start: 'top bottom',
+          end: 'top center'
         },
         onComplete: () => {
           scroller.value.refresh()
@@ -128,6 +125,7 @@ onUnmounted(() => {
       gap: var(--site-padding);
       flex-shrink: 0;
       background-color: var(--beige);
+      overflow: hidden;
     }
   }
 }

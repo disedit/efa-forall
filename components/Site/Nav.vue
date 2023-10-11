@@ -49,14 +49,13 @@
     &-menu {
       display: flex;
       margin: 0 auto;
-      gap: 1.5rem;
       align-items: center;
 
       a {
         color: var(--text-color);
         text-decoration: none;
         white-space: nowrap;
-        padding: .5rem;
+        padding: .5rem 3vw;
 
         &:hover:not(.button),
         &.router-link-active {
@@ -108,6 +107,11 @@
 
       a:hover {
         color: var(--white);
+      }
+
+      .donate:hover {
+        background: var(--white);
+        color: var(--primary);
       }
     }
 

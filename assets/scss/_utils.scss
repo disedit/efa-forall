@@ -25,6 +25,10 @@
     padding-right: var(--site-padding);
   }
 
+  .ml-auto {
+    margin-left: auto;
+  }
+
   .border-top {
     @include border-top;
   }
