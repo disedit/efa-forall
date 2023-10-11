@@ -70,7 +70,7 @@
   }
 
   .link-black-underlined {
-    color: var(--black);
+    color: var(--text-color);
 
     &:hover {
       color: var(--primary);
@@ -78,7 +78,7 @@
   }
 
   .link-black-to-underlined {
-    color: var(--black);
+    color: var(--text-color);
     text-decoration: none;
 
     &:hover {

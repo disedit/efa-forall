@@ -38,9 +38,10 @@ const year = 2023
 
 <style lang="scss" scoped>
   .footer {
+    color: var(--text-color);
     font-size: var(--text-sm);
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr minmax(1fr, 200px);
     grid-template-areas:
       "details newsletter"
       "disclaimer newsletter";

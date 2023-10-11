@@ -36,7 +36,7 @@ defineProps({
 
   a {
     display: grid;
-    color: var(--black);
+    color: var(--text-color);
     text-decoration: none;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
@@ -106,7 +106,7 @@ defineProps({
 
   &-poster-image {
     transition: .25s ease;
-    grid-are: poster;
+    grid-area: poster;
     color: var(--color);
     overflow: hidden;
   }

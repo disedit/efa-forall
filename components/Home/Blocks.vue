@@ -1,6 +1,18 @@
+<script setup>
+import Rellax from 'rellax'
+
+const { $gsap } = useNuxtApp()
+
+onMounted(() => {
+  setTimeout(() => {
+    const rellax = new Rellax('.blocks .block')
+  }, 500)
+})
+</script>
+
 <template>
   <section class="blocks">
-    <nuxt-link to="/about-us" class="block about">
+    <nuxt-link to="/about-us" class="block about" data-rellax-speed="5">
       <p class="block-title">
         About us
       </p>
@@ -9,7 +21,7 @@
       </h2>
     </nuxt-link>
 
-    <nuxt-link to="/manifesto" class="block manifesto">
+    <nuxt-link to="/manifesto" class="block manifesto" data-rellax-speed="3.5">
       <p class="block-title">
         For all
       </p>
@@ -18,7 +30,7 @@
       </h2>
     </nuxt-link>
 
-    <nuxt-link to="/candidates" class="block candidates">
+    <nuxt-link to="/candidates" class="block candidates" data-rellax-speed=".5">
       <p class="block-title">
         Meet the candidates
       </p>
@@ -47,6 +59,8 @@
   aspect-ratio: 9 / 16;
   max-height: 70vh;
   min-width: 100%;
+  gap: 4rem;
+  transform: translateY(100px);
 
   &-title {
     font-size: .5em;

@@ -8,7 +8,8 @@
 
   body {
     background-color: var(--bg-color);
-    color: var(--black);
+    color: var(--text-color);
+    transition: background-color .25s ease;
   }
 
   a {

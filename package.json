@@ -14,8 +14,10 @@
     "sass": "^1.66.1"
   },
   "dependencies": {
+    "gsap": "npm:@gsap/shockingly@^3.12.2",
     "include-media": "^2.0.0",
     "modern-normalize": "^2.0.0",
+    "rellax": "^1.12.1",
     "wpapi": "^1.2.2"
   }
 }

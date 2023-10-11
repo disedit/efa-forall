@@ -23,7 +23,6 @@
   .nav {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--black);
     background: var(--bg-color);
     position: fixed;
     z-index: 10000;
@@ -31,12 +30,14 @@
     left: 0;
     right: 0;
     font-size: var(--text-md);
+    @include border-bottom;
+    transition: .25s ease;
 
     &-brand {
       display: flex;
       align-items: center;
       gap: .5rem;
-      color: var(--black);
+      color: var(--text-color);
       text-decoration: none;
       @include border-right;
         
@@ -94,6 +95,25 @@
   .logo-for-all {
     height: 2.5rem;
     color: var(--primary);
+  }
+
+  .dark {
+    .nav {
+      background: rgba($black, .75);
+      backdrop-filter: blur(5px);
+
+      &-brand:hover {
+        background: rgba($primary, .25);
+      }
+
+      a:hover {
+        color: var(--white);
+      }
+    }
+
+    .logo-for-all {
+      color: var(--white);
+    }
   }
 }
 </style>

@@ -1,9 +1,7 @@
-
-import { resolveDirective } from 'nuxt/dist/app/compat/capi';
 <script setup>
 defineProps({
   content: {
-    type: Object,
+    type: String,
     required: true
   }
 })

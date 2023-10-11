@@ -1,9 +1,11 @@
 :root {
   --primary: #{$primary};
   --secondary: #{$secondary};
-  --bg-color: #{$bg-color};
+  --beige: #{$beige};
   --black: #{$black};
-  --text-color: #{$black};
+  --bg-color: var(--beige);
+  --text-color: var(--black);
+  --border-color: var(--black);
   --muted: #{rgba($black, .5)};
   --white: #{$white};
   --base-font: #{$base-font};
@@ -29,4 +31,10 @@
   :root {
     scroll-behavior: smooth;
   }
+}
+
+.dark {
+  --bg-color: var(--black);
+  --text-color: var(--white);
+  --border-color: #{rgba($white, .5)};
 }
