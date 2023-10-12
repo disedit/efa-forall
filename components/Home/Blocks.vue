@@ -3,19 +3,26 @@ import Rellax from 'rellax'
 
 const { $gsap } = useNuxtApp()
 
+let rellax
+
 onMounted(() => {
   setTimeout(() => {
-    const rellax = new Rellax('.block-wrapper')
+    rellax = new Rellax('.block-wrapper')
 
     $gsap.fromTo('.block', {
       y: 100
     }, {
       y: 0,
-      duration: .5,
+      duration: 1,
       delay: 3.75,
-      stagger: .25
+      stagger: .25,
+      ease: 'power3.out'
     })
   }, 500)
+})
+
+onUnmounted(() => {
+  rellax.destroy()
 })
 </script>
 

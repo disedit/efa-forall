@@ -1,10 +1,4 @@
 <script setup>
-const { $wp } = useNuxtApp()
-const { data: events } = await useAsyncData(
-  'events',
-  () => $wp.events().param('_fields', 'id,title,acf')
-)
-
 const title = 'Events - For All: EU Elections 2024 - EFA European Free Alliance'
 const description = 'Join us at campaign events'
 useServerSeoMeta({
@@ -17,6 +11,12 @@ useServerSeoMeta({
 })
 
 useHead({ title })
+
+const { $wp } = useNuxtApp()
+const { data: events } = await useAsyncData(
+  'events',
+  () => $wp.events().param('_fields', 'id,title,acf').param('acf_format', 'standard')
+)
 </script>
 
 <template>

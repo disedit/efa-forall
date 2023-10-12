@@ -1,6 +1,4 @@
 <script setup>
-import { Draggable } from 'gsap/Draggable'
-
 defineProps({
   candidates: {
     type: Array,
@@ -26,6 +24,16 @@ onMounted(() => {
 <template>
   <section class="candidate-cards p-site" ref="container">
     <div class="candidate-cards-items" ref="cards">
+      <CandidatesCard
+        v-for="candidate in candidates"
+        :key="candidate.id"
+        :candidate="candidate"
+      />
+      <CandidatesCard
+        v-for="candidate in candidates"
+        :key="candidate.id"
+        :candidate="candidate"
+      />
       <CandidatesCard
         v-for="candidate in candidates"
         :key="candidate.id"

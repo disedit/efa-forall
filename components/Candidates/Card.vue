@@ -10,9 +10,7 @@ defineProps({
 <template>
   <article class="candidate-card">
     <h3 v-html="candidate.title.rendered" />
-  </article>
-  <article class="candidate-card">
-    <h3 v-html="candidate.title.rendered" />
+    <pre>{{ candidate }}</pre>
   </article>
 </template>
 

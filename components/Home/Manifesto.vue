@@ -12,8 +12,10 @@ defineProps({
 
 const items = ref(null)
 const wrapper = ref(null)
-const scroller = ref(null)
-const ctx = ref(null)
+let scroller
+let animation
+let blockEnter
+let ctx
 
 function getScrollAmount() {
   const width = items.value.scrollWidth
@@ -22,14 +24,14 @@ function getScrollAmount() {
 
 onMounted(() => {
   setTimeout(() => {
-    ctx.value = $gsap.context((self) => {
-      const animation = $gsap.to(items.value, {
+    ctx = $gsap.context(() => {
+      animation = $gsap.to(items.value, {
         x: getScrollAmount,
         duration: 3,
         ease: "none"
       })
 
-      scroller.value = $ScrollTrigger.create({
+      scroller = $ScrollTrigger.create({
         trigger: wrapper.value,
         start: 'top 73px',
         end: () => `+=${getScrollAmount() * -1}`,
@@ -51,7 +53,7 @@ onMounted(() => {
         }
       })
 
-      $gsap.fromTo('.manifesto-chapters .chapter', {
+      blockEnter = $gsap.fromTo('.manifesto-chapters .chapter', {
         y: 100,
       }, {
         y: 0,
@@ -64,7 +66,7 @@ onMounted(() => {
           end: 'top 50%'
         },
         onComplete: () => {
-          scroller.value.refresh()
+          scroller.refresh()
         }
       })
     }, wrapper.value)
@@ -72,7 +74,9 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  ctx.value && ctx.value.revert()
+  scroller && scroller.kill()
+  animation && animation.kill()
+  blockEnter && blockEnter.kill()
 })
 </script>
 

@@ -18,7 +18,7 @@ function hover () {
   animation.value = $gsap.to(block.value, {
     duration: .5,
     ease: 'power4.out',
-    '--circle-size': '70%'
+    '--circle-size': '60%'
   })
 }
 
@@ -35,11 +35,8 @@ function unhover () {
 }
 
 function move (e) {
-  console.log(e.pageX, e.pageY)
-  const x = e.pageX - e.currentTarget.offsetLeft
-  const y = e.pageY - e.currentTarget.offsetTop
-  circlePosition.x = x
-  circlePosition.y = y
+  circlePosition.x = e.pageX - e.currentTarget.offsetLeft
+  circlePosition.y = e.pageY - e.currentTarget.offsetTop
 }
 
 const computedCirclePosition = computed(() => {

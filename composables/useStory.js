@@ -1,11 +1,11 @@
 export const useStory = (story) => {
-  const featuredmedia = computed(() => (story._embedded && story._embedded['wp:featuredmedia']))
+  const featuredmedia = story._embedded && story._embedded['wp:featuredmedia']
 
   const thumbnail = computed(() => {
-    if (!featuredmedia.value) return false
+    if (!featuredmedia) return false
     return {
-      src: featuredmedia.value[0].media_details.sizes.medium_large.source_url,
-      alt: featuredmedia.value[0].alt_text
+      src: featuredmedia[0].media_details.sizes.medium_large.source_url,
+      alt: featuredmedia[0].alt_text
     }
   })
 
