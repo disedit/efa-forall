@@ -20,10 +20,9 @@ defineProps({
       </h2>
       <div class="chapter-summary">
         <div v-html="chapter.acf.summary" class="p-site" />
-        <div class="chapter-more py-sm p-site">
-          <span>Read more</span>
-          <IconArrow />
-        </div>
+        <AnimatedArrowLink class="chapter-more">
+          Read more
+        </AnimatedArrowLink>
       </div>
       <div class="chapter-poster-image" v-html="poster" aria-hidden="true" />
     </nuxt-link>
@@ -92,38 +91,6 @@ defineProps({
 
   &-more {
     margin-top: auto;
-    @include border-top;
-    display: flex;
-    justify-content: space-between;
-    transition: .25s ease;
-    font-size: var(--text-lg);
-    position: relative;
-    overflow: hidden;
-
-    svg {
-      height: 1em;
-      width: 1em;
-    }
-
-    svg,
-    span {
-      position: relative;
-      z-index: 1;
-    }
-
-    &::before {
-      content: '';
-      display: block;
-      position: absolute;
-      background: var(--black);
-      left: 0;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      transform: translateX(-100%);
-      transition: transform .25s ease;
-      z-index: 0;
-    }
   }
 
   &-poster-image {

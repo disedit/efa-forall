@@ -16,8 +16,9 @@ defineProps({
     <div class="video">
       <div class="placeholder" />
       <nuxt-link to="/manifesto" class="manifesto py-sm p-site">
-        Read the 2024 Manifesto
-        <IconArrow />
+        <AnimatedArrowLink class="manifesto-link">
+          Read the 2024 Manifesto
+        </AnimatedArrowLink>
       </nuxt-link>
     </div>
   </section>
@@ -67,20 +68,21 @@ defineProps({
   }
 
   .manifesto {
-    display: flex;
+    padding: 0;
+    color: var(--text-color);
     background: var(--secondary);
-    color: var(--black);
-    justify-content: space-between;
     text-decoration: none;
-    font-size: var(--text-lg);
-
-    svg {
-      height: 1em;
-    }
 
     &:hover {
-      background: var(--black);
       color: var(--white);
+
+      .manifesto-link::before {
+        transform: translate(0);
+      }
+    }
+
+    &-link {
+      border-top: 0;
     }
   }
 }

@@ -26,10 +26,9 @@ defineProps({
         </h2>
         <div class="candidates-picture p-site">
         </div>
-        <div class="candidates-link py-sm p-site">
+        <AnimatedArrowLink class="candidates-link">
           Meet our candidates
-          <IconArrow />
-        </div>
+        </AnimatedArrowLink>
       </nuxt-link>
     </article>
   </section>
@@ -64,7 +63,12 @@ defineProps({
   display: flex;
 
   a {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+      "picture title"
+      "picture link";
     flex-direction: column;
     background: var(--secondary);
     color: var(--black);
@@ -73,6 +77,7 @@ defineProps({
   }
 
   &-title {
+    grid-area: title;
     font-size: var(--headline-block);
     line-height: .9;
 
@@ -83,27 +88,25 @@ defineProps({
   }
 
   &-picture {
+    grid-area: picture;
     display: flex;
     height: 100%;
+    @include border-right;
+    background: gray;
   }
 
   &-link {
-    display: flex;
-    justify-content: space-between;
-    font-size: var(--text-xl);
-    @include border-top;
-    font-size: var(--text-lg);
-
-    svg {
-      height: 1em;
-    }
+    grid-area: link;
   }
 
   &:hover,
   &:focus-within {
     .candidates-link {
-      background: var(--black);
       color: var(--white);
+
+      &::before {
+        transform: translateX(0);
+      }
     }
   }
 }

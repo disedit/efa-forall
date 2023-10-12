@@ -55,7 +55,7 @@
         color: var(--text-color);
         text-decoration: none;
         white-space: nowrap;
-        padding: .5rem 3vw;
+        padding: 1rem 3vw;
 
         &:hover:not(.button),
         &.router-link-active {

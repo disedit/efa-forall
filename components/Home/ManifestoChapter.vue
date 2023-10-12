@@ -23,10 +23,9 @@ const props = defineProps({
         <span>for <LogoAll /></span>
       </h3>
       <p class="chapter-text">{{ chapter.acf.home_text }}</p>
-      <div class="chapter-more">
-        <span>Read more</span>
-        <IconArrow />
-      </div>
+      <AnimatedArrowLink class="chapter-more">
+        Read more
+      </AnimatedArrowLink>
     </div>
     <div class="chapter-poster" v-html="poster" />
   </nuxt-link>
@@ -73,41 +72,9 @@ const props = defineProps({
   }
 
   &-more {
-    @include border-top(var(--black));
     margin: calc(var(--site-padding) * -1);
     padding: var(--site-padding);
     margin-top: auto;
-    display: flex;
-    gap: 1rem;
-    justify-content: space-between;
-    position: relative;
-    overflow: hidden;
-    transition: .25s ease;
-
-    &::before {
-      content: '';
-      display: block;
-      position: absolute;
-      background: var(--color);
-      left: 0;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      transform: translateX(-100%);
-      transition: transform .25s ease;
-      z-index: 0;
-    }
-
-    span,
-    svg {
-      position: relative;
-      z-index: 1;
-    }
-
-    svg {
-      height: 1em;
-      width: 1em;
-    }
   }
 
   &-poster {
@@ -122,7 +89,8 @@ const props = defineProps({
     }
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     background: var(--white);
 
     .chapter-more {
