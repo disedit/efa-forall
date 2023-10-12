@@ -12,9 +12,8 @@ defineProps({
 </script>
 
 <template>
-  <section class="candidates-map">
+  <section class="candidates-map p-site">
     <h2>Find your candidate</h2>
     <p>{{ text }}</p>
-    <pre>{{ candidates }}</pre>
   </section>
 </template>

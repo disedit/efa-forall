@@ -26,9 +26,73 @@ const socialLinks = computed(() => socials.split("\r\n").map(item => {
 
 <template>
   <article class="spitzenkandidat">
-    <img :src="picture.sizes.large" :alt="picture.alt">
-    <h3>{{ name }}</h3>
-    <p>{{ description }}</p>
-    <CandidatesSocials :socials="socialLinks" />
+    <div class="spitzenkandidat-picture">
+      <img :src="picture.sizes.large" :alt="picture.alt">
+    </div>
+    <h3 class="spitzenkandidat-name">{{ name }}</h3>
+    <p class="spitzenkandidat-description">{{ description }}</p>
+    <CandidatesSocials :socials="socialLinks" class="spitzenkandidat-socials" />
   </article>
 </template>
+
+<style lang="scss" scoped>
+.spitzenkandidat {
+  --background: var(--primary);
+  --foreground: var(--white);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas:
+    "picture name"
+    "picture socials"
+    "picture description";
+  background-color: var(--background);
+  color: var(--foreground);
+  row-gap: 1rem;
+
+  &:last-child {
+    --background: var(--secondary);
+    --foreground: var(--black);
+  }
+
+  &-picture {
+    grid-area: picture;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &-name {
+    grid-area: name;
+    padding: var(--site-padding);
+    padding-bottom: 0;
+    font-size: var(--headline-block);
+    line-height: 1;
+  }
+
+  &-description {
+    grid-area: description;
+    padding: var(--site-padding);
+    align-self: end;
+    margin: 0;
+    font-size: var(--text-lg);
+  }
+
+  &-socials {
+    grid-area: socials;
+    padding: 0 var(--site-padding);
+    display: flex;
+    gap: 1em;
+    font-size: var(--text-lg);
+
+    :deep(a) {
+      color: var(--foreground);
+      text-decoration: none;
+    }
+  }
+}
+</style>

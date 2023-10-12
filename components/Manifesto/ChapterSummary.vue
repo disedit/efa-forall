@@ -117,4 +117,12 @@ defineProps({
     }
   }
 }
+
+@include media("<=xxl") {
+  .chapter {
+    &-summary {
+      font-size: var(--text-lg);
+    }
+  }
+}
 </style>

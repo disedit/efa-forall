@@ -21,14 +21,14 @@ onMounted(() => {
 
 <template>
   <section class="blocks">
-    <HomeBlock to="/about-us" class="about" data-rellax-speed="5">
+    <HomeBlock to="/about-us" class="about" data-rellax-speed="4">
       <template #title>
         About us
       </template>
 
       European <br> Free <br> Alliance
     </HomeBlock>
-    <HomeBlock to="/manifesto" class="manifesto" data-rellax-speed="3.5">
+    <HomeBlock to="/manifesto" class="manifesto" data-rellax-speed="2">
       <template #title>
         For all
       </template>

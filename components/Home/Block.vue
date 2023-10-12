@@ -97,6 +97,7 @@ onUnmounted(() => {
   overflow: hidden;
   background-color: var(--background);
   color: var(--foreground);
+  transition: .25s ease;
 
   &-title {
     font-size: .5em;
@@ -126,6 +127,10 @@ onUnmounted(() => {
     gap: 4rem;
     padding: .5em;
     clip-path: circle(var(--circle-size) at var(--circle-position));
+  }
+
+  &:focus {
+    outline: 3px var(--black) solid;
   }
 }
 </style>

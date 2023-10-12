@@ -6,10 +6,15 @@
   padding: .5rem .75rem;
   border-radius: 0;
   border: 0;
+  text-decoration: none;
 
   &:hover {
     background: var(--black);
     cursor: pointer;
+  }
+
+  &-lg {
+    padding: .75rem 1.25rem;
   }
 }
 

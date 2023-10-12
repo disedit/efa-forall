@@ -14,7 +14,7 @@ defineProps({
       <p>Text</p>
       <p><a href="mailto:press@e-f-a.org">press@e-f-a.org</a></p>
     </div>
-    <a href="" download class="press-corner-kit">
+    <a href="/" download class="press-corner-kit">
       <IconPressKit />
       Download Press Kit
     </a>
@@ -22,6 +22,12 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
+.press-corner {
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
 .in-story {
   @include border;
 
@@ -35,10 +41,6 @@ defineProps({
         font-weight: bold;
         font-size: var(--text-2xl);
         line-height: 1;
-      }
-
-      p:last-child {
-        margin-bottom: 0;
       }
     }
 
@@ -69,5 +71,42 @@ defineProps({
 .in-news {
   padding: var(--site-padding);
   background: var(--secondary);
+  @include border-top;
+  display: flex;
+
+  .press-corner {
+    &-content {
+      h2 {
+        font-size: var(--headline-story);
+        line-height: 1;
+      }
+
+      a {
+        color: var(--text-color);
+      }
+    }
+
+    &-kit {
+      margin-left: auto;
+      margin-top: auto;
+      background: var(--black);
+      color: var(--white);
+      text-decoration: none;
+      padding: .75em 1.25em;
+      transition: .25s ease;
+      font-weight: bold;
+
+      &:hover {
+        background: var(--white);
+        color: var(--black);
+      }
+
+      svg {
+        height: 2em;
+        width: 2em;
+        margin-right: .5em;
+      }
+    }
+  }
 }
 </style>

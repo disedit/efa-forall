@@ -55,13 +55,13 @@ onMounted(() => {
         y: 100,
       }, {
         y: 0,
-        stagger: .1,
+        stagger: .25,
         ease: "Power4.in",
-        duration: .25,
+        duration: 1,
         scrollTrigger: {
           trigger: items.value,
-          start: 'top bottom',
-          end: 'top center'
+          start: 'top 90%',
+          end: 'top 50%'
         },
         onComplete: () => {
           scroller.value.refresh()

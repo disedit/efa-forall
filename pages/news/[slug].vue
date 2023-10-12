@@ -89,6 +89,7 @@ useHead({ title })
     img {
       display: block;
       width: 100%;
+      min-height: 500px;
       height: 50vh;
       object-fit: cover;
     }

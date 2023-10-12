@@ -5,7 +5,7 @@
     </template>
 
     <template #heading>
-      Take part
+      Upcoming events
     </template>
   </SitePageHeader>
 </template>

@@ -14,7 +14,12 @@ const socialNetworkNames = {
   tiktok: 'TikTok'
 }
 
-const socialNetworkIcons = {}
+const socialNetworkIcons = {
+  facebook: resolveComponent('IconFacebook'),
+  x: resolveComponent('IconTwitter'),
+  instagram: resolveComponent('IconInstagram'),
+  tiktok: resolveComponent('IconTikTok')
+}
 </script>
 
 <template>
@@ -22,7 +27,7 @@ const socialNetworkIcons = {}
     <li v-for="social in socials" :key="social.key">
       <a :href="social.url" target="_blank" rel="noopener">
         <span class="visually-hidden">{{ socialNetworkNames[social.key] }}</span>
-        {{ social.key }}
+        <Component :is="socialNetworkIcons[social.key]" />
       </a>
     </li>
   </ul>

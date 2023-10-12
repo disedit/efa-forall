@@ -10,7 +10,7 @@ const { data: candidatesPage } = await useAsyncData(
 const { data: candidates } = await useAsyncData(
   'candidates',
   () => $wp.candidates()
-    .param('_fields', 'title,acf')
+    .param('_fields', 'id,title,acf')
     .param('acf_format', 'standard')
 )
 
@@ -32,5 +32,6 @@ useHead({ title })
     <CandidatesHeader :text="candidatesPage[0].acf.subheading" />
     <CandidatesSpitzenkandidaten :candidates="candidatesPage[0].acf" />
     <CandidatesMap :candidates="candidates" :text="candidatesPage[0].acf.find_your_candidate_text" />
+    <CandidatesCards :candidates="candidates" />
   </main>
 </template>

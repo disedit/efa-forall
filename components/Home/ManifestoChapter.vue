@@ -75,6 +75,7 @@ const props = defineProps({
     margin: calc(var(--site-padding) * -1);
     padding: var(--site-padding);
     margin-top: auto;
+    @include border-top(var(--black));
   }
 
   &-poster {
