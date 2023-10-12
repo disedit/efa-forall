@@ -86,12 +86,14 @@ const props = defineProps({
 
     :deep(svg) {
       width: 100%;
+      transition: .25s ease;
     }
   }
 
   &:hover,
   &:focus {
     background: var(--white);
+    --add-scale: .2;
 
     .chapter-more {
       color: var(--white);
@@ -107,7 +109,13 @@ const props = defineProps({
   align-items: flex-end;
 
   :deep(svg) {
-    transform: scale(1.3) translate(0, -5%);
+    transform: scale(calc(1.3 + var(--add-scale, 0))) translate(0, -5%);
+  }
+}
+
+.chapter-diversity-for-all .chapter-poster {
+  :deep(svg) {
+    transform: scale(calc(1 + var(--add-scale, 0)));
   }
 }
 
@@ -115,15 +123,15 @@ const props = defineProps({
   align-items: flex-end;
   
   :deep(svg) {
-    transform: scale(1.25) translate(5%, 10%);
+    transform: scale(calc(1.25 + var(--add-scale, 0))) translate(5%, 10%);
   }
 }
 
 .chapter-solidarity-for-all .chapter-poster :deep(svg) {
-  transform: scale(1.2) translate(0, 0);
+  transform: scale(calc(1.2 + var(--add-scale, 0))) translate(0, 0);
 }
 
 .chapter-prosperity-for-all .chapter-poster :deep(svg) {
-  transform: scale(1.5) translate(8%, 0);
+  transform: scale(calc(1.5 + var(--add-scale, 0))) translate(8%, 0);
 }
 </style>

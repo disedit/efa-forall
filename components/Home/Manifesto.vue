@@ -38,7 +38,6 @@ onMounted(() => {
         scrub: 1,
         invalidateOnRefresh: true,
         onEnter: () => {
-          console.log('man-onenter')
           document.documentElement.classList.remove('dark')
         },
         onLeaveBack: () => {

@@ -21,38 +21,27 @@ onMounted(() => {
 
 <template>
   <section class="blocks">
-    <div class="block-wrapper" data-rellax-speed="5">
-      <nuxt-link to="/about-us" class="block about">
-        <p class="block-title">
-          About us
-        </p>
-        <h2 class="block-heading">
-          European <br> Free <br> Alliance
-        </h2>
-      </nuxt-link>
-    </div>
+    <HomeBlock to="/about-us" class="about" data-rellax-speed="5">
+      <template #title>
+        About us
+      </template>
 
-    <div class="block-wrapper" data-rellax-speed="3.5">
-      <nuxt-link to="/manifesto" class="block manifesto">
-        <p class="block-title">
-          For all
-        </p>
-        <h2 class="block-heading">
-          2024 <br> Election <br> Manifesto
-        </h2>
-      </nuxt-link>
-    </div>
+      European <br> Free <br> Alliance
+    </HomeBlock>
+    <HomeBlock to="/manifesto" class="manifesto" data-rellax-speed="3.5">
+      <template #title>
+        For all
+      </template>
 
-    <div class="block-wrapper" data-rellax-speed=".5">
-      <nuxt-link to="/candidates" class="block candidates">
-        <p class="block-title">
-          Meet the candidates
-        </p>
-        <h2 class="block-heading">
-          Candidates
-        </h2>
-      </nuxt-link>
-    </div>
+      2024 <br> Election <br> Manifesto
+    </HomeBlock>
+    <HomeBlock to="/candidates" class="candidates" data-rellax-speed=".5">
+      <template #title>
+        Candidates
+      </template>
+
+      Meet the <br> candidates
+    </HomeBlock>
   </section>
 </template>
 
@@ -64,42 +53,24 @@ onMounted(() => {
   padding: var(--site-padding);
 }
 
-.block {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  padding: .5em;
-  font-size: clamp(2rem, 4vw, 4rem);
-  line-height: .9;
-  aspect-ratio: 9 / 16;
-  max-height: 70vh;
-  min-width: 100%;
-  gap: 4rem;
-  transform: translateY(100px);
+.about {
+  --background: var(--primary);
+  --foreground: var(--white);
+  --circle-background: var(--white);
+  --circle-foreground: var(--primary);
+}
 
-  &-title {
-    font-size: .5em;
-    margin: 0;
-    margin-bottom: auto;
-  }
+.manifesto {
+  --background: var(--secondary);
+  --foreground: var(--white);
+  --circle-background: var(--white);
+  --circle-foreground: var(--secondary);
+}
 
-  &-heading {
-    margin: 0;
-  }
-
-  &.about {
-    background: var(--primary);
-    color: var(--white);
-  }
-
-  &.manifesto {
-    background: var(--secondary);
-    color: var(--white);
-  }
-
-  &.candidates {
-    background: var(--white);
-    color: var(--black);
-  }
+.candidates {
+  --background: var(--white);
+  --foreground: var(--primary);
+  --circle-background: var(--primary);
+  --circle-foreground: var(--white);
 }
 </style>
