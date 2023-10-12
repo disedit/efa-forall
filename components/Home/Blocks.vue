@@ -13,10 +13,10 @@ onMounted(() => {
       y: 100
     }, {
       y: 0,
-      duration: 1,
+      duration: .75,
       delay: 3.75,
-      stagger: .25,
-      ease: 'power3.out'
+      stagger: .1,
+      ease: "back.out(1.7)",
     })
   }, 500)
 })

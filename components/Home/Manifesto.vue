@@ -74,9 +74,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  scroller && scroller.kill()
-  animation && animation.kill()
-  blockEnter && blockEnter.kill()
+  ctx && ctx.kill()
 })
 </script>
 

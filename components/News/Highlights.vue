@@ -22,5 +22,6 @@ defineProps({
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--site-padding);
+  padding-top: 0;
 }
 </style>

@@ -32,6 +32,7 @@ const { thumbnail, category, date } = useStory(story)
 <style lang="scss" scoped>
 .story {
   display: flex;
+  min-height: calc(100vh - 330px);
 
   &-header {
     display: flex;

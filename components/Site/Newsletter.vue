@@ -14,15 +14,19 @@
         required
         class="text-input" />
       <div class="newsletter-legal">
-        <label>
+        <label class="checkbox-label">
           <input
             type="checkbox"
-            name=""
-            value=""
+            name="policy"
+            value="true"
             class="checkbox-input"
           />
-          I have read and agree to the
-          <a href="https://e-f-a.org/privacy-policy/">Terms and Conditions</a>
+          <span>
+            I have read and agree to the
+            <a href="https://e-f-a.org/privacy-policy/" target="_blank" class="link-black-underlined">
+              Terms and Conditions
+            </a>
+          </span>
         </label>
       </div>
     </div>
@@ -58,11 +62,10 @@
         font-size: var(--text-md);
       }
 
-      .checkbox-input {
-        width: 1.15em;
-        height: 1.15em;
-        border: 0.15em solid currentColor;
-        border-radius: 0.15em;
+      .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: .5em;
       }
     }
 

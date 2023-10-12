@@ -67,7 +67,8 @@ function formatTime (eventDate) {
   flex-direction: column;
   gap: 1rem;
   background: var(--bg-color);
-  height: 33vw;
+  min-height: 45vh;
+  max-height: 33vw;
   font-size: var(--text-md);
   @include border-right;
   @include border-bottom;

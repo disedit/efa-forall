@@ -17,7 +17,7 @@ const pdfs = computed(() => {
 </script>
 
 <template>
-  <div class="manifesto-languages py-sm px-site border-bottom">
+  <div class="manifesto-languages py-sm px-site">
     Download the Manifesto in
     <span
       v-for="pdf in pdfs"
