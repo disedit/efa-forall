@@ -1,7 +1,7 @@
 @layer base, component, utils;
 
 @import "variables";
-@import "node_modules/modern-normalize/modern-normalize.css";
+@import "normalize";
 @import "node_modules/include-media/dist/_include-media.scss";
 @import "mixins";
 @import "fonts";
