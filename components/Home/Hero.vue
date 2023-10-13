@@ -19,14 +19,14 @@ onMounted(() => {
         scale: 1,
         duration: .75,
         ease: 'power4.out',
-        delay: 3.5
+        delay: 4
       })
       
       $gsap.to(europe.value, {
         scale: 1,
         duration: .75,
         ease: 'power4.out',
-        delay: 3.5
+        delay: 4
       })
     }, hero.value)
   }, 500)

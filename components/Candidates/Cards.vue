@@ -5,52 +5,27 @@ defineProps({
     required: true
   }
 })
-
-const { $Draggable } = useNuxtApp()
-
-const cards = ref(null)
-const container = ref(null)
-
-onMounted(() => {
-  setTimeout(() => {
-    $Draggable.create(cards.value, {
-      type: 'x',
-      inertia: true
-    })
-  }, 500)
-})
 </script>
 
 <template>
-  <section class="candidate-cards p-site" ref="container">
-    <div class="candidate-cards-items" ref="cards">
+  <SiteSlider class="candidates-cards p-site" id="candidate-slider">
       <CandidatesCard
         v-for="candidate in candidates"
         :key="candidate.id"
         :candidate="candidate"
       />
-      <CandidatesCard
-        v-for="candidate in candidates"
-        :key="candidate.id"
-        :candidate="candidate"
-      />
-      <CandidatesCard
-        v-for="candidate in candidates"
-        :key="candidate.id"
-        :candidate="candidate"
-      />
-    </div>
-  </section>
+      <div class="filler" />
+  </SiteSlider>
 </template>
 
 <style lang="scss" scoped>
-.candidate-cards {
-  overflow: hidden;
+.candidates-cards {
+  padding-top: 4px;
+  padding-bottom: 1rem;
+}
 
-  &-items {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: var(--site-padding);
-  }
+.filler {
+  width: 50vw;
+  flex-shrink: 0;
 }
 </style>

@@ -11,13 +11,13 @@ const { thumbnail, category, date } = useStory(story)
 
 <template>
   <article class="story">
-    <nuxt-link :to="`/news/${story.slug}`" class="p-site">
+    <nuxt-link :to="`/news/${story.slug}`">
       <div class="story-thumbnail">
         <img v-if="thumbnail" :src="thumbnail.src" :alt="thumbnail.alt">
       </div>
       <div class="story-date">{{ date }}</div>
       <h2 class="story-title" v-html="story.title.rendered" />
-      <NewsCategory :category="category" />
+      <NewsCategory class="story-category" :category="category" />
     </nuxt-link>
   </article>
 </template>
@@ -54,16 +54,24 @@ const { thumbnail, category, date } = useStory(story)
     font-weight: bold;
     text-wrap: balance;
     font-size: var(--headline-story-sm);
+    padding-top: var(--site-padding);
   }
 
   &-date {
     color: var(--muted);
+    padding-top: var(--site-padding);
+  }
+
+  &-category {
+    padding-top: var(--site-padding);
+    padding-right: var(--site-padding);
   }
 
   &-thumbnail {
     display: flex;
     height: 100%;
     aspect-ratio: 1 / .75;
+    @include border-right;
 
     img {
       display: block;

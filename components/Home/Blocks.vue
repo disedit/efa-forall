@@ -14,7 +14,7 @@ onMounted(() => {
     }, {
       y: 0,
       duration: .75,
-      delay: 3.75,
+      delay: 4,
       stagger: .1,
       ease: "back.out(1.7)",
     })
