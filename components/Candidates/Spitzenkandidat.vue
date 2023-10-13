@@ -70,7 +70,11 @@ const socialLinks = computed(() => socials.split("\r\n").map(item => {
     grid-area: name;
     padding: var(--site-padding);
     padding-bottom: 0;
-    font-size: var(--headline-block);
+    font-family: var(--base-font);
+    text-transform: unset;
+    font-weight: bold;
+    font-size: 3rem;
+    letter-spacing: -.03em;
     line-height: 1;
   }
 

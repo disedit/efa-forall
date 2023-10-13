@@ -1,11 +1,19 @@
-export const useStory = (story) => {
+export const useStory = (story, size = 'medium_large') => {
   const featuredmedia = story._embedded && story._embedded['wp:featuredmedia']
 
   const thumbnail = computed(() => {
     if (!featuredmedia) return false
+    const thumb = featuredmedia[0].media_details.sizes
+    const src = thumb[size]?.source_url
+      || thumb.large?.source_url
+      || thumb.medium_large?.source_url
+      || thumb.thumbnail?.source_url
+      || thumb.full?.source_url
+    const alt = featuredmedia[0].alt_text
+
     return {
-      src: featuredmedia[0].media_details.sizes.medium_large.source_url,
-      alt: featuredmedia[0].alt_text
+      src,
+      alt
     }
   })
 

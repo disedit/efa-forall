@@ -13,13 +13,16 @@ defineProps({
 </script>
 
 <template>
-  <div v-if="lastPage > page" class="more-stories border-top">
+  <div v-if="lastPage > page" class="more-stories">
     <button @click="$emit('load')" class="p-site">Load more</button>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .more-stories {
+  @include border;
+  border-top: 0;
+
   button {
     appearance: none;
     display: block;

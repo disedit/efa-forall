@@ -11,7 +11,7 @@ const { data: post } = await useAsyncData(
 )
 
 const story = post.value[0]
-const { thumbnail, category, date } = useStory(story)
+const { thumbnail, category, date } = useStory(story, 'full')
 
 /* Latest posts */
 const { data: latest } = await useAsyncData(
@@ -80,7 +80,7 @@ useHead({ title })
 
   &-page {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr minmax(300px, 30vw);
   }
 
   &-picture {

@@ -74,15 +74,15 @@ defineProps({
       position: relative;
     }
 
-    /*.blind {
+    .blind {
       position: absolute;
       z-index: 0;
-      // background: rgba($beige, .75);
+      background: linear-gradient(to right, rgba($beige, 0), $beige 50%);
       top: 0;
       right: 0;
       bottom: 15px;
       left: 9%;
-    }*/
+    }
   }
 
   &-cards {

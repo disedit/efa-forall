@@ -55,8 +55,27 @@ const otherArticles = computed(() => {
   <main>
     <NewsHeader />
     <NewsHighlights :stories="highlighted" />
-    <NewsPressCorner />
-    <NewsArticles :stories="otherArticles" />
-    <NewsPagination :page="page" :last-page="lastPage" @load="loadMorePosts" />
+    <div class="news-columns p-site">
+      <div class="news-stories">
+        <NewsStories :stories="otherArticles" />
+        <NewsPagination :page="page" :last-page="lastPage" @load="loadMorePosts" />
+      </div>
+      <div class="news-press-corner">
+        <NewsPressCorner class="sticky" />
+      </div>
+    </div>
   </main>
 </template>
+
+<style lang="scss" scoped>
+  .news-columns {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: var(--site-padding);
+  }
+
+  .sticky {
+    position: sticky;
+    top: calc(var(--navbar-safe-area) + var(--site-padding));
+  }
+</style>

@@ -64,9 +64,6 @@ onMounted(() => {
           trigger: items.value,
           start: 'top 90%',
           end: 'top 50%'
-        },
-        onComplete: () => {
-          scroller.refresh()
         }
       })
     }, wrapper.value)

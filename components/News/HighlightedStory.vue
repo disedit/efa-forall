@@ -6,7 +6,7 @@ const { story } = defineProps({
   }
 })
 
-const { thumbnail, category, date } = useStory(story)
+const { thumbnail, category, date } = useStory(story, 'large')
 </script>
 
 <template>

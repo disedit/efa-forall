@@ -31,7 +31,7 @@ useHead({ title })
 
 <template>
   <main>
-    <CandidatesHeader :text="candidatesPage[0].acf.subheading" />
+    <CandidatesHeader :candidates="candidatesPage[0].acf" />
     <CandidatesSpitzenkandidaten :candidates="candidatesPage[0].acf" />
     <CandidatesMap :candidates="candidates" :text="candidatesPage[0].acf.find_your_candidate_text" />
   </main>

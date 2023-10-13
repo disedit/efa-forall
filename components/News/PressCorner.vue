@@ -71,8 +71,10 @@ defineProps({
 .in-news {
   padding: var(--site-padding);
   background: var(--secondary);
-  @include border-top;
+  @include border;
   display: flex;
+  flex-direction: column;
+  gap: var(--site-padding);
 
   .press-corner {
     &-content {
@@ -87,14 +89,13 @@ defineProps({
     }
 
     &-kit {
-      margin-left: auto;
-      margin-top: auto;
       background: var(--black);
       color: var(--white);
       text-decoration: none;
       padding: .75em 1.25em;
       transition: .25s ease;
       font-weight: bold;
+      align-self: flex-start;
 
       &:hover {
         background: var(--white);

@@ -8,11 +8,10 @@ defineProps({
 </script>
 
 <template>
-  <section class="spitzenkandidaten">
-    <div class="spitzenkandidaten-picture">
-      <img :src="candidates.spitzenkandidaten.sizes.large" :alt="candidates.spitzenkandidaten.alt">
-    </div>
-    <div class="spitzenkandidaten-cards p-site">
+  <section class="spitzenkandidaten p-site">
+    <h2>Spitzenkandidaten</h2>
+    <p>{{ candidates.subheading }}</p>
+    <div class="spitzenkandidaten-cards">
       <CandidatesSpitzenkandidat
         v-for="i in [1,2]"
         :name="candidates[`candidate_${i}_name`]"
@@ -26,21 +25,21 @@ defineProps({
 
 <style lang="scss" scoped>
 .spitzenkandidaten {
-  &-picture {
-    @include border-top;
-    @include border-bottom;
-
-    img {
-      display: block;
-      width: 100%;
-      height: calc(100vh - var(--navbar-safe-area));
-      object-fit: cover;
-    }
-  }
-
   &-cards {
     display: flex;
     gap: var(--site-padding);
+  }
+
+  h2 {
+    font-size: var(--headline-chapter);
+    margin: 0;
+  }
+
+  p {
+    font-size: var(--text-lg);
+    text-wrap: balance;
+    margin: 0;
+    margin-bottom: 10vh;
   }
 }
 </style>
