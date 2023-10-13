@@ -37,6 +37,10 @@ const { thumbnail, category, date } = useStory(story)
 
     &:hover,
     &:focus {
+      background-color: var(--white);
+    }
+
+    &:active {
       background-color: var(--black);
       color: var(--white);
 

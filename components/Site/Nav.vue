@@ -19,105 +19,104 @@
 </template>
 
 <style lang="scss" scoped>
-@layer component {
-  .nav {
+.nav {
+  display: flex;
+  align-items: center;
+  background: var(--bg-color);
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  right: 0;
+  font-size: var(--text-md);
+  @include border-bottom;
+  transition: .25s ease;
+
+  &-brand {
     display: flex;
     align-items: center;
-    background: var(--bg-color);
-    position: fixed;
-    z-index: 10000;
-    top: 0;
-    left: 0;
-    right: 0;
-    font-size: var(--text-md);
-    @include border-bottom;
-    transition: .25s ease;
+    gap: .5rem;
+    color: var(--text-color);
+    text-decoration: none;
+    @include border-right;
+      
+    &:hover {
+      background: var(--white);
+    }
+  }
 
-    &-brand {
-      display: flex;
-      align-items: center;
-      gap: .5rem;
+  &-menu {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+
+    a {
       color: var(--text-color);
       text-decoration: none;
-      @include border-right;
-        
-      &:hover {
-        background: var(--white);
-      }
-    }
+      white-space: nowrap;
+      padding: 1rem 3vw;
 
-    &-menu {
-      display: flex;
-      margin: 0 auto;
-      align-items: center;
-
-      a {
-        color: var(--text-color);
-        text-decoration: none;
-        white-space: nowrap;
-        padding: 1rem 3vw;
-
-        &:hover:not(.button),
-        &.router-link-active {
-          color: var(--primary);
-          font-weight: bold;
-          letter-spacing: -.04em;
-        }
-      }
-    }
-  }
-
-  .donate {
-    display: flex;
-    background: var(--primary);
-    color: var(--white);
-    text-decoration: none;
-    padding: 1rem;
-    align-items: center;
-    font-weight: bold;
-    margin-right: var(--site-padding);
-
-    &:hover {
-      background: var(--black);
-    }
-  }
-
-  .safe-area {
-    height: var(--navbar-safe-area);
-  }
-
-  .logo-efa {
-    height: 2rem;
-    width: auto;
-  }
-
-  .logo-for-all {
-    height: 2.5rem;
-    color: var(--primary);
-  }
-
-  .dark {
-    .nav {
-      background: rgba($black, .75);
-      backdrop-filter: blur(5px);
-
-      &-brand:hover {
-        background: rgba($primary, .25);
-      }
-
-      a:hover {
-        color: var(--white);
-      }
-
-      .donate:hover {
-        background: var(--white);
+      &:hover:not(.button),
+      &.router-link-active {
         color: var(--primary);
+        font-weight: bold;
+        letter-spacing: -.04em;
       }
-    }
-
-    .logo-for-all {
-      color: var(--white);
     }
   }
 }
+
+.donate {
+  display: flex;
+  background: var(--primary);
+  color: var(--white);
+  text-decoration: none;
+  padding: 1rem;
+  align-items: center;
+  font-weight: bold;
+  margin-right: var(--site-padding);
+
+  &:hover {
+    background: var(--black);
+  }
+}
+
+.safe-area {
+  height: var(--navbar-safe-area);
+}
+
+.logo-efa {
+  height: 2rem;
+  width: auto;
+}
+
+.logo-for-all {
+  height: 2.5rem;
+  color: var(--primary);
+}
+
+.dark {
+  .nav {
+    background: rgba($black, .75);
+    backdrop-filter: blur(5px);
+
+    &-brand:hover {
+      background: rgba($primary, .25);
+    }
+
+    a:hover {
+      color: var(--white);
+    }
+
+    .donate:hover {
+      background: var(--white);
+      color: var(--primary);
+    }
+  }
+
+  .logo-for-all {
+    color: var(--white);
+  }
+}
+
 </style>

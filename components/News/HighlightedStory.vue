@@ -22,7 +22,7 @@ const { thumbnail, category, date } = useStory(story, 'large')
         <div class="story-thumbnail">
           <img v-if="thumbnail" :src="thumbnail.src" :alt="thumbnail.alt">
         </div>
-        <h2 class="story-title" v-html="story.title.rendered" />
+        <h2 class="story-title reset-heading" v-html="story.title.rendered" />
         <div class="story-excerpt" v-html="story.excerpt.rendered" />
       </div>
     </nuxt-link>
@@ -62,7 +62,7 @@ const { thumbnail, category, date } = useStory(story, 'large')
 
   &-title {
     grid-area: title;
-    font-size: var(--headline-story);
+    font-size: 2.5rem;
   }
 
   &-excerpt {

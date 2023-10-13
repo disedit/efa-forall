@@ -15,30 +15,38 @@ useHead({ title })
 const { $wp } = useNuxtApp()
 const articles = ref([])
 const page = ref(1)
-const lastPage = ref(0) // Fix this!
-const perPage = 10
+const totalPages = ref(0)
+const perPage = 5
+const loading = ref(false)
 
 /* Fetch posts */
 const loadPosts = async () => {
-  return await $wp.posts()
+  const { _paging, ...stories } = await $wp.posts()
     .embed()
     .perPage(perPage)
     .page(page.value)
     .param('_fields', 'id,title,excerpt,date,slug,_links,_embedded')
+
+  return {
+    stories: Object.values(stories),
+    totalPages: _paging.totalPages
+  }
 }
 
 /* Fetch initial posts */
-const { data: posts, headers } = await useAsyncData('articles', loadPosts)
+const { data: posts } = await useAsyncData('articles', () => loadPosts())
 
 /* Set initial posts */
-articles.value = [...posts.value]
-lastPage.value = 2
+articles.value = posts.value.stories
+totalPages.value = posts.value.totalPages
 
 /* Fetch more posts */
 const loadMorePosts = async () => {
+  loading.value = true
   page.value++
   const posts = await loadPosts()
-  articles.value = [...articles.value, ...posts]
+  articles.value = [...articles.value, ...posts.stories]
+  loading.value = false
 }
 
 /* Devide into highlighted and rest of articles */
@@ -52,13 +60,13 @@ const otherArticles = computed(() => {
 </script>
 
 <template>
-  <main>
+  <main class="news">
     <NewsHeader />
     <NewsHighlights :stories="highlighted" />
     <div class="news-columns p-site">
       <div class="news-stories">
         <NewsStories :stories="otherArticles" />
-        <NewsPagination :page="page" :last-page="lastPage" @load="loadMorePosts" />
+        <NewsPagination :page="page" :total-pages="totalPages" :loading="loading" @load="loadMorePosts" />
       </div>
       <div class="news-press-corner">
         <NewsPressCorner class="sticky" />
@@ -68,14 +76,18 @@ const otherArticles = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-  .news-columns {
-    display: grid;
-    grid-template-columns: 1fr 350px;
-    gap: var(--site-padding);
-  }
+.news {
+  overflow: hidden;
+}
 
-  .sticky {
-    position: sticky;
-    top: calc(var(--navbar-safe-area) + var(--site-padding));
-  }
+.news-columns {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: var(--site-padding);
+}
+
+.sticky {
+  position: sticky;
+  top: calc(var(--navbar-safe-area) + var(--site-padding));
+}
 </style>

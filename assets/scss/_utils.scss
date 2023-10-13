@@ -3,6 +3,14 @@
     display: none;
   }
 
+  .overflow-hidden {
+    overflow: hidden;
+  }
+
+  .safe-area {
+    height: var(--navbar-safe-area);
+  }
+
   .p-site {
     padding: var(--site-padding);
   }

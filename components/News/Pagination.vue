@@ -4,17 +4,26 @@ defineProps({
     type: Number,
     required: true
   },
-
-  lastPage: {
+  totalPages: {
     type: Number,
     required: true
+  },
+  loading:  {
+    type: Boolean,
+    default: false
   }
 })
 </script>
 
 <template>
-  <div v-if="lastPage > page" class="more-stories">
-    <button @click="$emit('load')" class="p-site">Load more</button>
+  <div v-if="totalPages > page" class="more-stories">
+    <button
+      @click="!loading ? $emit('load') : null"
+      :aria-disabled="loading ? 'true' : null"
+      :class="['p-site', { loading }]"
+    >
+      {{ !loading ? 'Load more' : 'Loading...' }}
+    </button>
   </div>
 </template>
 
@@ -38,6 +47,10 @@ defineProps({
     &:focus {
       background: var(--black);
       color: var(--white);
+    }
+
+    &.loading {
+      color: rgba($black, .25);
     }
   }
 }

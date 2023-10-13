@@ -34,7 +34,7 @@ const past = computed(() => sortDates('asc', [ ...events.filter((event) => !date
         :event="event" />
     </div>
 
-    <h2>Past events</h2>
+    <h2 class="past-events">Past events</h2>
     <div class="events-grid">
       <EventsEvent
         v-for="event in past"
@@ -52,5 +52,10 @@ const past = computed(() => sortDates('asc', [ ...events.filter((event) => !date
   @include border-top;
   @include border-left;
   grid-auto-flow: dense;
+}
+
+.past-events {
+  margin-top: 4rem;
+  font-size: var(--headline-block);
 }
 </style>
