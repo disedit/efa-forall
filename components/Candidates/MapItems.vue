@@ -128,7 +128,7 @@ function scrollIntoView(id, focus) {
     transition: .25s ease;
     max-width: 100px;
     font-size: .75rem;
-    font-weight: bold;
+    font-weight: 900;
     line-height: 1.2;
 
     span {

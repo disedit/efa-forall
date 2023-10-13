@@ -15,45 +15,27 @@ function dateIsInFuture (date) {
 
 function sortDates (order, events) {
   if (order === 'desc') {
-    return events.slice().sort((a, b) => new Date(b.date) - new Date(a.date))
+    return events.slice().sort((a, b) => new Date(b.acf.date) - new Date(a.acf.date))
   }
 
-  return events.slice().sort((a, b) => new Date(a.date) - new Date(b.date))
+  return events.slice().sort((a, b) => new Date(a.acf.date) + new Date(b.acf.date))
 }
 
-const upcoming = computed(() => sortDates('desc', [ ...events.filter((event) => dateIsInFuture(event.acf.date)) ]))
-const past = computed(() => sortDates('asc', [ ...events.filter((event) => !dateIsInFuture(event.acf.date)) ]))
+const upcoming = computed(() => sortDates('asc', [ ...events.filter((event) => dateIsInFuture(event.acf.date)) ]))
+const past = computed(() => sortDates('desc', [ ...events.filter((event) => !dateIsInFuture(event.acf.date)) ]))
 </script>
 
 <template>
-  <section class="p-site pt-0">
-    <div class="events-grid">
-      <EventsEvent
-        v-for="event in upcoming"
-        :key="event.id"
-        :event="event" />
-    </div>
-
-    <h2 class="past-events">Past events</h2>
-    <div class="events-grid">
-      <EventsEvent
-        v-for="event in past"
-        :key="event.id"
-        :event="event" />
-    </div>
+  <section class="p-site pt-0" aria-describedby="upcoming-events">
+    <EventsPaginated :events="upcoming" />
   </section>
-  
+  <section class="p-site pt-0" aria-describedby="past-events" v-if="past.length > 0">
+    <h2 id="past-events" class="past-events">Past events</h2>
+    <EventsPaginated :events="past" :limit="6" />
+  </section>
 </template>
 
 <style lang="scss" scoped>
-.events-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  @include border-top;
-  @include border-left;
-  grid-auto-flow: dense;
-}
-
 .past-events {
   margin-top: 4rem;
   font-size: var(--headline-block);

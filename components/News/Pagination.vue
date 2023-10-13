@@ -20,9 +20,9 @@ defineProps({
     <button
       @click="!loading ? $emit('load') : null"
       :aria-disabled="loading ? 'true' : null"
-      :class="['p-site', { loading }]"
+      :class="['button-grid', 'p-site', { loading }]"
     >
-      {{ !loading ? 'Load more' : 'Loading...' }}
+      {{ !loading ? 'More news' : 'Loading...' }}
     </button>
   </div>
 </template>
@@ -31,27 +31,5 @@ defineProps({
 .more-stories {
   @include border;
   border-top: 0;
-
-  button {
-    appearance: none;
-    display: block;
-    width: 100%;
-    background: transparent;
-    border: 0;
-    border-radius: 0;
-    font-size: var(--text-lg);
-    cursor: pointer;
-    transition: .25s ease;
-
-    &:hover,
-    &:focus {
-      background: var(--black);
-      color: var(--white);
-    }
-
-    &.loading {
-      color: rgba($black, .25);
-    }
-  }
 }
 </style>

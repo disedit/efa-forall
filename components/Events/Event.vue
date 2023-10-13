@@ -85,7 +85,7 @@ function formatTime (eventDate) {
     grid-area: title;
     font-family: var(--base-font);
     text-transform: unset;
-    font-weight: bold;
+    font-weight: 900;
     font-size: var(--headline-story-sm);
     margin: 0;
   }

@@ -25,8 +25,14 @@ defineProps({
     display: block;
     height: 1em;
     width: 1em;
-    background: red;
+    background: var(--category-color, var(--primary));
     border-radius: 100%;
+  }
+}
+
+@each $category, $color in $categories {
+  .category-#{$category} {
+    --category-color: #{$color};
   }
 }
 </style>

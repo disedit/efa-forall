@@ -25,7 +25,7 @@ defineProps({
       </div>
     </header>
     <div class="chapter-content p-site">
-      <div v-html="chapter.content.rendered" />
+      <div v-html="chapter.content.rendered" class="chapter-content-text" />
     </div>
     <ManifestoNext :chapter="chapter" :chapters="chapters" />
   </article>
@@ -47,12 +47,16 @@ defineProps({
     &-image {
       color: var(--color);
       overflow: hidden;
+      margin-top: auto;
     }
 
     &-title {
+      display: flex;
+      flex-direction: column;
       position: sticky;
       top: calc(var(--navbar-safe-area) + 3.125rem);
       z-index: 100;
+      height: calc(100vh - var(--navbar-safe-area) - 50px);
 
       h2 {
         font-size: var(--headline-chapter);
@@ -76,10 +80,27 @@ defineProps({
     grid-area: content;
     font-size: var(--text-xl);
     line-height: 1.5;
+    min-height: 100vh;
 
     :deep(p) {
       margin-top: 0;
     }
+
+    &-text {
+      max-width: 60ch;
+    }
+  }
+}
+
+.chapter-diversity-for-all {
+  .chapter-poster-image {
+    margin: auto 0;
+  }
+}
+
+.chapter-democracy-for-all {
+  .chapter-poster-image {
+    margin-left: -5px;
   }
 }
 </style>

@@ -15,7 +15,7 @@ defineProps({
       <p><a href="mailto:press@e-f-a.org">press@e-f-a.org</a></p>
     </div>
     <a href="/" download class="press-corner-kit">
-      <IconPressKit />
+      <IconPressKit class="icon" />
       Download Press Kit
     </a>
   </article>
@@ -38,7 +38,7 @@ defineProps({
       h2 {
         font-family: var(--base-font);
         text-transform: unset;
-        font-weight: bold;
+        font-weight: 900;
         font-size: var(--text-2xl);
         line-height: 1;
       }
@@ -89,23 +89,30 @@ defineProps({
     }
 
     &-kit {
+      display: flex;
       background: var(--black);
       color: var(--white);
       text-decoration: none;
       padding: .75em 1.25em;
       transition: .25s ease;
-      font-weight: bold;
+      font-weight: 900;
       align-self: flex-start;
+      gap: .75em;
+      align-items: center;
 
       &:hover {
         background: var(--white);
         color: var(--black);
       }
 
-      svg {
-        height: 2em;
-        width: 2em;
-        margin-right: .5em;
+      &:active {
+        background: var(--black);
+        color: var(--white);
+      }
+
+      .icon{
+        height: 1em;
+        width: 1em;
       }
     }
   }

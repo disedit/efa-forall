@@ -23,12 +23,13 @@ const showCursor = ref(false)
 const showLogo = ref(false)
 const cursorHasTransition = ref(false)
 const letters = computed(() => text.split(''))
+let interval, timeout
 
 onMounted(() => {
-  setTimeout(() => {
+  timeout = setTimeout(() => {
     showCursor.value = true
 
-    setInterval(() => {
+    interval = setInterval(() => {
       if (letters.value.length + 1 > index.value) {
         index.value++
       }
@@ -49,6 +50,11 @@ onMounted(() => {
       showLogo.value = true
     }, delay + (speed * letters.value.length) + 350)
   }
+})
+
+onUnmounted(() => {
+  clearInterval(interval)
+  clearTimeout(timeout)
 })
 </script>
 

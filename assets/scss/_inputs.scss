@@ -2,7 +2,7 @@
   appearance: none;
   background: var(--primary);
   color: var(--white);
-  font-weight: bold;
+  font-weight: 900;
   padding: .5rem .75rem;
   border-radius: 0;
   border: 0;
@@ -61,5 +61,27 @@
   &:focus {
     outline: 0;
     box-shadow: 0 0 0 2px var(--black);
+  }
+}
+
+.button-grid {
+  appearance: none;
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  font-size: var(--text-lg);
+  cursor: pointer;
+  transition: .25s ease;
+
+  &:hover,
+  &:focus {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  &.loading {
+    color: rgba($black, .25);
   }
 }

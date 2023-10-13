@@ -55,7 +55,7 @@ const { thumbnail, category, date } = useStory(story)
     margin: 0;
     font-family: var(--base-font);
     text-transform: unset;
-    font-weight: bold;
+    font-weight: 900;
     text-wrap: balance;
     font-size: var(--headline-story-sm);
     padding-top: var(--site-padding);

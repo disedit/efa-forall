@@ -13,7 +13,7 @@ onMounted(() => {
       scrollTrigger: {
         trigger: video.value,
         start: 'top 200px',
-        end: 'top 100px',
+        end: 'top 95px',
         scrub: 1,
         onLeave: () => {
           document.documentElement.classList.add('dark')
@@ -22,7 +22,7 @@ onMounted(() => {
           document.documentElement.classList.remove('dark')
         },
         onEnterBack: () => {
-          document.documentElement.classList.add('dark')
+          document.documentElement.classList.remove('dark')
         },
         onEnter: () => {
           document.documentElement.classList.remove('dark')
@@ -73,6 +73,7 @@ onUnmounted(() => {
     color: var(--white);
     font-family: var(--font-base);
     text-transform: unset;
+    font-weight: 400;
     position: absolute;
     top: 0;
     left: 0;

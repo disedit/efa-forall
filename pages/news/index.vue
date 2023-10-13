@@ -16,7 +16,7 @@ const { $wp } = useNuxtApp()
 const articles = ref([])
 const page = ref(1)
 const totalPages = ref(0)
-const perPage = 5
+const perPage = 10
 const loading = ref(false)
 
 /* Fetch posts */
@@ -61,8 +61,10 @@ const otherArticles = computed(() => {
 
 <template>
   <main class="news">
-    <NewsHeader />
-    <NewsHighlights :stories="highlighted" />
+    <div class="overflow-hidden">
+      <NewsHeader />
+      <NewsHighlights :stories="highlighted" />
+    </div>
     <div class="news-columns p-site">
       <div class="news-stories">
         <NewsStories :stories="otherArticles" />
@@ -76,10 +78,6 @@ const otherArticles = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-.news {
-  overflow: hidden;
-}
-
 .news-columns {
   display: grid;
   grid-template-columns: 1fr 350px;

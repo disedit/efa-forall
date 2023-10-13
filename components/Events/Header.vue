@@ -5,7 +5,7 @@
     </template>
 
     <template #heading>
-      Upcoming events
+      <span id="upcoming-events">Upcoming events</span>
     </template>
   </SitePageHeader>
 </template>

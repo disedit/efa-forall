@@ -72,7 +72,7 @@ const socialLinks = computed(() => socials.split("\r\n").map(item => {
     padding-bottom: 0;
     font-family: var(--base-font);
     text-transform: unset;
-    font-weight: bold;
+    font-weight: 900;
     font-size: 3rem;
     letter-spacing: -.03em;
     line-height: 1;

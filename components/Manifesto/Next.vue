@@ -33,6 +33,7 @@ const nextChapter = chapters[currentChapterIndex + 1] || chapters[0]
   text-decoration: none;
   font-size: var(--text-lg);
   color: var(--black);
+  transition: .25s ease;
 
   svg {
     height: 1em;

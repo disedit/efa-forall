@@ -48,7 +48,7 @@ defineProps({
     &-title {
       font-family: var(--base-font);
       text-transform: unset;
-      font-weight: bold;
+      font-weight: 900;
     }
 
     &:hover,

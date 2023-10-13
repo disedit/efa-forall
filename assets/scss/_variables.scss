@@ -35,7 +35,17 @@ $breakpoints: (
 );
 
 /* Spacing */
-$navbar-safe-area: 4.5625rem;
+$navbar-safe-area: 4.0625rem;
 $site-padding-sm: 1rem;
 $site-padding: 1.75rem;
 $site-padding-xl: 2rem;
+
+/* Categories */
+$categories: (
+  'democracy-for-all': #F31717,
+  'diversity-for-all': #F3B617,
+  'sustainability-for-all': #66AE5A,
+  'solidarity-for-all': #E98F3C,
+  'prosperity-for-all': #3A99CE,
+  'uncategorie': var(--primary)
+);

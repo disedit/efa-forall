@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="newsletter-button">
-      <button type="submit" class="button">Subscribe</button>
+      <button type="submit" class="button button-lg">Subscribe</button>
     </div>
   </form>
 </template>

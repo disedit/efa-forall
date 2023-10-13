@@ -33,7 +33,7 @@ onMounted(() => {
 
       scroller = $ScrollTrigger.create({
         trigger: wrapper.value,
-        start: 'top 73px',
+        start: 'top 65px',
         end: () => `+=${getScrollAmount() * -1}`,
         pin: true,
         animation,
@@ -106,6 +106,7 @@ onUnmounted(() => {
     font-family: var(--font-base);
     text-transform: unset;
     position: absolute;
+    font-weight: 400;
     top: 0;
     left: 0;
     padding: var(--site-padding);

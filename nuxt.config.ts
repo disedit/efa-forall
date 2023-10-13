@@ -31,7 +31,7 @@ export default defineNuxtConfig({
 
   googleFonts: {
     families: {
-      'DM+Sans': [400, 700]
+      'DM+Sans': [400, 900]
     }
   }
 })
