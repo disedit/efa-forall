@@ -28,25 +28,30 @@ function unhover() {
 <template>
   <article
     :id="`candidate-${candidate.id}`"
-    :class="['candidate-card', 'p-site', { hovering }]"
+    :class="['candidate-card', 'p-sm', { hovering }]"
     @mouseenter="hover"
     @mouseleave="unhover"
     tabindex="0">
-    <h3 class="candidate-name reset-heading" v-html="candidate.title.rendered" />
-    
     <div v-if="candidate.acf.picture" class="candidate-picture">
-      <img :src="candidate.acf.picture" alt="" height="100">
+      <img :src="candidate.acf.picture" alt="">
     </div>
 
-    <CandidatesParty v-if="party" :party="party" />
-    <CandidatesParty v-if="candidacy" :party="candidacy" />
+    <h3 class="candidate-name reset-heading" v-html="candidate.title.rendered" />
+
+    <div class="candidate-parties mt-auto">
+      <CandidatesParty v-if="party" :party="party" />
+      <CandidatesParty v-if="candidacy" :party="candidacy" />
+    </div>
   </article>
 </template>
 
 <style lang="scss" scoped>
 .candidate {
   &-card {
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--site-padding-sm);
+    overflow: auto;
     background: var(--white);
     width: 300px;
     height: 100%;
@@ -65,6 +70,24 @@ function unhover() {
 
   &-name {
     font-size: var(--text-xl);
+  }
+
+  &-picture {
+    display: flex;
+    height: 50%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &-parties {
+    display: flex;
+    gap: var(--site-padding-sm);
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 }
 </style>

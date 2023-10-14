@@ -11,8 +11,34 @@ defineProps({
   <Component
     :is="party.acf.website ? 'a' : 'div'"
     :href="party.acf.website || false"
-    :target="party.acf.website ? '_blank' : false">
-    <img v-if="party.acf.logo" :src="party.acf.logo" :alt="party.title.rendered" height="50" />
-    <span v-else>{{ party.title.rendered }}</span>
+    :target="party.acf.website ? '_blank' : false"
+    class="candidate-party">
+    <img
+      v-if="party.acf.logo"
+      :src="party.acf.logo"
+      :alt="party.title.rendered" />
+    <span
+      v-if="party.acf.show_party_name || !party.acf.logo"
+      class="candidate-party-name">
+      {{ party.title.rendered }}
+    </span>
   </Component>
 </template>
+
+<style lang="scss" scoped>
+.candidate-party {
+  display: flex;
+  align-items: center;
+  gap: .5em;
+  margin-top: .5em;
+  flex-shrink: 0;
+
+  img {
+    height: 40px;
+  }
+
+  &-name {
+    opacity: .5;
+  }
+}
+</style>
