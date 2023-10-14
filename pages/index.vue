@@ -26,7 +26,7 @@ const { data: chapters } = await useAsyncData(
 </script>
 
 <template>
-  <main>
+  <main class="page">
     <HomeHero />
     <HomeBlocks />
     <HomeVideo />

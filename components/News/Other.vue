@@ -16,7 +16,7 @@ defineProps({
           class="story-thumbnail"
           v-if="story._embedded"
           :src="story._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url"
-          :alt="story._embedded['wp:featuredmedia'][0].alt_text"
+          :alt="story._embedded['wp:featuredmedia'][0].alt"
         />
         <h3 class="story-title" v-html="story.title.rendered" />
       </nuxt-link>

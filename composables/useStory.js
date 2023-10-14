@@ -9,7 +9,7 @@ export const useStory = (story, size = 'medium_large') => {
       || thumb.medium_large?.source_url
       || thumb.thumbnail?.source_url
       || thumb.full?.source_url
-    const alt = featuredmedia[0].alt_text
+    const alt = featuredmedia[0].alt
 
     return {
       src,

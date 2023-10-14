@@ -3,6 +3,10 @@ const { candidates } = defineProps({
   candidates: {
     type: Array,
     required: true
+  },
+  parties: {
+    type: Object,
+    required: true
   }
 })
 
@@ -12,6 +16,7 @@ const candidatesWithPos = computed(() => {
     return {
       id: candidate.id,
       name: candidate.title.rendered,
+      party: candidate.acf.party[0] || false,
       top: top,
       left: left
     }
@@ -29,7 +34,7 @@ function unhover () {
   mapState.value = null
 }
 
-function scrollIntoView(id, focus) {
+function scrollIntoView(id, shouldFocus) {
   const scroller = document.querySelector('#candidate-slider')
   const candidateCard = document.querySelector(`#candidate-${id}`)
   const cardOffset = candidateCard.offsetLeft
@@ -38,7 +43,7 @@ function scrollIntoView(id, focus) {
     behavior: 'smooth',
   })
   setTimeout(() => {
-    focus && candidateCard.focus()
+    shouldFocus && candidateCard.focus()
   }, 500)
 }
 </script>
@@ -67,7 +72,12 @@ function scrollIntoView(id, focus) {
           tabindex="-1"
         >
           <div class="name">
-            <span>{{ candidate.name }}</span>
+            <span v-if="candidate.party">
+              {{ parties[candidate.party].title.rendered }}
+            </span>
+            <span v-else>
+              {{ candidate.name }}
+            </span>
           </div>
         </a>
       </li>

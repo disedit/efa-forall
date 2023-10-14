@@ -16,6 +16,20 @@ const { data: candidates } = await useAsyncData(
     .param('acf_format', 'standard')
 )
 
+const { data: partiesData } = await useAsyncData(
+  'parties',
+  () => $wp.parties()
+    .param('_fields', 'id,title,acf')
+    .param('acf_format', 'standard')
+)
+
+const parties = computed(() => {
+  return partiesData.value.reduce((result, item) => {
+    result[item.id] = item
+    return result
+  }, {})
+})
+
 const title = 'Candidates - For All: EU Elections 2024 - EFA European Free Alliance'
 useServerSeoMeta({
   title,
@@ -30,9 +44,14 @@ useHead({ title })
 </script>
 
 <template>
-  <main>
-    <CandidatesHeader :candidates="candidatesPage[0].acf" />
-    <CandidatesSpitzenkandidaten :candidates="candidatesPage[0].acf" />
-    <CandidatesMap :candidates="candidates" :text="candidatesPage[0].acf.find_your_candidate_text" />
+  <main class="page">
+    <CandidatesHeader
+      :candidates="candidatesPage[0].acf" />
+    <CandidatesSpitzenkandidaten
+      :candidates="candidatesPage[0].acf" />
+    <CandidatesMap
+      :candidates="candidates"
+      :text="candidatesPage[0].acf.find_your_candidate_text"
+      :parties="parties" />
   </main>
 </template>

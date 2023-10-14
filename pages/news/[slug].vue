@@ -10,6 +10,10 @@ const { data: post } = await useAsyncData(
     .slug(params.slug)
 )
 
+if (!post.value.length) {
+  throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
+}
+
 const story = post.value[0]
 const { thumbnail, category, date } = useStory(story, 'full')
 
@@ -41,7 +45,7 @@ useHead({ title })
 </script>
 
 <template>
-  <main class="story-single">
+  <main class="page story-single">
     <SitePageHeader collapse presentational>
       <template #title>
         <nuxt-link to="/news" class="link-black-to-underlined">News</nuxt-link>

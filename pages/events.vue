@@ -20,7 +20,7 @@ const { data: events } = await useAsyncData(
 </script>
 
 <template>
-  <main>
+  <main class="page">
     <EventsHeader />
     <EventsGrid :events="events" />
   </main>

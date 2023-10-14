@@ -103,7 +103,7 @@ onUnmounted(() => {
 
   &-title {
     color: var(--black);
-    font-family: var(--font-base);
+    font-family: var(--base-font);
     text-transform: unset;
     position: absolute;
     font-weight: 400;

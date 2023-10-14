@@ -32,10 +32,10 @@
     display: block;
     position: absolute;
     background: var(--black);
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
+    left: -2px;
+    top: -2px;
+    bottom: -2px;
+    right: -2px;
     transform: translateX(-100%);
     transition: transform .25s ease;
     z-index: 0;

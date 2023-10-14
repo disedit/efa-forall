@@ -7,6 +7,10 @@ defineProps({
   text: {
     type: String,
     default: null
+  },
+  parties: {
+    type: Object,
+    required: true
   }
 })
 </script>
@@ -20,12 +24,12 @@ defineProps({
     <div class="candidates-map-holder">
       <div class="with-items">
         <img src="~/assets/images/maps/europe.svg" alt="Map of Europe">
-        <CandidatesMapItems :candidates="candidates" />
+        <CandidatesMapItems :candidates="candidates" :parties="parties" />
       </div>
       <div class="blind" />
     </div>
     <div class="candidates-map-cards">
-      <CandidatesCards :candidates="candidates" />
+      <CandidatesCards :candidates="candidates" :parties="parties" />
     </div>
   </section>
 </template>

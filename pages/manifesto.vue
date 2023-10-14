@@ -22,7 +22,7 @@ const manifestoIndex = computed(() => route.name === 'manifesto')
 </script>
 
 <template>
-  <main :class="['manifesto', { 'manifesto-single': !manifestoIndex }]">
+  <main :class="['page', 'manifesto', { 'manifesto-single': !manifestoIndex }]">
     <ManifestoHeader :fields="manifesto.acf" :compact="!manifestoIndex" />
     <ManifestoNav :chapters="chapters" />
     <Transition name="slide">

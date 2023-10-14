@@ -3,6 +3,10 @@ defineProps({
   candidates: {
     type: Array,
     required: true
+  },
+  parties: {
+    type: Object,
+    required: true
   }
 })
 </script>
@@ -13,6 +17,7 @@ defineProps({
         v-for="candidate in candidates"
         :key="candidate.id"
         :candidate="candidate"
+        :parties="parties"
       />
       <div class="filler" />
   </SiteSlider>

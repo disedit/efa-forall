@@ -19,7 +19,7 @@ useHead({ title })
 </script>
 
 <template>
-  <main>
+  <main class="page">
     <AboutHeader :fields="about[0].acf" />
     <AboutBlocks :fields="about[0].acf" />
     <AboutValues :content="about[0].content.rendered" />

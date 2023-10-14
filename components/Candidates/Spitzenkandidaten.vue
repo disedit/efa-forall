@@ -40,6 +40,7 @@ defineProps({
     text-wrap: balance;
     margin: 0;
     margin-bottom: 10vh;
+    max-width: 90ch;
   }
 }
 </style>

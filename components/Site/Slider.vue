@@ -75,5 +75,6 @@ function momentumLoop () {
   overflow-x: auto;
   @include scrollbar;
   cursor: grabbing;
+  scrollbar-color: rgba($black, .25) var(--beige);
 }
 </style>

@@ -60,7 +60,7 @@ const otherArticles = computed(() => {
 </script>
 
 <template>
-  <main class="news">
+  <main class="page news">
     <div class="overflow-hidden">
       <NewsHeader />
       <NewsHighlights :stories="highlighted" />

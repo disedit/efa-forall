@@ -1,13 +1,19 @@
 <script setup>
-const { candidate } = defineProps({
+const { candidate, parties } = defineProps({
   candidate: {
+    type: Object,
+    required: true
+  },
+  parties: {
     type: Object,
     required: true
   }
 })
 
-const mapState = useMapState()
+const party = computed(() => parties[candidate.acf.party[0]])
+const candidacy = computed(() => party.value ? parties[party.value.acf.candidacy[0]] : null)
 
+const mapState = useMapState()
 const hovering = computed(() => mapState.value === candidate.id)
 
 function hover () {
@@ -27,12 +33,20 @@ function unhover() {
     @mouseleave="unhover"
     tabindex="0">
     <h3 class="candidate-name reset-heading" v-html="candidate.title.rendered" />
+    
+    <div v-if="candidate.acf.picture" class="candidate-picture">
+      <img :src="candidate.acf.picture" alt="" height="100">
+    </div>
+
+    <CandidatesParty v-if="party" :party="party" />
+    <CandidatesParty v-if="candidacy" :party="candidacy" />
   </article>
 </template>
 
 <style lang="scss" scoped>
 .candidate {
   &-card {
+    overflow-y: auto;
     background: var(--white);
     width: 300px;
     height: 100%;

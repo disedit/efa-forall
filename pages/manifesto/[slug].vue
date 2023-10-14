@@ -17,6 +17,10 @@ const { data: chapter } = await useAsyncData(
   () => $wp.pages().slug(params.slug)
 )
 
+if (!chapter.value.length) {
+  throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
+}
+
 const title = `${chapter.value[0].title.rendered} - 2024 EU Elections Manifesto - EFA European Free Alliance`
 useServerSeoMeta({
   title,
