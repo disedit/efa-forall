@@ -39,6 +39,7 @@ const socialLinks = computed(() => socials.split("\r\n").map(item => {
 .spitzenkandidat {
   --background: var(--primary);
   --foreground: var(--white);
+  --accent: var(--secondary);
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto 1fr;
@@ -53,6 +54,7 @@ const socialLinks = computed(() => socials.split("\r\n").map(item => {
   &:last-child {
     --background: var(--secondary);
     --foreground: var(--black);
+    --accent: var(--primary);
   }
 
   &-picture {
@@ -76,6 +78,7 @@ const socialLinks = computed(() => socials.split("\r\n").map(item => {
     font-size: 3rem;
     letter-spacing: -.03em;
     line-height: 1;
+    color: var(--accent);
   }
 
   &-description {

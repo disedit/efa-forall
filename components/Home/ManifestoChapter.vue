@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({
+defineProps({
   chapter: {
     type: Object,
     required: true

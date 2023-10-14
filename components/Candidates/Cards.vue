@@ -30,7 +30,7 @@ defineProps({
 }
 
 .filler {
-  width: 50vw;
+  width: 40vw;
   flex-shrink: 0;
 }
 </style>

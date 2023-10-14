@@ -5,6 +5,27 @@ defineProps({
     required: true
   }
 })
+
+const { $gsap } = useNuxtApp()
+
+onMounted(() => {
+  setTimeout(() => {
+    $gsap.to('.spitzenkandidat', {
+      y: 0,
+      scale: 1,
+      opacity: 1,
+      rotate: 0,
+      ease: "back.out(1.7)",
+      duration: .5,
+      stagger: .25,
+      scrollTrigger: {
+        trigger: '.spitzenkandidaten',
+        start: 'top center',
+        end: 'top top'
+      }
+    })
+  }, 500)
+})
 </script>
 
 <template>
@@ -25,9 +46,15 @@ defineProps({
 
 <style lang="scss" scoped>
 .spitzenkandidaten {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: calc(100vh - var(--navbar-safe-area));
+
   &-cards {
     display: flex;
     gap: var(--site-padding);
+    margin: auto 0;
   }
 
   h2 {
@@ -39,8 +66,13 @@ defineProps({
     font-size: var(--text-lg);
     text-wrap: balance;
     margin: 0;
-    margin-bottom: 10vh;
     max-width: 90ch;
+    margin-bottom: var(--site-padding);
   }
+}
+
+.spitzenkandidat {
+  transform: translateY(20%) rotate(10deg) scale(.7);
+  opacity: 0;
 }
 </style>
