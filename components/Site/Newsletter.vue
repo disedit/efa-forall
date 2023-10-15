@@ -42,6 +42,7 @@
     @include border-left;
     display: flex;
     flex-direction: column;
+    gap: var(--site-padding);
 
     &-title {
       font-size: 3rem;

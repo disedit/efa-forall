@@ -96,4 +96,28 @@ const year = 2023
       height: 2rem;
     }
   }
+
+  @include media('<lg') {
+    .footer {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "details newsletter"
+        "disclaimer disclaimer";
+    }
+  }
+
+  @include media('<md') {
+    .footer {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "newsletter"
+        "details"
+        "disclaimer";
+
+      .newsletter {
+        border-left: 0;
+        @include border-bottom;
+      }
+    }
+  }
 </style>

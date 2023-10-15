@@ -27,13 +27,13 @@ defineProps({
   fill: var(--primary);
 }
 
+.mono .icon,
 .dark .icon {
   fill: currentColor;
 }
 
-.mono {
-  .text,
-  .icon {
+@include media('<lg') {
+  .menu-open .icon {
     fill: currentColor;
   }
 }

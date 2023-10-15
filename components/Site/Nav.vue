@@ -1,3 +1,93 @@
+<script setup>
+const menu = [
+  { label: 'About us', to: '/about-us' },
+  { label: 'Manifesto', to: '/manifesto' },
+  { label: 'Candidates', to: '/candidates' },
+  { label: 'News', to: '/news' },
+  { label: 'Events', to: '/events' }
+]
+
+/* Menu toggler */
+const menuOpen = ref(false)
+const showMenu = () => {
+  menuOpen.value = true
+  document.body.classList.add('menu-open')
+}
+const hideMenu = (index) => {
+  menuOpen.value = false
+  clickedIndex.value = index || 0
+  document.body.classList.remove('menu-open')
+}
+
+function toggleMenu () {
+  if (menuOpen.value) {
+    hideMenu()
+  } else {
+    showMenu()
+  }
+}
+
+/* Menu animations */
+const { $gsap } = useNuxtApp()
+const clickedIndex = ref(0)
+let timeline
+
+function beforeEnter(el, done) {
+  $gsap.set(el, { y: '-100%' })
+}
+
+function onEnter(el, done) {
+  $gsap.set('.mobile-menu a div', { y: '100%' })
+  $gsap.set('.decoration', { y: '150%' })
+  timeline = $gsap.timeline()
+
+  timeline.to(el, {
+    y: 0,
+    duration: .5,
+    ease: 'power4.out',
+  }).to('.mobile-menu a div', {
+    y: 0,
+    duration: .25,
+    ease: 'power4.out',
+    stagger: .1
+  }).to('.decoration', {
+    y: 0,
+    duration: 2,
+    ease: 'power4.out',
+    onComplete: done
+  }, "-=1")
+}
+
+function onLeave (el, done) {
+  timeline = $gsap.timeline()
+  timeline.to('.mobile-menu a div', {
+    y: '100%',
+    duration: .25,
+    stagger: {
+      amount: .25,
+      from: 'end'
+    },
+  }).to(el, {
+    y: '-100%',
+    duration: .5,
+    ease: 'power4.in'
+  }).to('.decoration', {
+    y: '100%',
+    duration: .5,
+    ease: 'power4.in',
+    onComplete: done
+  }, '<')
+}
+
+function onEnterCancelled() {
+  timeline && timeline.kill()
+}
+
+function onLeaveCancelled() {
+  timeline && timeline.kill()
+}
+</script>
+
 <template>
   <header class="nav">
     <NuxtLink to="/" class="nav-brand">
@@ -6,25 +96,55 @@
       <div class="title">EU Elections 2024</div>
     </NuxtLink>
 
-    <nav class="nav-menu">
-      <NuxtLink to="/about-us" data-hover="About us">
-        About us
-      </NuxtLink>
-      <NuxtLink to="/manifesto" data-hover="Manifesto">
-        Manifesto
-      </NuxtLink>
-      <NuxtLink to="/candidates" data-hover="Candidates">
-        Candidates
-      </NuxtLink>
-      <NuxtLink to="/news" data-hover="News">
-        News
-      </NuxtLink>
-      <NuxtLink to="/events" data-hover="Events">
-        Events
+    <nav class="nav-menu" aria-label="Main navigation">
+      <NuxtLink
+        v-for="item in menu"
+        :key="item.to"
+        :to="item.to"
+        :data-hover="item.label">
+        {{ item.label }}
       </NuxtLink>
     </nav>
     <a href="/" class="donate">Donate</a>
+    <button
+      class="nav-toggle"
+      @click="toggleMenu"
+      :aria-label="menuOpen ? 'Close menu' : 'Open menu'"
+      aria-controls="mainNav"
+      :aria-expanded="menuOpen ? 'true' : 'false'"
+    >
+      <IconHamburger v-if="!menuOpen" />
+      <IconClose v-else />
+    </button>
   </header>
+  <Transition
+    @before-enter="beforeEnter"
+    @enter="onEnter"
+    @enter-cancelled="onEnterCancelled"
+    @leave="onLeave"
+    @leave-cancelled="onEnterCancelled">
+    <nav
+      id="mainNav"
+      v-if="menuOpen"
+      class="mobile-menu"
+      aria-label="Main navigation"
+    >
+      <NuxtLink
+        v-for="(item, i) in menu"
+        :key="item.to"
+        :to="item.to"
+        :data-hover="item.label"
+        @click="hideMenu(i)">
+        <div>{{ item.label }}</div>
+      </NuxtLink>
+      <a href="/" target="_blank">
+        <div>Donate</div>
+      </a>
+      <div class="decoration-wrapper">
+        <LogoForAll class="decoration" />
+      </div>
+    </nav>
+  </Transition>
   <div class="safe-area" />
 </template>
 
@@ -41,6 +161,7 @@
   font-size: var(--text-md);
   @include border-bottom;
   transition: .25s ease;
+  color: var(--text-color);
 
   &-brand {
     padding: .75rem var(--site-padding);
@@ -90,6 +211,24 @@
           opacity: 1;
         }
       }
+    }
+  }
+
+  &-toggle {
+    display: none;
+    appearance: none;
+    background-color: transparent;
+    border: 0;
+    @include border-left;
+    margin-left: auto;
+    align-self: stretch;
+    align-items: center;
+    padding: 0 var(--site-padding);
+    color: inherit;
+
+    svg {
+      height: 1em;
+      width: 1em;
     }
   }
 }
@@ -145,4 +284,104 @@
   }
 }
 
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--primary);
+  z-index: 10;
+  padding: var(--site-padding);
+  padding-top: calc(var(--navbar-safe-area) + var(--site-padding));
+  flex-direction: column;
+  overflow: auto;
+
+  a {
+    position: relative;
+    color: var(--beige);
+    font-family: var(--headline-font);
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 15vw;
+    overflow: hidden;
+    z-index: 5;
+
+    &:active {
+      color: var(--white);
+    }
+  }
+
+  .decoration {
+    position: absolute;
+    bottom: 5%;
+    right: -10%;
+    color: var(--secondary);
+    width: 80vw;
+    height: 80vw;
+    width: auto;
+    transform: rotate(-5deg);
+    z-index: 1;
+
+    &-wrapper {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+  }
+}
+
+@include media('<xxl') {
+  .nav {
+    &-menu a {
+      padding: 1rem;
+    }
+  }
+}
+
+@include media('<lg') {
+  .nav {
+    &-brand {
+      padding: .5rem var(--site-padding);
+      border-right: 0;
+
+      &:hover {
+        background: transparent;
+      }
+    }
+
+    &-toggle {
+      display: flex;
+    }
+
+    &-menu,
+    .donate {
+      display: none;
+    }
+  }
+
+  .mobile-menu {
+    display: flex;
+  }
+
+  .menu-open {
+    .nav {
+      --text-color: var(--white);
+      --border-color: transparent;
+      background: transparent,
+    }
+
+    .logo-for-all {
+      color: var(--white);
+    }
+  }
+
+  .logo-efa {
+    height: 1.5rem;
+    width: auto;
+  }
+
+  .logo-for-all {
+    height: 2rem;
+    color: var(--primary);
+  }
+}
 </style>

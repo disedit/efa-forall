@@ -38,3 +38,12 @@
   --text-color: var(--white);
   --border-color: #{rgba($white, .5)};
 }
+
+@include media('<lg') {
+  :root {
+    --site-padding-sm: #{$mobile-padding-sm};
+    --site-padding: #{$mobile-padding};
+    --site-padding-xl: #{$mobile-padding-xl};
+    --navbar-safe-area: #{$mobile-safe-area};
+  }
+}

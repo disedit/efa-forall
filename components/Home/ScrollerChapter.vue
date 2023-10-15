@@ -18,7 +18,7 @@ function animateOut() {
     duration: .25,
     ease: 'power4.in',
     stagger: {
-      amount: .1,
+      each: .1,
       from: index
     }
   })
@@ -28,7 +28,7 @@ function animateOut() {
     duration: .25,
     ease: 'power4.in',
     stagger: {
-      amount: .1,
+      each: .1,
       from: index
     },
     delay: .1
@@ -39,7 +39,7 @@ function animateOut() {
     duration: .25,
     ease: 'power4.in',
     stagger: {
-      amount: .1,
+      each: .1,
       from: index
     },
     delay: .2
