@@ -12,6 +12,7 @@ onMounted(() => {
   setTimeout(() => {
     $gsap.to('.spitzenkandidat', {
       y: 0,
+      x: 0,
       scale: 1,
       opacity: 1,
       rotate: 0,
@@ -72,7 +73,7 @@ onMounted(() => {
 }
 
 .spitzenkandidat {
-  transform: translateY(20%) rotate(10deg) scale(.7);
+  transform: translate(10%, 80%) rotate(-10deg) scale(.9);
   opacity: 0;
 }
 </style>

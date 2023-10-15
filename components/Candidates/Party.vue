@@ -32,6 +32,8 @@ defineProps({
   gap: .5em;
   margin-top: .5em;
   flex-shrink: 0;
+  color: var(--black);
+  text-decoration: none;
 
   img {
     height: 40px;
@@ -40,5 +42,9 @@ defineProps({
   &-name {
     opacity: .5;
   }
+}
+
+a.candidate-party:hover {
+  text-decoration: underline;
 }
 </style>

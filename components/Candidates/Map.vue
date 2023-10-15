@@ -66,6 +66,7 @@ defineProps({
     justify-content: flex-end;
     align-items: flex-start;
     transform: translateX(15%);
+    user-select: none;
 
     img {
       position: relative;
@@ -91,6 +92,7 @@ defineProps({
 
   &-cards {
     grid-area: 2 / 1 / 3 / 3;
+    user-select: none;
 
     .candidates-cards {
       height: 100%;

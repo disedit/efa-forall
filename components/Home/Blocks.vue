@@ -63,14 +63,14 @@ onUnmounted(() => {
 .about {
   --background: var(--primary);
   --foreground: var(--white);
-  --circle-background: var(--white);
+  --circle-background: var(--secondary);
   --circle-foreground: var(--primary);
 }
 
 .manifesto {
   --background: var(--secondary);
   --foreground: var(--white);
-  --circle-background: var(--white);
+  --circle-background: var(--primary);
   --circle-foreground: var(--secondary);
 }
 
@@ -78,6 +78,6 @@ onUnmounted(() => {
   --background: var(--white);
   --foreground: var(--primary);
   --circle-background: var(--primary);
-  --circle-foreground: var(--white);
+  --circle-foreground: var(--secondary);
 }
 </style>

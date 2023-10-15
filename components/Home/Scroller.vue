@@ -39,6 +39,8 @@ onMounted(() => {
         invalidateOnRefresh: true,
         onEnter: () => {
           document.documentElement.classList.remove('dark')
+          const video = document.querySelector('#HomeVideo video')
+          video.pause()
         },
         onLeaveBack: () => {
           document.documentElement.classList.add('dark')
@@ -50,6 +52,64 @@ onMounted(() => {
           document.documentElement.classList.remove('dark')
         }
       })
+
+      $gsap.fromTo('.home-scroller .for-all', {
+        y: '100%'
+      }, {
+        y: 0,
+        duration: .75,
+        ease: 'expo.out',
+        scrollTrigger: {
+          trigger: wrapper.value,
+          start: 'top 35%',
+          end: 'top top'
+        }
+      })
+
+      $gsap.fromTo('.scroller-chapter .item-title', {
+        y: '120%'
+      }, {
+        y: 0,
+        duration: 1,
+        ease: 'power4.out',
+        stagger: .1,
+        scrollTrigger: {
+          trigger: wrapper.value,
+          start: 'top 35%',
+          end: 'top top'
+        }
+      })
+
+      $gsap.fromTo('.scroller-chapter .item-text', {
+        y: '120%'
+      }, {
+        y: 0,
+        duration: 1,
+        ease: 'power4.out',
+        stagger: .1,
+        delay: .25,
+        scrollTrigger: {
+          trigger: wrapper.value,
+          start: 'top 35%',
+          end: 'top top'
+        }
+      })
+
+      $gsap.fromTo('.scroller-chapter .item-more', {
+        y: '120%'
+      }, {
+        y: 0,
+        duration: 1,
+        delay: .5,
+        ease: 'power4.out',
+        stagger: .1,
+        scrollTrigger: {
+          trigger: wrapper.value,
+          start: 'top 35%',
+          end: 'top top'
+        }
+      })
+
     }, wrapper.value)
   }, 250)
 })
@@ -64,15 +124,18 @@ onUnmounted(() => {
     <div class="items" ref="items">
       <div class="filler" />
       <HomeScrollerChapter
-        v-for="chapter in chapters"
+        v-for="(chapter, i) in chapters"
         :key="chapter.id"
         :chapter="chapter"
+        :index="i"
         @mouseenter="hover = true"
         @mouseleave="hover = false"
       />
       <div class="filler" />
     </div>
-    <LogoForAll class="for-all" />
+    <div class="for-all">
+      <LogoForAll />
+    </div>
   </section>
 </template>
 
@@ -83,6 +146,7 @@ onUnmounted(() => {
     min-height: calc(100vh - var(--navbar-safe-area));
     overflow: hidden;
     color: var(--beige);
+    margin-top: -100vh;
   }
 
   .items {
@@ -91,22 +155,45 @@ onUnmounted(() => {
   }
 
   .filler {
-    width: 25vw;
+    width: 15vw;
     flex-shrink: 0;
+
+    &:last-child {
+      width: 25vw;
+    }
   }
 
   .for-all {
     position: absolute;
     color: var(--secondary);
-    height: 50vh;
-    width: auto;
     top: 30%;
     left: 20%;
     transform: rotate(-10deg);
     pointer-events: none;
+    z-index: 1;
+
+    svg {
+      height: 50vh;
+      width: auto;
+      animation: rotate 30s linear infinite;
+    }
   }
 
   .hover .for-all {
     color: var(--beige);
+  }
+
+  @keyframes rotate {
+    0% {
+      rotate: -5deg;
+    }
+
+    50% {
+      rotate: 20deg;
+    }
+
+    100% {
+      rotate: -5deg;
+    }
   }
 </style>

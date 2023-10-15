@@ -12,6 +12,7 @@ onMounted(() => {
   setTimeout(() => {
     $gsap.to('.highlights .story', {
       y: 0,
+      x: 0,
       rotate: 0,
       scale: 1,
       opacity: 1,
@@ -41,7 +42,7 @@ onMounted(() => {
   padding-top: 0;
 
   .story {
-    transform: translateY(30%) rotate(15deg) scale(1.25);
+    transform: translate(10%, 80%) rotate(-10deg) scale(.9);
     opacity: 0;
   }
 }

@@ -3,6 +3,7 @@ const { $gsap } = useNuxtApp()
 
 const animation = ref(null)
 const video = ref(null)
+const play = ref(false)
 
 onMounted(() => {
   setTimeout(() => {
@@ -44,14 +45,18 @@ onUnmounted(() => {
       <h2 class="video-title">
         Video<br>title
       </h2>
-      <div class="video-player"></div>
+      <SiteVideo
+        id="HomeVideo"
+        video="/video/placeholder.mp4"
+        poster="https://tenproposals.e-f-a.org/images/proposals/2.jpg"
+        class="video-player" />
     </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
 .video {
-  height: 150vh;
+  height: 250vh;
   background: var(--black);
   position: relative;
 
@@ -65,8 +70,6 @@ onUnmounted(() => {
     aspect-ratio: 16 / 9;
     max-height: calc(100vh - var(--navbar-safe-area) - var(--site-padding) * 2);
     margin: 0 auto;
-    background-image: url(https://tenproposals.e-f-a.org/images/proposals/2.jpg);
-    opacity: .5;
   }
 
   &-title {
