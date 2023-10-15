@@ -14,7 +14,10 @@ defineProps({
       <div class="text" v-html="content" />
     </div>
     <div class="video">
-      <div class="placeholder" />
+      <SiteVideo
+        video="/video/placeholder.mp4"
+        poster="https://tenproposals.e-f-a.org/images/proposals/2.jpg"
+      />
       <nuxt-link to="/manifesto" class="manifesto py-sm p-site">
         <AnimatedArrowLink class="manifesto-link">
           Read the 2024 Manifesto
@@ -43,7 +46,7 @@ defineProps({
   }
 
   .text {
-    font-size: var(--text-xl);
+    font-size: var(--text-lg);
     line-height: 1.5;
     max-width: 50ch;
 
@@ -62,8 +65,7 @@ defineProps({
   display: flex;
   flex-direction: column;
 
-  .placeholder {
-    background: black;
+  .video-player {
     height: 100%;
   }
 
@@ -72,6 +74,7 @@ defineProps({
     color: var(--text-color);
     background: var(--secondary);
     text-decoration: none;
+    @include border-top;
 
     &:hover {
       color: var(--white);
@@ -84,6 +87,26 @@ defineProps({
     &-link {
       border-top: 0;
     }
+  }
+}
+
+@include media('<lg') {
+  .values {
+    grid-template-columns: 1fr;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    .text {
+      font-size: var(--text-md);
+    }
+  }
+
+  .video {
+    @include border-top;
+    aspect-ratio: 9 / 16;
   }
 }
 </style>

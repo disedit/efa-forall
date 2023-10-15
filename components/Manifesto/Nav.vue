@@ -59,4 +59,16 @@ defineProps({
     }
   }
 }
+
+@include media('<lg') {
+  .manifesto-nav {
+    overflow: auto;
+
+    .chapters {
+      li {
+        flex-shrink: 0;
+      }
+    }
+  }
+}
 </style>

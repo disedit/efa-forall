@@ -47,17 +47,26 @@ defineProps({
     }
 
     .logo-all {
-      transform: translateY(.1em);
+      transform: translateY(.15em);
     }
   }
 
   p {
     margin: 0;
-    font-size: var(--text-xl);
+    font-size: var(--text-lg);
+    line-height: 1.25;
   }
 
   &:first-child {
     @include border-right;
+  }
+}
+
+@include media('<lg') {
+  .block {
+    p {
+      font-size: var(--text-md);
+    }
   }
 }
 </style>

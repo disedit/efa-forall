@@ -65,7 +65,7 @@ function formatTime (eventDate) {
 .event {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--site-padding);
   background: var(--bg-color);
   min-height: 45vh;
   max-height: 33vw;
@@ -135,6 +135,37 @@ function formatTime (eventDate) {
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+  }
+}
+
+@include media('<lg') {
+  .event {
+    min-height: unset;
+    height: 30vh;
+    max-height: unset;
+    font-size: var(--text-lg);
+
+    &-has-picture {
+      height: auto;
+      grid-column: unset;
+      grid-template-columns: 1fr;
+      grid-template-rows: 30vh auto auto 1fr 1fr;
+      grid-template-areas:
+        "picture"
+        "datetime"
+        "title"
+        "info"
+        "footer";
+
+      .event-picture {
+        @include border-bottom;
+        border-right: 0;
+      }
+
+      .event-datetime {
+        padding-top: var(--site-padding);
+      }
     }
   }
 }

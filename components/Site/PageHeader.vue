@@ -100,4 +100,12 @@ defineProps({
     display: flex;
   }
 }
+
+@include media('<lg') {
+  .page-header {
+    &:not(.single-column) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
 </style>

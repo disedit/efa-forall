@@ -31,6 +31,7 @@ const { thumbnail, category, date } = useStory(story)
     color: var(--text-color);
     text-decoration: none;
     grid-template-columns: minmax(200px, 15vw) 200px 1fr auto;
+    grid-template-areas: "thumbnail date title category";
     gap: var(--site-padding);
     transition: .25s ease;
     align-items: start;
@@ -52,6 +53,7 @@ const { thumbnail, category, date } = useStory(story)
   }
 
   &-title {
+    grid-area: title;
     margin: 0;
     font-family: var(--base-font);
     text-transform: unset;
@@ -62,16 +64,18 @@ const { thumbnail, category, date } = useStory(story)
   }
 
   &-date {
+    grid-area: date;
     color: var(--muted);
     padding-top: var(--site-padding);
   }
 
   &-category {
-    padding-top: var(--site-padding);
+    grid-area: category;    padding-top: var(--site-padding);
     padding-right: var(--site-padding);
   }
 
   &-thumbnail {
+    grid-area: thumbnail;
     display: flex;
     height: 100%;
     aspect-ratio: 1 / .75;
@@ -82,6 +86,40 @@ const { thumbnail, category, date } = useStory(story)
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+  }
+}
+
+@include media('<lg') {
+  .story {
+    a {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "thumbnail thumbnail"
+        "date category"
+        "title title";
+      gap: 0;
+    }
+
+    &-date,
+    &-category,
+    &-title {
+      padding: var(--site-padding);
+    }
+
+    &-title {
+      padding-top: 0;
+    }
+
+    &-category {
+      margin-left: auto
+    }
+
+    &-thumbnail {
+      @include border-bottom;
+      border-right: 0;
+      height: 35vh;
+      aspect-ratio: unset;
     }
   }
 }

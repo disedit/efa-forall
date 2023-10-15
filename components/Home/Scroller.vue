@@ -1,6 +1,4 @@
 <script setup>
-const { $gsap, $ScrollTrigger } = useNuxtApp()
-
 defineProps({
   chapters: {
     type: Array,
@@ -8,12 +6,11 @@ defineProps({
   }
 })
 
+const { $gsap, $ScrollTrigger } = useNuxtApp()
 const hover = ref(false)
 const items = ref(null)
 const wrapper = ref(null)
-let scroller
-let animation
-let ctx
+let animations
 
 function getScrollAmount() {
   const width = items.value.scrollWidth
@@ -22,14 +19,15 @@ function getScrollAmount() {
 
 onMounted(() => {
   setTimeout(() => {
-    ctx = $gsap.context(() => {
-      animation = $gsap.to(items.value, {
+    animations = $gsap.context(() => {
+      /* Horizontal scroll effect */
+      const animation = $gsap.to(items.value, {
         x: getScrollAmount,
         duration: 3,
         ease: "none"
       })
 
-      scroller = $ScrollTrigger.create({
+      $ScrollTrigger.create({
         trigger: wrapper.value,
         start: 'top 65px',
         end: () => `+=${getScrollAmount() * -1}`,
@@ -53,17 +51,20 @@ onMounted(() => {
         }
       })
 
+      /* Reveal animations */
+      const scrollTrigger = {
+        trigger: wrapper.value,
+        start: 'top 35%',
+        end: 'top top'
+      }
+
       $gsap.fromTo('.home-scroller .for-all', {
         y: '100%'
       }, {
         y: 0,
         duration: .75,
         ease: 'expo.out',
-        scrollTrigger: {
-          trigger: wrapper.value,
-          start: 'top 35%',
-          end: 'top top'
-        }
+        scrollTrigger
       })
 
       $gsap.fromTo('.scroller-chapter .item-title', {
@@ -73,11 +74,7 @@ onMounted(() => {
         duration: 1,
         ease: 'power4.out',
         stagger: .1,
-        scrollTrigger: {
-          trigger: wrapper.value,
-          start: 'top 35%',
-          end: 'top top'
-        }
+        scrollTrigger
       })
 
       $gsap.fromTo('.scroller-chapter .item-text', {
@@ -88,11 +85,7 @@ onMounted(() => {
         ease: 'power4.out',
         stagger: .1,
         delay: .25,
-        scrollTrigger: {
-          trigger: wrapper.value,
-          start: 'top 35%',
-          end: 'top top'
-        }
+        scrollTrigger
       })
 
       $gsap.fromTo('.scroller-chapter .item-more', {
@@ -103,11 +96,7 @@ onMounted(() => {
         delay: .5,
         ease: 'power4.out',
         stagger: .1,
-        scrollTrigger: {
-          trigger: wrapper.value,
-          start: 'top 35%',
-          end: 'top top'
-        }
+        scrollTrigger
       })
 
     }, wrapper.value)
@@ -115,7 +104,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  ctx && ctx.kill()
+  animations && animations.kill()
 })
 </script>
 
@@ -155,7 +144,7 @@ onUnmounted(() => {
   }
 
   .filler {
-    width: 15vw;
+    width: 5vw;
     flex-shrink: 0;
 
     &:last-child {
@@ -175,25 +164,10 @@ onUnmounted(() => {
     svg {
       height: 50vh;
       width: auto;
-      animation: rotate 30s linear infinite;
     }
   }
 
   .hover .for-all {
     color: var(--beige);
-  }
-
-  @keyframes rotate {
-    0% {
-      rotate: -5deg;
-    }
-
-    50% {
-      rotate: 20deg;
-    }
-
-    100% {
-      rotate: -5deg;
-    }
   }
 </style>

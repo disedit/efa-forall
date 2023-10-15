@@ -88,4 +88,15 @@ const otherArticles = computed(() => {
   position: sticky;
   top: calc(var(--navbar-safe-area) + var(--site-padding));
 }
+
+@include media('<lg') {
+  .news-columns {
+    grid-template-columns: 1fr;
+    padding-top: 0;
+  }
+
+  .news-press-corner {
+    grid-row: 1;
+  }
+}
 </style>

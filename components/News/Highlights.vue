@@ -41,6 +41,10 @@ onMounted(() => {
   gap: var(--site-padding);
   padding-top: 0;
 
+  @include media('<lg') {
+    grid-template-columns: 1fr;
+  }
+
   .story {
     transform: translate(10%, 80%) rotate(-10deg) scale(.9);
     opacity: 0;

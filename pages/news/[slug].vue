@@ -125,4 +125,37 @@ useHead({ title })
   position: sticky;
   top: calc(var(--navbar-safe-area) + var(--site-padding));
 }
+
+@include media('<lg') {
+  .story {
+    &-page {
+      grid-template-columns: 1fr;
+    }
+
+    &-title {
+      font-size: 4rem;
+    }
+
+    &-picture {
+      img {
+        height: 40vh;
+        min-height: 300px;
+      }
+    }
+
+    &-text {
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      max-width: 100%;
+    }
+  }
+
+  .press-corner {
+    background: var(--secondary);
+
+    :deep(a) {
+      color: var(--black);
+    }
+  }
+}
 </style>

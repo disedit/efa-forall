@@ -114,6 +114,19 @@ const { thumbnail, category, date } = useStory(story, 'large')
       }
     }
   }
+}
 
+@include media('<lg') {
+  .story {
+    min-height: 40vh;
+
+    &-title {
+      font-size: 1.75rem;
+    }
+
+    &-excerpt {
+      display: none;
+    }
+  }
 }
 </style>

@@ -38,6 +38,10 @@ defineProps({
 .chapters {
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  @include media('<lg') {
+    grid-template-columns: 1fr;
+  }
 }
 
 .chapter {

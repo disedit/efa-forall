@@ -59,6 +59,7 @@ function convertTimeToDuration (seconds) {
       </button>
     </Transition>
     <div class="video-controls">
+      <span style="color:yellow">WIP</span>
       <button @click="togglePlay">Play/Pause</button>
       {{ convertTimeToDuration(time) }}
     </div>

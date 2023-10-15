@@ -342,9 +342,14 @@ function onLeaveCancelled() {
     &-brand {
       padding: .5rem var(--site-padding);
       border-right: 0;
+      flex-grow: 1;
 
       &:hover {
         background: transparent;
+      }
+
+      .title {
+        margin-left: auto;
       }
     }
 

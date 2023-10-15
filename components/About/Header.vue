@@ -23,7 +23,10 @@ defineProps({
 
     <template #aside>
       <div class="video">
-        Video
+        <SiteVideo
+          video="/video/placeholder.mp4"
+          poster="https://tenproposals.e-f-a.org/images/proposals/2.jpg"
+        />
       </div>
     </template>
   </SitePageHeader>
@@ -31,7 +34,32 @@ defineProps({
 
 <style lang="scss" scoped>
 .video {
-  background: black;
+  display: flex;
   width: 100%;
+  @include border-left;
+
+  .video-player {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@include media('<lg') {
+  .page-header {
+    min-height: unset;
+
+    :deep(.title) {
+      position: static !important;
+    }
+  }
+
+  .video {
+    @include border-top;
+    border-left: 0;
+
+    .video-player {
+      aspect-ratio: 16 / 9;
+    }
+  }
 }
 </style>
