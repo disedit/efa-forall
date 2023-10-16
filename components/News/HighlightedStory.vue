@@ -120,8 +120,17 @@ const { thumbnail, category, date } = useStory(story, 'large')
   .story {
     min-height: 40vh;
 
+    &-content {
+      grid-template-columns: 1fr;
+      grid-template-rows: 30vh auto;
+      grid-template-areas:
+        "thumbnail"
+        "title";
+    }
+
     &-title {
       font-size: 1.75rem;
+      padding-bottom: 2em;
     }
 
     &-excerpt {

@@ -4,7 +4,7 @@
       News
     </template>
     <template #heading>
-      Keep up to date
+      Keep <br class="d-md-none"> up to date
     </template>
   </SitePageHeader>
 </template>

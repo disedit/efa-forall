@@ -111,3 +111,9 @@
     }
   }
 }
+
+@include media('>md') {
+  .d-md-none {
+    display: none;
+  }
+}

@@ -40,4 +40,14 @@
   .menu-open {
     overflow: hidden;
   }
+  
+  ::-moz-selection {
+    color: red;
+    background: yellow;
+  }
+  
+  ::selection {
+    color: var(--white);
+    background: var(--primary);
+  }
 }
