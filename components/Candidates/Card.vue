@@ -53,7 +53,7 @@ function unhover() {
     gap: var(--site-padding-sm);
     overflow: auto;
     background: var(--white);
-    width: 300px;
+    width: calc(300px + 2.5vw);
     height: 100%;
     max-height: 45vh;
     flex-shrink: 0;

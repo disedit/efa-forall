@@ -84,7 +84,7 @@ onUnmounted(() => {
   flex-direction: column;
   text-decoration: none;
   padding: .5em;
-  font-size: clamp(2rem, 4vw, 4rem);
+  font-size: clamp(2rem, 4vw, 4.75rem);
   line-height: .9;
   aspect-ratio: 9 / 16;
   max-height: 70vh;

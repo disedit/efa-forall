@@ -32,7 +32,7 @@ const { thumbnail, category, date } = useStory(story, 'large')
 <style lang="scss" scoped>
 .story {
   display: flex;
-  min-height: calc(100vh - 330px);
+  min-height: calc(100vh - 360px);
 
   &-header {
     display: flex;
@@ -62,7 +62,7 @@ const { thumbnail, category, date } = useStory(story, 'large')
 
   &-title {
     grid-area: title;
-    font-size: 2.5rem;
+    font-size: clamp(2.5rem, 2vw, 3.5rem);
   }
 
   &-excerpt {
