@@ -84,20 +84,29 @@ const otherArticles = computed(() => {
   gap: var(--site-padding);
 }
 
+.news-press-corner {
+  container: press / inline-size;
+}
+
 .sticky {
   position: sticky;
   top: calc(var(--navbar-safe-area) + var(--site-padding));
 }
 
-@include media('<lg') {
+@include media('<xxl') {
   .news-columns {
     grid-template-columns: 1fr;
-    padding: 0;
-    gap: 0;
+    padding-top: 0;
   }
-
   .news-press-corner {
     grid-row: 1;
+  }
+}
+
+@include media('<lg') {
+  .news-columns {
+    padding: 0;
+    gap: 0;
   }
 }
 </style>

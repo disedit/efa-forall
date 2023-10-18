@@ -28,6 +28,7 @@ defineProps({
     width: 1em;
     background: var(--category-color, var(--primary));
     border-radius: 100%;
+    flex-shrink: 0;
   }
 }
 

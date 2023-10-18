@@ -62,13 +62,17 @@ const { thumbnail, category, date } = useStory(story, 'large')
 
   &-title {
     grid-area: title;
-    font-size: clamp(2.5rem, 2vw, 3.5rem);
+    font-size: clamp(2rem, 2vw, 3.5rem);
   }
 
   &-excerpt {
     grid-area: excerpt;
     color: var(--muted);
     margin-top: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
 
     :deep(p) {
       margin: 0;

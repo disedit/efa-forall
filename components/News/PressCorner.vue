@@ -125,4 +125,16 @@ defineProps({
     border-bottom: 0;
   }
 }
+
+@container press (min-width: 500px) {
+  .press-corner {
+    flex-direction: row;
+
+    &-kit {
+      align-self: flex-end !important;
+      justify-self: flex-end !important;
+      margin-left: auto;
+    }
+  }
+}
 </style>

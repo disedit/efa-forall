@@ -30,9 +30,9 @@ const { thumbnail, category, date } = useStory(story)
     display: grid;
     color: var(--text-color);
     text-decoration: none;
-    grid-template-columns: minmax(200px, 15vw) 200px 1fr auto;
+    grid-template-columns: minmax(200px, 15vw) var(--date-size, 180px) 1fr auto;
     grid-template-areas: "thumbnail date title category";
-    gap: var(--site-padding);
+    gap: var(--site-padding-sm);
     transition: .25s ease;
     align-items: start;
 
@@ -60,18 +60,19 @@ const { thumbnail, category, date } = useStory(story)
     font-weight: 900;
     text-wrap: balance;
     font-size: var(--headline-story-sm);
-    padding-top: var(--site-padding);
+    padding: var(--site-padding-sm) 0;
   }
 
   &-date {
     grid-area: date;
     color: var(--muted);
-    padding-top: var(--site-padding);
+    padding-top: var(--site-padding-sm);
   }
 
   &-category {
-    grid-area: category;    padding-top: var(--site-padding);
-    padding-right: var(--site-padding);
+    grid-area: category;
+    padding-top: var(--site-padding-sm);
+    padding-right: var(--site-padding-sm);
   }
 
   &-thumbnail {
@@ -104,7 +105,7 @@ const { thumbnail, category, date } = useStory(story)
     &-date,
     &-category,
     &-title {
-      padding: var(--site-padding);
+      padding: var(--site-padding-sm);
     }
 
     &-title {
@@ -124,9 +125,39 @@ const { thumbnail, category, date } = useStory(story)
   }
 }
 
+@include media('<lg') {
+  .story {
+    --site-padding-sm: var(--site-padding);
+  }
+}
+
+@include media('>lg', '<xxl') {
+  .story {
+    --date-size: 120px;
+    
+    a {
+      min-height: 22vh;
+    }
+
+    &-thumbnail {
+      aspect-ratio: unset;
+      height: 100%;
+    }
+  }
+}
+
+@include media('>lg', '<xl') {
+  .story {
+    &-category {
+      display: none;
+    }
+  }
+}
+
 @media (hover: none) {
   .story a:hover {
     background: transparent;
+    color: var(--black);
   }
 }
 </style>
