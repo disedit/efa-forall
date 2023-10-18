@@ -117,7 +117,7 @@ defineProps({
       border-right: 0;
       @include border-bottom;
       height: calc(100vh - var(--navbar-safe-area) - 4.5rem);
-      height: calc(100dvh - var(--navbar-safe-area) - 4.5rem);
+      height: calc(100svh - var(--navbar-safe-area) - 4.5rem);
       overflow: hidden;
     }
   }

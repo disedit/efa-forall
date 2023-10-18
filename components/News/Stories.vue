@@ -21,4 +21,10 @@ defineProps({
   @include border;
   border-top: 0;
 }
+
+@include media('<lg') {
+  .stories {
+    border: 0;
+  }
+}
 </style>

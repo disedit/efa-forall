@@ -1,9 +1,9 @@
 <script setup>
 const { $gsap } = useNuxtApp()
+const { setDark, unsetDark } = useColorMode()
 
 const animation = ref(null)
 const video = ref(null)
-const play = ref(false)
 
 onMounted(() => {
   setTimeout(() => {
@@ -16,18 +16,10 @@ onMounted(() => {
         start: 'top 200px',
         end: 'top 95px',
         scrub: 1,
-        onLeave: () => {
-          document.documentElement.classList.add('dark')
-        },
-        onLeaveBack: () => {
-          document.documentElement.classList.remove('dark')
-        },
-        onEnterBack: () => {
-          document.documentElement.classList.remove('dark')
-        },
-        onEnter: () => {
-          document.documentElement.classList.remove('dark')
-        }
+        onLeave: setDark,
+        onLeaveBack: unsetDark,
+        onEnterBack: unsetDark,
+        onEnter: unsetDark
       }
     })
   }, 500)

@@ -49,4 +49,10 @@ const limitedEvents = computed(() => {
     appearance: none;
   }
 }
+
+@include media('<lg') {
+  .events-grid {
+    border-left: 0;
+  }
+}
 </style>

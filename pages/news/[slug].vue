@@ -151,8 +151,13 @@ useHead({ title })
     }
   }
 
+  .aside {
+    padding: 0;
+  }
+
   .press-corner {
     background: var(--secondary);
+    margin-bottom: 0;
 
     :deep(a) {
       color: var(--black);

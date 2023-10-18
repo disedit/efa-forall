@@ -2,6 +2,7 @@
 import { posters } from '@/assets/images/manifesto'
 
 const { $gsap, $ScrollTrigger } = useNuxtApp()
+const { setDark, unsetDark } = useColorMode()
 
 defineProps({
   chapters: {
@@ -39,18 +40,10 @@ onMounted(() => {
         animation,
         scrub: 1,
         invalidateOnRefresh: true,
-        onEnter: () => {
-          document.documentElement.classList.remove('dark')
-        },
-        onLeaveBack: () => {
-          document.documentElement.classList.add('dark')
-        },
-        onEnterBack: () => {
-          document.documentElement.classList.remove('dark')
-        },
-        onLeave: () => {
-          document.documentElement.classList.remove('dark')
-        }
+        onEnter: unsetDark,
+        onLeaveBack: setDark,
+        onEnterBack: unsetDark,
+        onLeave: unsetDark
       })
 
       blockEnter = $gsap.fromTo('.manifesto-chapters .chapter', {

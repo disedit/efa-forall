@@ -117,4 +117,12 @@ defineProps({
     }
   }
 }
+
+@include media('<lg') {
+  .press-corner {
+    border-right: 0;
+    border-left: 0;
+    border-bottom: 0;
+  }
+}
 </style>

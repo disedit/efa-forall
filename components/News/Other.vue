@@ -62,4 +62,11 @@ defineProps({
     }
   }
 }
+
+@include media('<lg') {
+  .other-stories {
+    border: 0;
+    @include border-top;
+  }
+}
 </style>

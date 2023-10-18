@@ -118,6 +118,10 @@ const year = 2023
         border-left: 0;
         @include border-bottom;
       }
+
+      .disclaimer {
+        font-size: .75rem;
+      }
     }
   }
 </style>

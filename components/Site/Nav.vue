@@ -8,17 +8,16 @@ const menu = [
 ]
 
 /* Menu toggler */
+const { setMenuOpen, unsetMenuOpen } = useColorMode()
 const menuOpen = ref(false)
 const showMenu = () => {
   menuOpen.value = true
-  document.body.classList.add('menu-open')
-  document.querySelector('meta[name="theme-color"]').setAttribute('content', '#652B80')
+  setMenuOpen()
 }
 const hideMenu = (index) => {
   menuOpen.value = false
   clickedIndex.value = index || 0
-  document.body.classList.remove('menu-open')
-  document.querySelector('meta[name="theme-color"]').setAttribute('content', '#E9D5CA')
+  unsetMenuOpen()
 }
 
 function toggleMenu () {

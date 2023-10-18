@@ -26,18 +26,34 @@ const past = computed(() => sortDates('desc', [ ...events.filter((event) => !dat
 </script>
 
 <template>
-  <section class="p-site pt-0" aria-describedby="upcoming-events">
+  <section class="events p-site pt-0" aria-describedby="upcoming-events">
     <EventsPaginated :events="upcoming" />
   </section>
-  <section class="p-site pt-0" aria-describedby="past-events" v-if="past.length > 0">
-    <h2 id="past-events" class="past-events">Past events</h2>
+  <section class="events past-events p-site pt-0" aria-describedby="past-events" v-if="past.length > 0">
+    <h2 id="past-events">Past events</h2>
     <EventsPaginated :events="past" :limit="6" />
   </section>
 </template>
 
 <style lang="scss" scoped>
-.past-events {
+.past-events h2 {
   margin-top: 4rem;
   font-size: var(--headline-block);
+}
+
+@include media('<lg') {
+  .events {
+    padding: 0;
+
+    h2 {
+      padding: var(--site-padding);
+    }
+  }
+
+  .past-events {
+    :deep(.event:last-child) {
+      border-bottom: 0;
+    }
+  }
 }
 </style>

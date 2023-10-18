@@ -19,6 +19,7 @@ defineProps({
   gap: .5em;
   align-items: center;
   color: var(--muted);
+  text-align: right;
 
   &::after {
     content: '';

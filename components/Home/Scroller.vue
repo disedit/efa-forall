@@ -7,6 +7,7 @@ defineProps({
 })
 
 const { $gsap, $ScrollTrigger } = useNuxtApp()
+const { setDark, unsetDark } = useColorMode()
 const hover = ref(false)
 const items = ref(null)
 const wrapper = ref(null)
@@ -36,19 +37,13 @@ onMounted(() => {
         scrub: 1,
         invalidateOnRefresh: true,
         onEnter: () => {
-          document.documentElement.classList.remove('dark')
+          unsetDark()
           const video = document.querySelector('#HomeVideo video')
           video.pause()
         },
-        onLeaveBack: () => {
-          document.documentElement.classList.add('dark')
-        },
-        onEnterBack: () => {
-          document.documentElement.classList.remove('dark')
-        },
-        onLeave: () => {
-          document.documentElement.classList.remove('dark')
-        }
+        onLeaveBack: setDark,
+        onEnterBack: unsetDark,
+        onLeave: unsetDark
       })
 
       /* Reveal animations */

@@ -123,4 +123,10 @@ const { thumbnail, category, date } = useStory(story)
     }
   }
 }
+
+@media (hover: none) {
+  .story a:hover {
+    background: transparent;
+  }
+}
 </style>

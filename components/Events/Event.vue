@@ -145,6 +145,7 @@ function formatTime (eventDate) {
     height: 30vh;
     max-height: unset;
     font-size: var(--text-lg);
+    border-right: 0;
 
     &-has-picture {
       height: auto;

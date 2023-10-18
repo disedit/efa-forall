@@ -92,7 +92,8 @@ const otherArticles = computed(() => {
 @include media('<lg') {
   .news-columns {
     grid-template-columns: 1fr;
-    padding-top: 0;
+    padding: 0;
+    gap: 0;
   }
 
   .news-press-corner {
