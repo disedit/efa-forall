@@ -114,4 +114,37 @@ defineProps({
     }
   }
 }
+
+@include media('<lg') {
+  .chapter {
+    --color: var(--secondary) !important;
+
+    &:nth-child(odd) {
+      border-right: 0;
+      --color: var(--primary) !important;
+    }
+  }
+
+  .candidates {
+    a {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "title"
+        "picture"
+        "link";
+      @include border-top;
+    }
+
+    &-picture {
+      @include border-top;
+      border-right: 0;
+      height: 50vh;
+    }
+
+    &-link {
+      background: var(--black);
+      color: var(--white);
+    }
+  }
+}
 </style>

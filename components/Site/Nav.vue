@@ -291,11 +291,12 @@ function onLeaveCancelled() {
   position: fixed;
   inset: 0;
   background: var(--primary);
-  z-index: 10;
+  z-index: 1000;
   padding: var(--site-padding);
   padding-top: calc(var(--navbar-safe-area) + var(--site-padding));
   flex-direction: column;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
 
   a {
     position: relative;

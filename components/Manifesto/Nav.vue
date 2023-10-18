@@ -63,6 +63,7 @@ defineProps({
 @include media('<lg') {
   .manifesto-nav {
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
 
     .chapters {
       li {

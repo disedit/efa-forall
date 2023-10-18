@@ -51,4 +51,14 @@ defineProps({
   height: calc(100vh - var(--navbar-safe-area));
   height: calc(100svh - var(--navbar-safe-area));
 }
+
+@include media('<lg') {
+  .page-header.candidates-header {
+    grid-template-columns: 1fr;
+
+    :deep(.heading h2) {
+      font-size: 3.75rem;
+    }
+  }
+}
 </style>

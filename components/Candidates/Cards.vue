@@ -33,4 +33,10 @@ defineProps({
   width: 40vw;
   flex-shrink: 0;
 }
+
+@include media('<lg') {
+  .filler {
+    width: 0;
+  }
+}
 </style>

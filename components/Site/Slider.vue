@@ -56,7 +56,7 @@ function momentumLoop () {
 
 <template>
   <div
-    :class="['slider', { active: isDown }]"
+    :class="['slider', 'touch', { active: isDown }]"
     ref="slider"
     @mousedown="onMouseDown"
     @mouseleave="onMouseLeave"

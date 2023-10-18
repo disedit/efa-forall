@@ -102,4 +102,22 @@ const socialLinks = computed(() => socials.split("\r\n").map(item => {
     }
   }
 }
+
+@include media('<lg') {
+  .spitzenkandidat {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "picture"
+      "name"
+      "socials"
+      "description";
+    grid-template-rows: 40vh auto auto auto;
+
+    &-name {
+      line-height: 1.15;
+      padding-top: 0;
+      font-size: 2rem;
+    }
+  }
+}
 </style>

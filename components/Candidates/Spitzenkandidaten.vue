@@ -31,7 +31,7 @@ onMounted(() => {
 
 <template>
   <section class="spitzenkandidaten p-site">
-    <h2>Spitzenkandidaten</h2>
+    <h2>Spitzen<wbr>kandidaten</h2>
     <p>{{ candidates.subheading }}</p>
     <div class="spitzenkandidaten-cards">
       <CandidatesSpitzenkandidat
@@ -75,5 +75,18 @@ onMounted(() => {
 .spitzenkandidat {
   transform: translate(10%, 80%) rotate(-10deg) scale(.9);
   opacity: 0;
+}
+
+@include media('<md') {
+  .spitzenkandidaten {
+    h2 {
+      font-size: 3.75rem;
+      line-height: 1;
+    }
+
+    &-cards {
+      flex-direction: column;
+    }
+  }
 }
 </style>

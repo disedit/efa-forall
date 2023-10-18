@@ -38,8 +38,9 @@ function scrollIntoView(id, shouldFocus) {
   const scroller = document.querySelector('#candidate-slider')
   const candidateCard = document.querySelector(`#candidate-${id}`)
   const cardOffset = candidateCard.offsetLeft
+  const furtherOffset = window.innerWidth > 1200 ? 28 + 300 + 28 : 16
   scroller.scrollTo({
-    left: cardOffset - 28 - 300 - 28,
+    left: cardOffset - furtherOffset,
     behavior: 'smooth',
   })
   setTimeout(() => {

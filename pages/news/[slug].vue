@@ -113,7 +113,8 @@ useHead({ title })
   &-text {
     font-size: var(--text-xl);
     line-height: 1.5;
-    max-width: 80ch;
+    max-width: 60ch;
+    hyphens: auto;
   }
 }
 

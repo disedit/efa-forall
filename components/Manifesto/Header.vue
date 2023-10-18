@@ -70,4 +70,16 @@ defineProps({
     transform: translateY(20%);
   }
 }
+
+@include media('<lg') {
+  .manifesto-header {
+    :deep(.aside) {
+      display: none;
+    }
+  }
+
+  .compact {
+    max-height: 2.534375rem;
+  }
+}
 </style>

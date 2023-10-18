@@ -15,3 +15,28 @@
   transform: translate(-3rem, 0) scale(1.4);
   transform-origin: 0 0;
 }
+
+@include media('<lg') {
+  .chapter-democracy-for-all .chapter-poster-image svg {
+    transform: translate(-4rem, 0) scale(1.2);
+  }
+
+  .chapter-sustainability-for-all .chapter-poster-image {
+    svg {
+      transform: translate(0, 10%) scale(1.2);
+    }
+  }
+
+  .chapter-solidarity-for-all .chapter-title {
+    height: 11rem;
+  }
+
+  .chapter-solidarity-for-all .chapter-poster-image {
+    margin-top: -11rem;
+
+    svg {
+      transform: translate(0, 3%) scale(1.2) scaleX(-1);
+      transform-origin: center center;
+    }
+  }
+}

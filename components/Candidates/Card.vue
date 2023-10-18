@@ -90,4 +90,12 @@ function unhover() {
     justify-content: space-between;
   }
 }
+
+@include media('<md') {
+  .candidate {
+    &-card {
+      width: 70vw;
+    }
+  }
+}
 </style>

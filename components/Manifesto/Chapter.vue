@@ -103,4 +103,23 @@ defineProps({
     margin-left: -5px;
   }
 }
+
+@include media('<lg') {
+  .chapter {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "poster"
+      "content"
+      "next";
+
+    &-poster {
+      border-right: 0;
+      @include border-bottom;
+      height: calc(100vh - var(--navbar-safe-area) - 4.5rem);
+      height: calc(100dvh - var(--navbar-safe-area) - 4.5rem);
+      overflow: hidden;
+    }
+  }
+}
 </style>

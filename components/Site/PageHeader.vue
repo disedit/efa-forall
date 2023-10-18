@@ -106,6 +106,10 @@ defineProps({
     &:not(.single-column) {
       grid-template-columns: 1fr;
     }
+
+    .title {
+      line-height: 1.15;
+    }
   }
 }
 </style>

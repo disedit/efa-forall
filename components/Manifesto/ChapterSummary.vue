@@ -32,6 +32,7 @@ defineProps({
 <style lang="scss" scoped>
 .chapter {
   display: flex;
+  container: chapter / inline-size;
 
   a {
     display: grid;
@@ -122,6 +123,48 @@ defineProps({
   .chapter {
     &-summary {
       font-size: var(--text-lg);
+    }
+  }
+}
+
+@container chapter (max-width: 600px) {
+  .chapter {
+    a {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 40vh auto;
+      grid-template-areas:
+        "title"
+        "poster"
+        "summary";
+    }
+
+    &-title {
+      font-size: 4rem;
+    }
+
+    &-poster-image {
+      @include border-bottom;
+    }
+
+    &-summary {
+      border-left: 0;
+    }
+
+    &-more {
+      background: var(--black);
+      color: var(--white);
+    }
+  }
+}
+
+@include media('<md') {
+  .chapter {
+    a:hover {
+      .chapter-title,
+      .chapter-poster-image,
+      .chapter-summary {
+        background: transparent;
+      }
     }
   }
 }

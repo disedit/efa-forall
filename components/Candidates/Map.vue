@@ -93,9 +93,59 @@ defineProps({
   &-cards {
     grid-area: 2 / 1 / 3 / 3;
     user-select: none;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
 
     .candidates-cards {
       height: 100%;
+    }
+  }
+}
+
+@include media('<lg') {
+  .candidates-map {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "title"
+      "map"
+      "cards";
+
+    &-title {
+      grid-area: title;
+
+      h2, p {
+        max-width: unset;
+      }
+    }
+
+    &-holder {
+      grid-area: map;
+      height: 100vh;
+      transform: none;
+      height: auto;
+
+      .with-items {
+        width: fit-content;
+        min-height: 40vh;
+        transform: translateX(20%);
+      }
+
+      .blind {
+        display: none;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        min-height: 40vh;
+        max-height: 75vh;
+      }
+    }
+
+    &-cards {
+      grid-area: cards;
+      height: 40vh;
     }
   }
 }
