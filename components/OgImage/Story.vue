@@ -10,95 +10,24 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="og-story story">
-    <div class="story-text">
-      <div class="story-title">
-        <h1>
+  <div class="bg-[#652B80] flex w-full h-full text-white">
+    <div class="absolute top-0 left-0 bottom-0 flex flex-col w-1/2 h-full">
+      <div class="p-8">
+        <h1 class="text-[3.5rem] m-0 text-[#FB7959] leading-[1.1] font-black tracking-tight line-clamp-[7]">
           {{ title }}
         </h1>
       </div>
-      <div class="story-header">
-        <img src="https://content.forall2024.eu/wp-content/uploads/2023/10/efa.png" alt="" class="logo-efa">
-        <span class="header-title">EU Elections 2024</span>
-      </div>
     </div>
-    <div class="story-picture">
-      <img :src="thumbnail.src" alt="">
+    <div class="absolute top-0 right-0 bottom-0 flex w-1/2">
+      <img :src="thumbnail.src" alt="" class="w-full h-full object-cover">
     </div>
-    <img src="https://content.forall2024.eu/wp-content/uploads/2023/10/for-all.png" alt="" class="logo-for-all">
+    <img
+      src="https://content.forall2024.eu/wp-content/uploads/2023/10/for-all.png"
+      class="h-[20rem] w-[20rem] absolute right-0 bottom-0" style="transform: rotate(-8deg) scale(1.2);">
+    <img
+      src="https://content.forall2024.eu/wp-content/uploads/2023/10/efa.png"
+      class="absolute left-[1.5rem] bottom-[1.5rem] h-[40px] w-[122px]">
+
+    <span class="absolute bottom-[1.5rem] left-[360px] text-2xl">EU Elections 2024</span>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.story {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  color: $white;
-  background: $primary;
-
-  &-text {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-  }
-
-  &-header {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    padding: 2rem;
-    margin-top: auto;
-
-    .logo-efa {
-      height: 40px;
-      width: 122px;
-    }
-
-    .header-title {
-      margin-left: auto;
-      font-size: 1.5rem;
-    }
-  }
-
-  &-picture {
-    display: flex;
-    width: 50%;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
-  &-title {
-    padding: 2rem;
-
-    h1 {
-      font-family: DM Sans, sans-serif;
-      font-weight: 900;
-      font-size: 3.5rem;
-      color: $secondary;
-      line-height: 1.1;
-      margin: 0;
-      -webkit-line-clamp: 7;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      max-width: 100%;
-      letter-spacing: -0.02em;
-    }
-  }
-
-  .logo-for-all {
-    height: 20rem;
-    width: 20rem;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    transform: rotate(-8deg);
-  }
-}
-</style>
