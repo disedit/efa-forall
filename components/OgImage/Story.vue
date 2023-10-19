@@ -19,13 +19,13 @@ const props = defineProps({
       </div>
       <div class="story-header">
         <img src="https://content.forall2024.eu/wp-content/uploads/2023/10/efa.png" alt="" class="logo-efa">
-        <img src="https://content.forall2024.eu/wp-content/uploads/2023/10/for-all.png" alt="" class="logo-for-all">
         <span class="header-title">EU Elections 2024</span>
       </div>
     </div>
     <div class="story-picture">
       <img :src="thumbnail.src" alt="">
     </div>
+    <img src="https://content.forall2024.eu/wp-content/uploads/2023/10/for-all.png" alt="" class="logo-for-all">
   </div>
 </template>
 
@@ -50,18 +50,9 @@ const props = defineProps({
     padding: 2rem;
     margin-top: auto;
 
-    .logo-efa,
-    .logo-for-all {
-      height: 2.5rem;
-      width: auto;
-    }
-
-    .logo-for-all {
-      height: 20rem;
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      transform: rotate(-8deg);
+    .logo-efa {
+      height: 40px;
+      width: 122px;
     }
 
     .header-title {
@@ -99,6 +90,15 @@ const props = defineProps({
       max-width: 100%;
       letter-spacing: -0.02em;
     }
+  }
+
+  .logo-for-all {
+    height: 20rem;
+    width: 20rem;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: rotate(-8deg);
   }
 }
 </style>
