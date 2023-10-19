@@ -32,14 +32,19 @@ const latestPosts = computed(() => {
 
 /* Meta tags */
 const title = `${story.title.rendered} - News - For All: EU Elections 2024 - EFA European Free Alliance`
+const ogImageOptions = {
+  title: story.title.rendered,
+  thumbnail,
+  component: 'Story'
+}
 useServerSeoMeta({
   title,
   ogTitle: title,
   description: story.excerpt.rendered,
   ogDescription: story.excerpt.rendered,
-  ogImage: thumbnail.src,
   twitterCard: 'summary_large_image',
 })
+defineOgImage(ogImageOptions)
 
 useHead({ title })
 </script>
