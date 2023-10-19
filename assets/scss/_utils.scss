@@ -112,8 +112,26 @@
   }
 }
 
+.d-none {
+  display: none;
+}
+
 @include media('>md') {
   .d-md-none {
     display: none;
+  }
+
+  .d-md-block {
+    display: block;
+  }
+}
+
+@include media('>lg') {
+  .d-lg-none {
+    display: none;
+  }
+
+  .d-lg-block {
+    display: block;
   }
 }

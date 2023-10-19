@@ -30,7 +30,7 @@ const { data: chapters } = await useAsyncData(
     <HomeHero />
     <HomeBlocks />
     <HomeVideo />
-    <!--<HomeManifesto :chapters="chapters" />-->
-    <HomeScroller :chapters="chapters" />
+    <HomeManifesto class="d-lg-none" :chapters="chapters" />
+    <HomeScroller class="d-none d-lg-block" :chapters="chapters" />
   </main>
 </template>

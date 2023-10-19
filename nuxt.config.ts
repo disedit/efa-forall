@@ -6,6 +6,9 @@ export default defineNuxtConfig({
       mode: 'out-in'
     },
     head: {
+      htmlAttrs: {
+        lang: 'en'
+      },
       meta: [
         { name: 'theme-color', content: '#E9D5CA' },
       ],

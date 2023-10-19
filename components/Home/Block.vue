@@ -130,4 +130,12 @@ onUnmounted(() => {
     outline: 3px var(--black) solid;
   }
 }
+
+@include media('<lg') {
+  .block {
+    aspect-ratio: unset;
+    height: 40vh;
+    transform: none;
+  }
+}
 </style>

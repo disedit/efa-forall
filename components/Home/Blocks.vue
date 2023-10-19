@@ -7,22 +7,25 @@ let rellax
 
 onMounted(() => {
   setTimeout(() => {
-    rellax = new Rellax('.block-wrapper')
+    const mm = $gsap.matchMedia()
+    mm.add("(min-width: 992px)", () => {
+      rellax = new Rellax('.block-wrapper')
 
-    $gsap.fromTo('.block', {
-      y: 100
-    }, {
-      y: 0,
-      duration: .75,
-      delay: 4,
-      stagger: .1,
-      ease: "back.out(1.7)",
+      $gsap.fromTo('.block', {
+        y: 100
+      }, {
+        y: 0,
+        duration: .75,
+        delay: 4,
+        stagger: .1,
+        ease: "back.out(1.7)",
+      })
     })
   }, 500)
 })
 
 onUnmounted(() => {
-  rellax.destroy()
+  rellax && rellax.destroy()
 })
 </script>
 
@@ -79,5 +82,25 @@ onUnmounted(() => {
   --foreground: var(--primary);
   --circle-background: var(--primary);
   --circle-foreground: var(--secondary);
+}
+
+@include media('<lg') {
+  .blocks {
+    grid-template-columns: 1fr;
+  }
+
+  .about {
+    --background: var(--white);
+    --foreground: var(--primary);
+    --circle-background: var(--primary);
+    --circle-foreground: var(--secondary);
+  }
+
+  .candidates {
+    --background: var(--primary);
+    --foreground: var(--white);
+    --circle-background: var(--secondary);
+    --circle-foreground: var(--primary);
+  }
 }
 </style>

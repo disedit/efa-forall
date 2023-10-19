@@ -7,20 +7,23 @@ const video = ref(null)
 
 onMounted(() => {
   setTimeout(() => {
-    animation.value = $gsap.fromTo(video.value, {
-      margin: 28
-    }, {
-      margin: 0,
-      scrollTrigger: {
-        trigger: video.value,
-        start: 'top 200px',
-        end: 'top 95px',
-        scrub: 1,
-        onLeave: setDark,
-        onLeaveBack: unsetDark,
-        onEnterBack: unsetDark,
-        onEnter: unsetDark
-      }
+    const mm = $gsap.matchMedia()
+    mm.add("(min-width: 992px)", () => {
+      animation.value = $gsap.fromTo(video.value, {
+        margin: 28
+      }, {
+        margin: 0,
+        scrollTrigger: {
+          trigger: video.value,
+          start: 'top 200px',
+          end: 'top 95px',
+          scrub: 1,
+          onLeave: setDark,
+          onLeaveBack: unsetDark,
+          onEnterBack: unsetDark,
+          onEnter: unsetDark
+        }
+      })
     })
   }, 500)
 })
@@ -73,6 +76,12 @@ onUnmounted(() => {
     top: 0;
     left: 0;
     padding: var(--site-padding);
+  }
+}
+
+@include media('<lg') {
+  .video {
+    height: 100vh;
   }
 }
 </style>

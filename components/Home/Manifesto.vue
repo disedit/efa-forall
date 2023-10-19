@@ -1,80 +1,17 @@
 <script setup>
 import { posters } from '@/assets/images/manifesto'
 
-const { $gsap, $ScrollTrigger } = useNuxtApp()
-const { setDark, unsetDark } = useColorMode()
-
 defineProps({
   chapters: {
     type: Array,
     required: true
   }
 })
-
-const items = ref(null)
-const wrapper = ref(null)
-let scroller
-let animation
-let blockEnter
-let ctx
-
-function getScrollAmount() {
-  const width = items.value.scrollWidth
-  return -(width - window.innerWidth)
-}
-
-onMounted(() => {
-  setTimeout(() => {
-    ctx = $gsap.context(() => {
-      animation = $gsap.to(items.value, {
-        x: getScrollAmount,
-        duration: 3,
-        ease: "none"
-      })
-
-      scroller = $ScrollTrigger.create({
-        trigger: wrapper.value,
-        start: 'top 65px',
-        end: () => `+=${getScrollAmount() * -1}`,
-        pin: true,
-        animation,
-        scrub: 1,
-        invalidateOnRefresh: true,
-        onEnter: unsetDark,
-        onLeaveBack: setDark,
-        onEnterBack: unsetDark,
-        onLeave: unsetDark
-      })
-
-      blockEnter = $gsap.fromTo('.manifesto-chapters .chapter', {
-        y: 100,
-      }, {
-        y: 0,
-        stagger: .25,
-        ease: "Power4.in",
-        duration: 1,
-        scrollTrigger: {
-          trigger: items.value,
-          start: 'top 90%',
-          end: 'top 50%'
-        }
-      })
-    }, wrapper.value)
-  }, 250)
-})
-
-onUnmounted(() => {
-  ctx && ctx.kill()
-})
 </script>
 
 <template>
   <section class="manifesto" ref="wrapper">
-    <h2 class="manifesto-title">
-      2024<br>Manifesto
-    </h2>
     <div class="manifesto-chapters" ref="items">
-      <div class="filler" />
       <div class="manifesto-chapters-grid">
         <HomeManifestoChapter
           v-for="chapter in chapters"
@@ -82,8 +19,8 @@ onUnmounted(() => {
           :chapter="chapter"
           :poster="posters[chapter.slug]"
         />
+        <div class="filler" />
       </div>
-      <div class="filler" />
     </div>
   </section>
 </template>
@@ -91,7 +28,7 @@ onUnmounted(() => {
 <style lang="scss" scoped>
 .manifesto {
   position: relative;
-  overflow: hidden;
+  overflow: auto;
   background: var(--beige);
 
   &-title {
@@ -123,7 +60,7 @@ onUnmounted(() => {
 }
 
 .filler {
-  width: 20vw;
+  width: 0;
   flex-shrink: 0;
 }
 </style>
