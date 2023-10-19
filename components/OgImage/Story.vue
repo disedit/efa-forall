@@ -18,8 +18,8 @@ const props = defineProps({
         </h1>
       </div>
       <div class="story-header">
-        <LogoEfa class="logo-efa" />
-        <LogoForAll class="logo-for-all" />
+        <img src="https://content.forall2024.eu/wp-content/uploads/2023/10/efa.png" alt="" class="logo-efa">
+        <img src="https://content.forall2024.eu/wp-content/uploads/2023/10/for-all.png" alt="" class="logo-for-all">
         <span class="header-title">EU Elections 2024</span>
       </div>
     </div>
@@ -40,7 +40,7 @@ const props = defineProps({
   &-text {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 50%;
   }
 
   &-header {
@@ -64,10 +64,6 @@ const props = defineProps({
       transform: rotate(-8deg);
     }
 
-    svg * {
-      fill: white;
-    }
-
     .header-title {
       margin-left: auto;
       font-size: 1.5rem;
@@ -76,7 +72,7 @@ const props = defineProps({
 
   &-picture {
     display: flex;
-    width: 100%;
+    width: 50%;
 
     img {
       width: 100%;
@@ -91,17 +87,17 @@ const props = defineProps({
     h1 {
       font-family: DM Sans, sans-serif;
       font-weight: 900;
-      font-size: 3.75rem;
+      font-size: 3.5rem;
       color: $secondary;
       line-height: 1.1;
       margin: 0;
-      text-wrap: balance;
       -webkit-line-clamp: 7;
       -webkit-box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
       max-width: 100%;
+      letter-spacing: -0.02em;
     }
   }
 }
