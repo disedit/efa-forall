@@ -51,5 +51,13 @@ export default defineNuxtConfig({
     families: {
       'DM+Sans': [400, 900]
     }
+  },
+
+  experimental: {
+    defaults: {
+      useAsyncData: {
+        deep: false
+      }
+    }
   }
 })
