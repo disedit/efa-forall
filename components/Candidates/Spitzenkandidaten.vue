@@ -53,7 +53,8 @@ onMounted(() => {
   min-height: calc(100vh - var(--navbar-safe-area));
 
   &-cards {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: var(--site-padding);
     margin: auto 0;
   }
@@ -85,7 +86,7 @@ onMounted(() => {
     }
 
     &-cards {
-      flex-direction: column;
+      grid-template-columns: 1fr;
     }
   }
 }
