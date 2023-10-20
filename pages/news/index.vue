@@ -65,7 +65,7 @@ const otherArticles = computed(() => {
       <NewsHeader />
       <NewsHighlights :stories="highlighted" />
     </div>
-    <div class="news-columns p-site">
+    <div class="news-columns p-site pt-0">
       <div class="news-stories">
         <NewsStories :stories="otherArticles" />
         <NewsPagination :page="page" :total-pages="totalPages" :loading="loading" @load="loadMorePosts" />

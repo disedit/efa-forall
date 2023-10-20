@@ -4,10 +4,11 @@ import Rellax from 'rellax'
 const { $gsap } = useNuxtApp()
 
 let rellax
+let mm
 
 onMounted(() => {
   setTimeout(() => {
-    const mm = $gsap.matchMedia()
+    mm = $gsap.matchMedia()
     mm.add("(min-width: 992px)", () => {
       rellax = new Rellax('.block-wrapper')
 
@@ -25,6 +26,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  mm & mm.kill()
   rellax && rellax.destroy()
 })
 </script>

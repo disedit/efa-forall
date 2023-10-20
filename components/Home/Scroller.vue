@@ -12,6 +12,7 @@ const hover = ref(false)
 const items = ref(null)
 const wrapper = ref(null)
 let animations
+let scroller
 
 function getScrollAmount() {
   const width = items.value.scrollWidth
@@ -20,87 +21,86 @@ function getScrollAmount() {
 
 onMounted(() => {
   setTimeout(() => {
-    animations = $gsap.context(() => {
-      const mm = $gsap.matchMedia()
-      mm.add("(min-width: 992px)", () => {
-        /* Horizontal scroll effect */
-        const animation = $gsap.to(items.value, {
-          x: getScrollAmount,
-          duration: 3,
-          ease: "none"
-        })
-
-        $ScrollTrigger.create({
-          trigger: wrapper.value,
-          start: 'top 65px',
-          end: () => `+=${getScrollAmount() * -1}`,
-          pin: true,
-          animation,
-          scrub: 1,
-          invalidateOnRefresh: true,
-          onEnter: () => {
-            unsetDark()
-            const video = document.querySelector('#HomeVideo video')
-            video.pause()
-          },
-          onLeaveBack: setDark,
-          onEnterBack: unsetDark,
-          onLeave: unsetDark
-        })
-
-        /* Reveal animations */
-        const scrollTrigger = {
-          trigger: wrapper.value,
-          start: 'top 35%',
-          end: 'top top'
-        }
-
-        $gsap.fromTo('.home-scroller .for-all', {
-          y: '100%'
-        }, {
-          y: 0,
-          duration: .75,
-          ease: 'expo.out',
-          scrollTrigger
-        })
-
-        $gsap.fromTo('.scroller-chapter .item-title', {
-          y: '120%'
-        }, {
-          y: 0,
-          duration: 1,
-          ease: 'power4.out',
-          stagger: .1,
-          scrollTrigger
-        })
-
-        $gsap.fromTo('.scroller-chapter .item-text', {
-          y: '120%'
-        }, {
-          y: 0,
-          duration: 1,
-          ease: 'power4.out',
-          stagger: .1,
-          delay: .25,
-          scrollTrigger
-        })
-
-        $gsap.fromTo('.scroller-chapter .item-more', {
-          y: '120%'
-        }, {
-          y: 0,
-          duration: 1,
-          delay: .5,
-          ease: 'power4.out',
-          stagger: .1,
-          scrollTrigger
-        })
+    animations = $gsap.matchMedia()
+    animations.add("(min-width: 992px)", () => {
+      /* Horizontal scroll effect */
+      const animation = $gsap.to(items.value, {
+        x: getScrollAmount,
+        duration: 3,
+        ease: "none"
       })
-    }, wrapper.value)
+
+      scroller = $ScrollTrigger.create({
+        trigger: wrapper.value,
+        start: 'top 65px',
+        end: () => `+=${getScrollAmount() * -1}`,
+        pin: true,
+        animation,
+        scrub: 1,
+        invalidateOnRefresh: true,
+        onEnter: () => {
+          unsetDark()
+          const video = document.querySelector('#HomeVideo video')
+          video && video.pause()
+        },
+        onLeaveBack: setDark,
+        onEnterBack: unsetDark,
+        onLeave: unsetDark
+      })
+
+      /* Reveal animations */
+      const scrollTrigger = {
+        trigger: wrapper.value,
+        start: 'top 35%',
+        end: 'top top'
+      }
+
+      $gsap.fromTo('.home-scroller .for-all', {
+        y: '100%'
+      }, {
+        y: 0,
+        duration: .75,
+        ease: 'expo.out',
+        scrollTrigger
+      })
+
+      $gsap.fromTo('.scroller-chapter .item-title', {
+        y: '120%'
+      }, {
+        y: 0,
+        duration: 1,
+        ease: 'power4.out',
+        stagger: .1,
+        scrollTrigger
+      })
+
+      $gsap.fromTo('.scroller-chapter .item-text', {
+        y: '120%'
+      }, {
+        y: 0,
+        duration: 1,
+        ease: 'power4.out',
+        stagger: .1,
+        delay: .25,
+        scrollTrigger
+      })
+
+      $gsap.fromTo('.scroller-chapter .item-more', {
+        y: '120%'
+      }, {
+        y: 0,
+        duration: 1,
+        delay: .5,
+        ease: 'power4.out',
+        stagger: .1,
+        scrollTrigger
+      })
+    })
   }, 250)
 })
 
 onUnmounted(() => {
+  scroller && scroller.kill()
   animations && animations.kill()
 })
 </script>

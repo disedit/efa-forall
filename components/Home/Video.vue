@@ -2,14 +2,14 @@
 const { $gsap } = useNuxtApp()
 const { setDark, unsetDark } = useColorMode()
 
-const animation = ref(null)
 const video = ref(null)
+let mm
 
 onMounted(() => {
   setTimeout(() => {
-    const mm = $gsap.matchMedia()
+    mm = $gsap.matchMedia()
     mm.add("(min-width: 992px)", () => {
-      animation.value = $gsap.fromTo(video.value, {
+      $gsap.fromTo(video.value, {
         margin: 28
       }, {
         margin: 0,
@@ -29,8 +29,8 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  animation.value && animation.value.kill()
-  document.documentElement.classList.remove('dark')
+  mm & mm.kill()
+  unsetDark()
 })
 </script>
 
@@ -76,6 +76,7 @@ onUnmounted(() => {
     top: 0;
     left: 0;
     padding: var(--site-padding);
+    z-index: 10;
   }
 }
 

@@ -9,11 +9,13 @@ const hero = ref(null)
 const europe = ref(null)
 const map = ref(null)
 const title = ref(null)
+let mm
 
 onMounted(() => {
   setTimeout(() => {
-    rellax = new Rellax('.rellax', {
-      breakpoints:[576, 768, 1201]
+    mm = $gsap.matchMedia()
+    mm.add("(min-width: 992px)", () => {
+      rellax = new Rellax('.rellax')
     })
 
     animation = $gsap.context(self => {
@@ -35,6 +37,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  mm & mm.kill()
   animation && animation.kill()
   rellax && rellax.destroy()
 })
@@ -44,7 +47,7 @@ onUnmounted(() => {
   <section class="hero p-site" ref="hero">
     <h1 class="hero-title" ref="title">
       <div class="visually-hidden">We are looking for a new Europe for all</div>
-      <div aria-hidden="true" class="rellax" data-rellax-xs-speed="-5">
+      <div aria-hidden="true" class="rellax" data-rellax-speed="-5">
         <AnimatedHomeText text="WE ARE LOOKING" :speed="100" :delay="250" />
         <AnimatedHomeText text="FOR A NEW EUROPE" :delay="14 * 100 + 500" />
         <AnimatedHomeText text="FOR" ends-in-logo class="highlight" :delay="14 * 100 + 16 * 75 + 500" :speed="180" />
@@ -81,7 +84,7 @@ onUnmounted(() => {
     right: 0;
     top: 0;
     bottom: 0;
-    width: 50vw;
+    left: 0;
     z-index: -1;
 
     &-europe {
@@ -97,14 +100,6 @@ onUnmounted(() => {
   }
 }
 
-@include media('<xxl') {
-  .hero {
-    &-map {
-      width: 80vw;
-    }
-  }
-}
-
 @include media('<lg') {
   .hero {
     height: calc(100vh - var(--navbar-safe-area));
@@ -113,15 +108,16 @@ onUnmounted(() => {
     padding-top: 2rem;
 
     &-title {
-      font-size: 2.75rem;
+      font-size: calc(2.75rem + 1.5vh);
       transform: scale(.8);
     }
 
     &-map {
-      width: 100%;
+      overflow: hidden;
 
       &-europe {
-        background-position: right bottom;
+        background-position: left bottom;
+        background-size: cover;
         transform: scale(.95);
       }
     }
@@ -131,9 +127,8 @@ onUnmounted(() => {
 @include media('<md') {
   .hero {
     &-map {
-      width: 90%;
-
       &-europe {
+        transform: translateX(5%) !important;
         background-position: left bottom;
       }
     }

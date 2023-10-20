@@ -16,7 +16,7 @@ const wrapper = ref(null)
 let scroller
 let animation
 let blockEnter
-let ctx
+let mm
 
 function getScrollAmount() {
   const width = items.value.scrollWidth
@@ -25,49 +25,47 @@ function getScrollAmount() {
 
 onMounted(() => {
   setTimeout(() => {
-    ctx = $gsap.context(() => {
-      const mm = $gsap.matchMedia()
-      mm.add("(min-width: 992px)", () => {
-        animation = $gsap.to(items.value, {
-          x: getScrollAmount,
-          duration: 3,
-          ease: "none"
-        })
-
-        scroller = $ScrollTrigger.create({
-          trigger: wrapper.value,
-          start: 'top 65px',
-          end: () => `+=${getScrollAmount() * -1}`,
-          pin: true,
-          animation,
-          scrub: 1,
-          invalidateOnRefresh: true,
-          onEnter: unsetDark,
-          onLeaveBack: setDark,
-          onEnterBack: unsetDark,
-          onLeave: unsetDark
-        })
-
-        blockEnter = $gsap.fromTo('.manifesto-chapters .chapter', {
-          y: 100,
-        }, {
-          y: 0,
-          stagger: .25,
-          ease: "Power4.in",
-          duration: 1,
-          scrollTrigger: {
-            trigger: items.value,
-            start: 'top 90%',
-            end: 'top 50%'
-          }
-        })
+    mm = $gsap.matchMedia()
+    mm.add("(min-width: 992px)", () => {
+      animation = $gsap.to(items.value, {
+        x: getScrollAmount,
+        duration: 3,
+        ease: "none"
       })
-    }, wrapper.value)
+
+      scroller = $ScrollTrigger.create({
+        trigger: wrapper.value,
+        start: 'top 65px',
+        end: () => `+=${getScrollAmount() * -1}`,
+        pin: true,
+        animation,
+        scrub: 1,
+        invalidateOnRefresh: true,
+        onEnter: unsetDark,
+        onLeaveBack: setDark,
+        onEnterBack: unsetDark,
+        onLeave: unsetDark
+      })
+
+      blockEnter = $gsap.fromTo('.manifesto-chapters .chapter', {
+        y: 100,
+      }, {
+        y: 0,
+        stagger: .25,
+        ease: "Power4.in",
+        duration: 1,
+        scrollTrigger: {
+          trigger: items.value,
+          start: 'top 90%',
+          end: 'top 50%'
+        }
+      })
+    })
   }, 250)
 })
 
 onUnmounted(() => {
-  ctx && ctx.kill()
+  mm && mm.kill()
 })
 </script>
 
