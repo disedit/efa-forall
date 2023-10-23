@@ -50,12 +50,6 @@ defineProps({
         background: var(--color);
         color: var(--white);
       }
-
-      &:active,
-      &.router-link-exact-active:hover {
-        background: var(--black);
-        color: var(--white);
-      }
     }
   }
 }

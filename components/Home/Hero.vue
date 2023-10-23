@@ -108,7 +108,7 @@ onUnmounted(() => {
     padding-top: 2rem;
 
     &-title {
-      font-size: calc(2.75rem + 1.5vh);
+      font-size: 2.75rem;
       transform: scale(.8);
     }
 
@@ -128,7 +128,8 @@ onUnmounted(() => {
   .hero {
     &-map {
       &-europe {
-        transform: translateX(5%) !important;
+        position: relative;
+        right: -5%;
         background-position: left bottom;
       }
     }

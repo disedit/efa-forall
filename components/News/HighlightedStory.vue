@@ -32,7 +32,7 @@ const { thumbnail, category, date } = useStory(story, 'large')
 <style lang="scss" scoped>
 .story {
   display: flex;
-  min-height: calc(100vh - 360px);
+  min-height: calc(100vh - var(--headline-page) * 0.9 - var(--navbar-safe-area) - 8.75rem);
 
   &-header {
     display: flex;
@@ -116,6 +116,14 @@ const { thumbnail, category, date } = useStory(story, 'large')
         position: relative;
         z-index: 10;
       }
+    }
+  }
+}
+
+@include media('>lg', '<xxl') {
+  .story {
+    &-excerpt {
+      font-size: var(--text-sm);
     }
   }
 }

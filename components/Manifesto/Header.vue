@@ -28,7 +28,7 @@ defineProps({
 
     <template #aside>
       <div class="for-all-circle ml-auto p-site">
-        <LogoForAllBig />
+        <LogoForAll />
       </div>
     </template>
   </SitePageHeader>
@@ -45,14 +45,20 @@ defineProps({
   }
 
   .for-all-circle {
-  color: var(--primary);
-  transition: .3s ease;
-
-  svg {
-    height: 100%;
+    position: relative;
+    color: var(--primary);
+    transition: .3s ease;
     width: 100%;
+
+    svg {
+      width: 27vw;
+      height: 27vw;
+      position: absolute;
+      bottom: 2vw;
+      right: 2vw;
+      transform: rotate(-8deg);
+    }
   }
-}
 }
 
 .compact {

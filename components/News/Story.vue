@@ -30,7 +30,7 @@ const { thumbnail, category, date } = useStory(story)
     display: grid;
     color: var(--text-color);
     text-decoration: none;
-    grid-template-columns: minmax(200px, 15vw) var(--date-size, 180px) 1fr auto;
+    grid-template-columns: minmax(200px, 15vw) var(--date-size, 155px) 1fr auto;
     grid-template-areas: "thumbnail date title category";
     gap: var(--site-padding-sm);
     transition: .25s ease;
@@ -67,12 +67,14 @@ const { thumbnail, category, date } = useStory(story)
     grid-area: date;
     color: var(--muted);
     padding-top: var(--site-padding-sm);
+    font-size: var(--text-sm);
   }
 
   &-category {
     grid-area: category;
     padding-top: var(--site-padding-sm);
     padding-right: var(--site-padding-sm);
+    font-size: var(--text-sm);
   }
 
   &-thumbnail {
@@ -133,7 +135,7 @@ const { thumbnail, category, date } = useStory(story)
 
 @include media('>lg', '<xxl') {
   .story {
-    --date-size: 120px;
+    --date-size: 140px;
     
     a {
       min-height: 22vh;
@@ -155,7 +157,8 @@ const { thumbnail, category, date } = useStory(story)
 }
 
 @media (hover: none) {
-  .story a:hover {
+  .story a:hover,
+  .story a:active {
     background: transparent;
     color: var(--black);
   }
