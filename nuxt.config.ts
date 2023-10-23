@@ -45,7 +45,7 @@ export default defineNuxtConfig({
     }
   },
 
-  modules: ['@nuxtjs/google-fonts'],
+  modules: ['@nuxtjs/google-fonts', 'nuxt-og-image'],
 
   googleFonts: {
     families: {
@@ -59,5 +59,11 @@ export default defineNuxtConfig({
         deep: false
       }
     }
+  },
+
+  ogImage: {
+    fonts: [
+      'DM+Sans:900'
+    ],
   }
 })
