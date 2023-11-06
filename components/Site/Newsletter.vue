@@ -1,10 +1,17 @@
 <template>
-  <form class="newsletter p-site">
+  <form
+    class="newsletter p-site validate"
+    action="https://e-f-a.us18.list-manage.com/subscribe/post?u=ac6d425391adfe5b91b4c11c5&amp;id=02445d05b4&amp;f_id=007e8ce6f0"
+    method="post"
+    id="mc-embedded-subscribe-form"
+    name="mc-embedded-subscribe-form"
+    target="_self"
+  >
     <p class="newsletter-title headline-font">
       Keep up <br> to date
     </p>
 
-    <div class="newsletter-form" action="">
+    <div class="newsletter-form">
       <label for="newsletter_email">Your e-mail</label>
       <input
         id="newsletter_email"
@@ -17,9 +24,10 @@
         <label class="checkbox-label">
           <input
             type="checkbox"
-            name="policy"
-            value="true"
+            name="MMERGE3"
+            value="I have read and agree to the Terms and Conditions."
             class="checkbox-input"
+            required
           />
           <span>
             I have read and agree to the
@@ -29,9 +37,12 @@
           </span>
         </label>
       </div>
+      <div aria-hidden="true" style="position: absolute; left: -5000px;">
+          <input type="text" name="b_ac6d425391adfe5b91b4c11c5_02445d05b4" tabindex="-1" value="">
+      </div>
     </div>
     <div class="newsletter-button">
-      <button type="submit" class="button button-lg">Subscribe</button>
+      <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button button-lg" value="Subscribe">
     </div>
   </form>
 </template>
