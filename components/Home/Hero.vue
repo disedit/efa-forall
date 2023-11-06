@@ -48,9 +48,9 @@ onUnmounted(() => {
     <h1 class="hero-title" ref="title">
       <div class="visually-hidden">We are looking for a new Europe for all</div>
       <div aria-hidden="true" class="rellax" data-rellax-speed="-5">
-        <AnimatedHomeText text="WE ARE LOOKING" :speed="100" :delay="250" />
-        <AnimatedHomeText text="FOR A NEW EUROPE" :delay="14 * 100 + 500" />
-        <AnimatedHomeText text="FOR" ends-in-logo class="highlight" :delay="14 * 100 + 16 * 75 + 500" :speed="180" />
+        <AnimatedHomeText text="WE BELIEVE" :speed="100" :delay="250" />
+        <AnimatedHomeText text="IN A EUROPE" :delay="10 * 100 + 500" />
+        <AnimatedHomeText text="FOR" ends-in-logo class="highlight" :delay="10 * 100 + 11 * 75 + 500" :speed="180" />
       </div>
     </h1>
     <div class="hero-map rellax" ref="map" data-rellax-speed="-10">
