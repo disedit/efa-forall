@@ -19,18 +19,20 @@ onMounted(() => {
     })
 
     animation = $gsap.context(self => {
+      const delay = 3.25
+
       $gsap.to(title.value, {
         scale: 1,
         duration: .75,
         ease: 'power4.out',
-        delay: 4
+        delay
       })
       
       $gsap.to(europe.value, {
         scale: 1,
         duration: .75,
         ease: 'power4.out',
-        delay: 4
+        delay
       })
     }, hero.value)
   }, 500)
