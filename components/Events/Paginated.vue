@@ -35,7 +35,7 @@ const limitedEvents = computed(() => {
 <style lang="scss" scoped>
 .events-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
   @include border-top;
   @include border-left;
   grid-auto-flow: dense;

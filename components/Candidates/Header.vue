@@ -32,12 +32,13 @@ defineProps({
 
 <style lang="scss" scoped>
 .spitzenkandidaten-photo {
+  display: flex;
   @include border-left;
 
   img {
     display: block;
     width: 100%;
-    height: 100%;
+    height: calc(100svh - var(--navbar-safe-area));
     object-fit: cover;
   }
 }
@@ -47,9 +48,9 @@ defineProps({
 }
 
 .page-header.candidates-header {
-  grid-template-columns: 1fr 1fr;
-  height: calc(100vh - var(--navbar-safe-area));
-  height: calc(100svh - var(--navbar-safe-area));
+  grid-template-columns: 1fr auto;
+  min-height: calc(100vh - var(--navbar-safe-area));
+  min-height: calc(100svh - var(--navbar-safe-area));
 }
 
 @include media('<lg') {
@@ -59,6 +60,10 @@ defineProps({
     :deep(.heading h2) {
       font-size: 3.75rem;
     }
+  }
+
+  .spitzenkandidaten-photo img {
+    height: auto;
   }
 }
 </style>

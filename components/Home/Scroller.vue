@@ -6,7 +6,7 @@ defineProps({
   }
 })
 
-const { $gsap, $ScrollTrigger } = useNuxtApp()
+const { $gsap, $ScrollTrigger, $emitter } = useNuxtApp()
 const { setDark, unsetDark } = useColorMode()
 const hover = ref(false)
 const items = ref(null)
@@ -40,8 +40,7 @@ onMounted(() => {
         invalidateOnRefresh: true,
         onEnter: () => {
           unsetDark()
-          const video = document.querySelector('#HomeVideo video')
-          video && video.pause()
+          $emitter.emit('video:pause', 'HomeVideo')
         },
         onLeaveBack: setDark,
         onEnterBack: unsetDark,

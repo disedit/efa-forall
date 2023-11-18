@@ -59,13 +59,16 @@ useHead({ title })
         <NewsCategory :category="category" />
       </template>
     </SitePageHeader>
-    <div class="story-picture" v-if="thumbnail">
+    <div :class="['story-picture', { 'contain': story.acf?.constrain_picture }]" v-if="thumbnail && !story.acf?.picture_in_text">
       <img :src="thumbnail.src" :alt="thumbnail.alt">
     </div>
     <div class="story-page">
       <article class="story p-site">
         <div class="story-date">{{ date }}</div>
         <h1 class="story-title" v-html="story.title.rendered" />
+        <div class="story-inline-picture" v-if="thumbnail && story.acf?.picture_in_text">
+          <img :src="thumbnail.src" :alt="thumbnail.alt">
+        </div>
         <div class="story-text" v-html="story.content.rendered" />
       </article>
       <aside class="aside p-site">
@@ -102,6 +105,15 @@ useHead({ title })
       height: 50vh;
       object-fit: cover;
     }
+
+    &.contain {
+      background-image: url(~/assets/images/tile.svg);
+      background-size: 100px;
+
+      img {
+        object-fit: contain;
+      }
+    }
   }
 
   &-date {
@@ -120,6 +132,14 @@ useHead({ title })
     line-height: 1.5;
     max-width: 60ch;
     hyphens: auto;
+  }
+
+  &-inline-picture {
+    img {
+      width: 100%;
+      max-width: 60ch;
+      @include border;
+    }
   }
 }
 

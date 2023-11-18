@@ -57,6 +57,12 @@ const socialLinks = computed(() => socials.split("\r\n").map(item => {
     --accent: var(--primary);
   }
 
+  p::selection,
+  p::-moz-selection {
+    color: var(--white);
+    background: var(--secondary);
+  }
+
   &-picture {
     grid-area: picture;
 

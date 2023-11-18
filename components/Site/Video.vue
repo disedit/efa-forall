@@ -1,11 +1,43 @@
 <script setup>
-defineProps({
-  video: { type: String, required: true },
-  poster: { type: String, required: true }
+const props = defineProps({
+  id: { type: String, default: null },
+  video: { type: [String, Object], required: true },
+  poster: { type: [String, Object],  default: null },
+  showTime: { type: Boolean, default: false },
+  fit: { type: String, default: 'contain '}
 })
 
+const { $emitter } = useNuxtApp()
+const breakpoints = useBreakpoints({
+  mobile: 0,
+  desktop: 992
+})
+const breakpoint = computed(() => {
+  const currentBreakpoints =  breakpoints.current()
+  if (!currentBreakpoints.value.length) return 'desktop'
+  return currentBreakpoints.value[currentBreakpoints.value.length - 1]
+})
 const playing = ref(false)
 const player = ref(null)
+const currentTime = ref(0)
+const duration = ref(0)
+const showControls = ref(false)
+
+onMounted(() => {
+  duration.value = player.value.duration
+
+  $emitter.on('video:pause', (id) => {
+    if (id === props.id) {
+      pauseVideo()
+    }
+  })
+})
+
+watch(breakpoint, () => {
+  currentTime.value = player.value.currentTime
+  duration.value = player.value.duration
+  player.value.load()
+})
 
 function playVideo () {
   playing.value = true
@@ -25,31 +57,59 @@ function togglePlay () {
   }
 }
 
+function onLoadedMetadata() {
+  player.value.currentTime = currentTime.value
+  if (playing.value) {
+    player.value.play()
+  }
+}
+
 /* Video controls */
 const time = ref(0)
 function onTimeUpdate (event) {
   time.value = event.target.currentTime
 }
 
-function convertTimeToDuration (seconds) {
-  return [parseInt((seconds / 60) % 60, 10), parseInt(seconds % 60, 10)]
-    .join(":")
-    .replace(/\b(\d)\b/g, "0$1");
-}
+/* Sources */
+const videoSource = computed(() => {
+  if (typeof props.video === 'object') {
+    return props.video[breakpoint.value]
+  }
+
+  return props.video
+})
+
+const videoPoster = computed(() => {
+  if (props.poster && typeof props.poster === 'object') {
+    return props.poster[breakpoint.value]
+  }
+
+  return props.poster
+})
 </script>
 
 <template>
-  <div class="video-player">
+  <div class="video-player" :id="id">
+    <Transition name="slide">
+      <div v-if="!playing" class="video-title">
+        <slot />
+      </div>
+    </Transition>
     <video
-      :src="video"
-      :poster="poster"
-      playsinline
       ref="player"
+      :src="videoSource"
+      :poster="videoPoster"
+      playsinline
+      :controls="showControls"
       @timeupdate="onTimeUpdate"
-      @click="pauseVideo"
-      class="video">
+      @click="!showControls ?  pauseVideo() : null"
+      @loadedmetadata="onLoadedMetadata"
+      @pause="playing = false"
+      @play="playing = true"
+      class="video"
+      :style="{ objectFit: fit }">
     </video>
-    <Transition name="page">
+    <Transition name="video">
       <button
         v-if="!playing"
         class="video-button"
@@ -58,25 +118,41 @@ function convertTimeToDuration (seconds) {
         <IconPlay class="icon" />
       </button>
     </Transition>
-    <div class="video-controls">
-      <span style="color:yellow">WIP</span>
-      <button @click="togglePlay">Play/Pause</button>
-      {{ convertTimeToDuration(time) }}
-    </div>
+    <Transition name="slide">
+      <SiteVideoControls
+        v-if="playing && !showControls"
+        :time="time"
+        :duration="duration"
+        :show-time="showTime"
+        @toggle-play="togglePlay"
+        @show-controls="showControls = true" />
+    </Transition>
   </div>
 </template>
 
 <style lang="scss" scoped>
   .video-player {
     position: relative;
+    overflow: hidden;
   }
 
   .video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
+    display: block;
     height: 100%;
-    object-fit: cover;
+    width: 100%;
+
+    &-title {
+      color: var(--white);
+      font-family: var(--base-font);
+      font-size: var(--text-xl);
+      text-transform: unset;
+      font-weight: 400;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: var(--site-padding);
+      z-index: 10;
+    }
   }
 
   .video-button {
@@ -102,13 +178,28 @@ function convertTimeToDuration (seconds) {
     }
   }
 
-  .video-controls {
-    position: absolute;
-    left: var(--site-padding);
-    bottom: var(--site-padding);
-    max-width: 50%;
-    width: 400px;
-    background: rgba($black, .75);
-    padding: var(--site-padding-sm);
+  .video-enter-active,
+  .video-leave-active {
+    transition: all 0.25s;
+
+    .icon {
+      transition: all 0.25s;
+    }
+  }
+  .video-enter-from,
+  .video-leave-to {
+    opacity: 0;
+
+    .icon {
+      opacity: 0;
+      transform: translateY(20%);
+    }
+  }
+
+  @include media('<lg') {
+    .video-button .icon {
+      width: 20vw;
+      height: 20vw;
+    }
   }
 </style>

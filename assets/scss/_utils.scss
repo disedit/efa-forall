@@ -113,25 +113,33 @@
 }
 
 .d-none {
-  display: none;
+  display: none !important;
 }
 
 @include media('>md') {
   .d-md-none {
-    display: none;
+    display: none !important;
   }
 
   .d-md-block {
-    display: block;
+    display: block !important;
+  }
+
+  .d-md-flex {
+    display: flex !important;
   }
 }
 
 @include media('>lg') {
   .d-lg-none {
-    display: none;
+    display: none !important;
   }
 
   .d-lg-block {
-    display: block;
+    display: block !important;
+  }
+
+  .d-lg-flex {
+    display: flex !important;
   }
 }

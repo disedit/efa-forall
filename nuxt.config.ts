@@ -45,7 +45,11 @@ export default defineNuxtConfig({
     }
   },
 
-  modules: ['@nuxtjs/google-fonts', 'nuxt-og-image'],
+  modules: [
+    '@nuxtjs/google-fonts',
+    'nuxt-og-image',
+    '@vueuse/nuxt'
+  ],
 
   googleFonts: {
     families: {

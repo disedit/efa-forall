@@ -24,8 +24,7 @@ defineProps({
           <strong>defend</strong><br>
           these ideas?
         </h2>
-        <div class="candidates-picture p-site">
-        </div>
+        <div class="candidates-picture" />
         <AnimatedArrowLink class="candidates-link">
           Meet our candidates
         </AnimatedArrowLink>
@@ -96,7 +95,9 @@ defineProps({
     display: flex;
     height: 100%;
     @include border-right;
-    background: gray;
+    background-image: url(https://content.forall2024.eu/wp-content/uploads/2023/11/big-one-square-min-1024x1024.png);
+    background-size: cover;
+    background-position: center;
   }
 
   &-link {

@@ -85,6 +85,10 @@ onMounted(() => {
       line-height: 1;
     }
 
+    p {
+      margin-bottom: 3rem;
+    }
+
     &-cards {
       grid-template-columns: 1fr;
     }

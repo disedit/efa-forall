@@ -17,10 +17,19 @@ function formatTime (eventDate) {
   const { time } = useDate(eventDate)
   return time
 }
+
+const tag = computed(() => {
+  return event.acf.button_link ? 'a' : 'div'
+})
 </script>
 
 <template>
-  <article :class="['event', 'p-site', { 'event-has-picture': hasPicture }]">
+  <Component
+    :is="tag"
+    :class="['event', 'p-site', { 'event-has-picture': hasPicture }]"
+    :href="event.acf.button_link"
+    target="_blank"
+    rel="noopener noreferer">
     <div class="event-picture" v-if="hasPicture">
       <img :src="event.acf.picture.sizes.medium_large" :alt="event.acf.picture.alt" />
     </div>
@@ -28,7 +37,7 @@ function formatTime (eventDate) {
       <span class="event-date">
         {{ formatDate(event.acf.date) }}
       </span>
-      <time :datetime="event.acf.date" class="event-time">
+      <time :datetime="event.acf.date" class="event-time" v-if="!event.acf.hide_time">
         {{ formatTime(event.acf.date) }}
       </time>
     </div>
@@ -41,6 +50,9 @@ function formatTime (eventDate) {
         <div class="event-venue">
           {{ event.acf.venue }}
         </div>
+        <div class="event-address" v-if="event.acf.address">
+          {{ event.acf.address }}
+        </div>
         <div class="event-municipality">
           {{ event.acf.municipality }}
         </div>
@@ -49,16 +61,12 @@ function formatTime (eventDate) {
         </div>
       </div>
       <div class="event-button" v-if="event.acf.button_link">
-        <a
-          :href="event.acf.button_link"
-          target="_blank"
-          rel="noopener noreferer"
-          class="button button-lg">
+        <span class="button button-lg">
           {{ event.acf.button_text }}
-        </a>
+        </span>
       </div>
     </div>
-  </article>
+  </Component>
 </template>
 
 <style lang="scss" scoped>
@@ -73,6 +81,12 @@ function formatTime (eventDate) {
   @include border-right;
   @include border-bottom;
   transition: .25s ease;
+  text-decoration: none;
+  color: var(--text-color);
+
+  &-wrapper {
+    display: block;
+  }
 
   &-datetime {
     grid-area: datetime;
@@ -93,6 +107,15 @@ function formatTime (eventDate) {
   &-info {
     grid-area: info;
     margin: 0;
+  }
+
+  &-address {
+    font-size: var(--text-sm);
+    opacity: .75;
+  }
+
+  &-municipality {
+    margin-top: .5rem;
   }
 
   &-footer {

@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-  <SitePageHeader>
+  <SitePageHeader class="about-header">
     <template #title>
       About us
     </template>
@@ -18,30 +18,37 @@ defineProps({
     </template>
 
     <template #subheading>
-      {{ fields.subheading }}
+      <div v-html="fields.subheading" />
     </template>
 
     <template #aside>
-      <div class="video">
-        <SiteVideo
-          video="/video/placeholder.mp4"
-          poster="https://tenproposals.e-f-a.org/images/proposals/2.jpg"
-        />
-      </div>
+      <SiteVideo video="/video/about.mp4" class="about-video" fit="cover" />
     </template>
   </SitePageHeader>
 </template>
 
 <style lang="scss" scoped>
-.video {
-  display: flex;
-  width: 100%;
-  @include border-left;
+.about-header {
+  min-height: calc(100vh - var(--navbar-safe-area)) !important;
+  min-height: calc(100svh - var(--navbar-safe-area)) !important;
 
-  .video-player {
-    height: 100%;
-    width: 100%;
+  :deep(.heading p) {
+    font-size: var(--text-lg);
+    line-height: 1.5;
   }
+}
+
+.about-video {
+  @include border-left;
+  margin-left: auto;
+  height: calc(100vh - var(--navbar-safe-area));
+  height: calc(100svh - var(--navbar-safe-area));
+  display: flex;
+  position: sticky;
+  top: var(--navbar-safe-area);
+  background-image: url(~/assets/images/tile.svg);
+  background-size: 100px;
+  background-position: center;
 }
 
 @include media('<lg') {
@@ -53,12 +60,13 @@ defineProps({
     }
   }
 
-  .video {
+  .about-video {
     @include border-top;
     border-left: 0;
+    width: 100%;
 
-    .video-player {
-      aspect-ratio: 16 / 9;
+    :deep(.video) {
+      object-fit: contain !important;
     }
   }
 }

@@ -1,9 +1,17 @@
 <script setup>
 const { $gsap } = useNuxtApp()
 const { setDark, unsetDark } = useColorMode()
+const sources = {
+  desktop: '/video/for-all-169.mp4',
+  mobile: '/video/for-all-916.mp4'
+}
+const posters = {
+  desktop: '/video/for-all-169.jpg',
+  mobile: '/video/for-all-916.jpg'
+}
 
 const video = ref(null)
-let mm
+let mm = null
 
 onMounted(() => {
   setTimeout(() => {
@@ -29,7 +37,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  mm & mm.kill()
+  mm && mm.kill()
   unsetDark()
 })
 </script>
@@ -37,14 +45,13 @@ onUnmounted(() => {
 <template>
   <section class="video" ref="video">
     <div class="video-wrapper">
-      <h2 class="video-title">
-        Video<br>title
-      </h2>
       <SiteVideo
         id="HomeVideo"
-        video="/video/placeholder.mp4"
-        poster="https://tenproposals.e-f-a.org/images/proposals/2.jpg"
-        class="video-player" />
+        :video="sources"
+        :poster="posters"
+        class="video-player">
+        A Europe<br />For All
+      </SiteVideo>
     </div>
   </section>
 </template>
@@ -58,25 +65,17 @@ onUnmounted(() => {
   &-wrapper {
     position: sticky;
     top: var(--navbar-safe-area);
-    padding: var(--site-padding);
+    height: calc(100vh - var(--navbar-safe-area));
+    display: flex;
+    align-items: center;
   }
 
   &-player {
-    aspect-ratio: 16 / 9;
-    max-height: calc(100vh - var(--navbar-safe-area) - var(--site-padding) * 2);
+    height: 100%;
+    width: 100%;
     margin: 0 auto;
-  }
-
-  &-title {
-    color: var(--white);
-    font-family: var(--base-font);
-    text-transform: unset;
-    font-weight: 400;
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: var(--site-padding);
-    z-index: 10;
+    display: flex;
+    align-items: center;
   }
 }
 
