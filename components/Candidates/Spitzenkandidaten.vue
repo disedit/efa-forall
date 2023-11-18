@@ -7,6 +7,8 @@ defineProps({
 })
 
 const { $gsap } = useNuxtApp()
+const { y } = useWindowScroll()
+const spitzenkandidaten = ref(null)
 
 onMounted(() => {
   setTimeout(() => {
@@ -26,11 +28,17 @@ onMounted(() => {
       }
     })
   }, 500)
+
+  setTimeout(() => {
+    if (y.value === 0) {
+      y.value = spitzenkandidaten.value.getBoundingClientRect().top - 65
+    }
+  }, 5000)
 })
 </script>
 
 <template>
-  <section class="spitzenkandidaten p-site">
+  <section class="spitzenkandidaten p-site" ref="spitzenkandidaten">
     <h2>Spitzen<wbr>kandidaten</h2>
     <p>{{ candidates.subheading }}</p>
     <div class="spitzenkandidaten-cards">

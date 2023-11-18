@@ -15,7 +15,12 @@ defineProps({
 <template>
   <SitePageHeader :class="['manifesto-header', { compact }]">
     <template #title>
-      <nuxt-link to="/manifesto" class="link-black-to-underlined">Manifesto</nuxt-link>
+        <NuxtLink to="/manifesto" class="manifesto-link link-black-to-underlined">
+          <span class="icon-holder">
+            <IconChevLeft class="icon" />
+          </span>
+          Manifesto
+        </NuxtLink>
     </template>
 
     <template #heading>
@@ -59,6 +64,28 @@ defineProps({
       transform: rotate(-8deg);
     }
   }
+}
+
+.manifesto-link {
+  display: flex;
+  align-items: center;
+
+  .icon {
+    height: .8em;
+    width: .8em;
+    transform: translateY(-.02em);
+  }
+
+  .icon-holder {
+    width: 0;
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: width .25s ease;
+  }
+}
+
+.manifesto-single .icon-holder {
+  width: 1.25em;
 }
 
 .compact {
