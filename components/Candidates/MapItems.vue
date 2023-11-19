@@ -73,8 +73,11 @@ function scrollIntoView(id, shouldFocus) {
           tabindex="-1"
         >
           <div class="name">
-            <span v-if="candidate.party">
-              {{ parties[candidate.party].title.rendered }}
+            <span v-if="candidate.party && parties[candidate.party]?.acf?.short_name">
+              {{ parties[candidate.party]?.acf?.short_name }}
+            </span>
+            <span v-else-if="candidate.party">
+              {{ parties[candidate.party]?.title?.rendered }}
             </span>
             <span v-else>
               {{ candidate.name }}
@@ -109,6 +112,7 @@ function scrollIntoView(id, shouldFocus) {
   &:focus-visible {
     border: 2px var(--black) solid;
     transform: scale(1.5);
+    z-index: 100;
 
     .name {
       opacity: 1;

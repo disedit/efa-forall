@@ -14,6 +14,7 @@ const { data: candidates } = await useAsyncData(
     .param('orderby', 'title')
     .param('order', 'asc')
     .param('acf_format', 'standard')
+    .perPage(50)
 )
 
 const { data: partiesData } = await useAsyncData(
@@ -21,6 +22,7 @@ const { data: partiesData } = await useAsyncData(
   () => $wp.parties()
     .param('_fields', 'id,title,acf')
     .param('acf_format', 'standard')
+    .perPage(50)
 )
 
 const parties = computed(() => {
