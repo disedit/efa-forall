@@ -4,26 +4,22 @@ const props = defineProps({
   video: { type: [String, Object], required: true },
   poster: { type: [String, Object],  default: null },
   showTime: { type: Boolean, default: false },
-  fit: { type: String, default: 'contain '}
+  fit: { type: String, default: null }
 })
 
 const { $emitter } = useNuxtApp()
-const breakpoints = useBreakpoints({
-  mobile: 0,
-  desktop: 992
-})
-const breakpoint = computed(() => {
-  const currentBreakpoints =  breakpoints.current()
-  if (!currentBreakpoints.value.length) return 'desktop'
-  return currentBreakpoints.value[currentBreakpoints.value.length - 1]
-})
-const playing = ref(false)
+
+const breakpoint = ref('desktop')
 const player = ref(null)
-const currentTime = ref(0)
+const playing = ref(false)
+const time = ref(0) // Updated every second
+const lastCurrentTime = ref(0) // Updated on breakpoint changes
 const duration = ref(0)
 const showControls = ref(false)
 
 onMounted(() => {
+  updateBreakpoint()
+  window.addEventListener('resize', updateBreakpoint)
   duration.value = player.value.duration
 
   $emitter.on('video:pause', (id) => {
@@ -31,17 +27,37 @@ onMounted(() => {
       pauseVideo()
     }
   })
+
+  $emitter.on('video:play', (id) => {
+    if (id === props.id) {
+      playVideo()
+    }
+  })
 })
 
+onUnmounted(() => {
+  window.removeEventListener('resize', updateBreakpoint)
+})
+
+/* Breakpoint control */
 watch(breakpoint, () => {
-  currentTime.value = player.value.currentTime
+  lastCurrentTime.value = player.value.currentTime
   duration.value = player.value.duration
   player.value.load()
 })
 
-function playVideo () {
-  playing.value = true
-  player.value.play()
+function updateBreakpoint ()  {
+  breakpoint.value = window.innerWidth < 992 ? 'mobile' : 'desktop'
+}
+
+/* Video controls */
+async function playVideo () {
+  try {
+    await player.value.play()
+    playing.value = true
+  } catch(e) {
+    playing.value = false
+  }
 }
 
 function pauseVideo () {
@@ -58,33 +74,36 @@ function togglePlay () {
 }
 
 function onLoadedMetadata() {
-  player.value.currentTime = currentTime.value
+  player.value.currentTime = lastCurrentTime.value
   if (playing.value) {
     player.value.play()
   }
 }
 
-/* Video controls */
-const time = ref(0)
 function onTimeUpdate (event) {
   time.value = event.target.currentTime
 }
 
 /* Sources */
-const videoSource = computed(() => {
-  if (typeof props.video === 'object') {
-    return props.video[breakpoint.value]
+const videoSources = computed(() => {
+  if (typeof props.video !== 'object') {
+    return { mobile: props.video, desktop: props.video }
   }
 
   return props.video
 })
 
-const videoPoster = computed(() => {
-  if (props.poster && typeof props.poster === 'object') {
-    return props.poster[breakpoint.value]
+const videoPosters = computed(() => {
+  if (typeof props.poster !== 'object') {
+    return { mobile: props.poster, desktop: props.poster }
   }
 
   return props.poster
+})
+
+const objectFit = computed(() => {
+  if (props.fit) return props.fit
+  return breakpoint.value === 'mobile' ? 'cover' : 'contain'
 })
 </script>
 
@@ -97,8 +116,8 @@ const videoPoster = computed(() => {
     </Transition>
     <video
       ref="player"
-      :src="videoSource"
-      :poster="videoPoster"
+      :src="videoSources[breakpoint]"
+      :poster="videoPosters[breakpoint]"
       playsinline
       :controls="showControls"
       @timeupdate="onTimeUpdate"
@@ -107,7 +126,7 @@ const videoPoster = computed(() => {
       @pause="playing = false"
       @play="playing = true"
       class="video"
-      :style="{ objectFit: fit }">
+      :style="{ objectFit }">
     </video>
     <Transition name="video">
       <button

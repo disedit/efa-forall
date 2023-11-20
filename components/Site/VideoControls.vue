@@ -23,6 +23,7 @@ function width(seconds) {
       </button>
       <span class="time" v-if="showTime">
         {{ human(time) }}
+        <span class="total-time">/ {{ human(duration) }}</span>
       </span>
       <button @click="$emit('showControls')" title="Show more controls" class="controls">
         <IconSlider class="icon" />
@@ -66,6 +67,10 @@ function width(seconds) {
   .time {
     font-variant-numeric: tabular-nums;
     transform: translateY(-.1em);
+    
+    .total-time {
+      opacity: .5;
+    }
   }
 }
 
