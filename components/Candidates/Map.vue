@@ -47,7 +47,7 @@ defineProps({
     h2 {
       font-size: var(--headline-chapter);
       line-height: .9;
-      max-width: 300px;
+      max-width: 320px;
       margin: 0;
     }
 
