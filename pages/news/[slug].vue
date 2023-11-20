@@ -69,7 +69,7 @@ useHead({ title })
         <div class="story-inline-picture" v-if="thumbnail && story.acf?.picture_in_text">
           <img :src="thumbnail.src" :alt="thumbnail.alt">
         </div>
-        <div class="story-text" v-html="story.content.rendered" />
+        <div class="story-text links-in-text" v-html="story.content.rendered" />
       </article>
       <aside class="aside p-site">
         <div class="sticky">
@@ -159,7 +159,7 @@ useHead({ title })
     }
 
     &-title {
-      font-size: 4rem;
+      font-size: 3rem;
     }
 
     &-picture {
@@ -186,6 +186,55 @@ useHead({ title })
 
     :deep(a) {
       color: var(--black);
+    }
+  }
+}
+</style>
+
+<style lang="scss">
+.story-text {
+  h2, h3,  h4, h5, h6 {
+    margin: 1.75rem 0 .75rem;
+  }
+
+  h3, h4, h5, h6 {
+    font-size: var(--text-xl);
+  }
+
+  :is(h2, h3, h4, h5, h6) + p {
+    margin-top: 0;
+  }
+
+  .wp-block-image {
+    margin: 1em 0;
+
+    img {
+      width: 100%;
+      height: auto;
+      @include border;
+    }
+
+    figcaption {
+      font-size: var(--text-sm);
+      opacity: .75;
+    }
+  }
+
+  .wp-block-pullquote {
+    margin: 1em 0;
+    padding: 1.25rem 2rem;
+    border-left: 10px var(--primary) solid;
+
+    blockquote {
+      margin: 0;
+    }
+
+    p:first-child {
+      margin-top: 0;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
     }
   }
 }

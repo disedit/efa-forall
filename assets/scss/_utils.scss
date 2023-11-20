@@ -110,6 +110,19 @@
       text-decoration: underline;
     }
   }
+
+  .links-in-text {
+    a {
+      text-decoration-color: rgba($primary, .25);
+  
+      &:hover {
+        background: var(--primary);
+        color: var(--secondary);
+        outline: 3px var(--primary) solid;
+        text-decoration: none;
+      }
+    }
+  }
 }
 
 .d-none {

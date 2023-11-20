@@ -25,7 +25,7 @@ defineProps({
       </div>
     </header>
     <div class="chapter-content p-site">
-      <div v-html="chapter.content.rendered" class="chapter-content-text" />
+      <div v-html="chapter.content.rendered" class="chapter-content-text links-in-text" />
     </div>
     <ManifestoNext :chapter="chapter" :chapters="chapters" />
   </article>

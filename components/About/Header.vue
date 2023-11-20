@@ -18,7 +18,7 @@ defineProps({
     </template>
 
     <template #subheading>
-      <div v-html="fields.subheading" />
+      <div class="links-in-text" v-html="fields.subheading" />
     </template>
 
     <template #aside>

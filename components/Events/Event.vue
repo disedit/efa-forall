@@ -164,8 +164,7 @@ const tag = computed(() => {
 
 @include media('<lg') {
   .event {
-    min-height: unset;
-    height: 30vh;
+    min-height: 40vh;
     max-height: unset;
     font-size: var(--text-lg);
     border-right: 0;

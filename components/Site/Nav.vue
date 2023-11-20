@@ -106,7 +106,7 @@ function onLeaveCancelled() {
         {{ item.label }}
       </NuxtLink>
     </nav>
-    <a href="/" class="donate">Donate</a>
+    <a href="https://e-f-a.org/donate/" class="donate">Donate</a>
     <button
       class="nav-toggle"
       @click="toggleMenu"
@@ -138,7 +138,7 @@ function onLeaveCancelled() {
         @click="hideMenu(i)">
         <div>{{ item.label }}</div>
       </NuxtLink>
-      <a href="/" target="_blank">
+      <a href="https://e-f-a.org/donate/" target="_blank">
         <div>Donate</div>
       </a>
       <div class="decoration-wrapper">

@@ -94,6 +94,10 @@ const videoSources = computed(() => {
 })
 
 const videoPosters = computed(() => {
+  if (!props.poster) {
+    return { mobile: null, desktop: null}
+  }
+
   if (typeof props.poster !== 'object') {
     return { mobile: props.poster, desktop: props.poster }
   }
