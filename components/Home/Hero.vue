@@ -107,20 +107,44 @@ onUnmounted(() => {
     height: calc(100vh - var(--navbar-safe-area));
     height: calc(100svh - var(--navbar-safe-area));
     align-items: flex-start;
-    padding-top: 2rem;
+    padding-top: 10vh;
 
     &-title {
-      font-size: 2.75rem;
+      font-size: 3.5rem;
       transform: scale(.8);
+
+      .animated-text {
+        margin-top: .1em;
+      }
+
+      :deep(.letter) {
+        background: var(--white);
+        color: var(--black);
+        padding-top: .2em;
+        padding-right: .15em;
+        margin-right: -.15em;
+
+        &:first-child {
+          padding-left: .1em;
+        }
+      }
+
+      :deep(.logo-all) {
+        box-sizing: content-box;
+        background: var(--white);
+        border: .1em var(--white) solid;
+        margin: -.04em -.06em;
+      }
     }
 
     &-map {
       overflow: hidden;
 
       &-europe {
-        background-position: left bottom;
+        transform-origin: center center;
+        background-position: center bottom;
         background-size: cover;
-        transform: scale(.95);
+        transform: scale(1.15);
       }
     }
   }
@@ -131,8 +155,8 @@ onUnmounted(() => {
     &-map {
       &-europe {
         position: relative;
-        right: -5%;
-        background-position: left bottom;
+        right: 0;
+        background-position: center bottom;
       }
     }
   }

@@ -20,7 +20,7 @@ const year = 2023
       </div>
       <div class="details-legal">
         &copy; {{ year }} EFA – European Free Alliance -
-        <a href="https://e-f-a.org/privacy-policy/">Privacy policy</a>
+        <a href="https://e-f-a.org/privacy-policy/" target="_blank" class="details-policy">Privacy policy</a>
       </div>
     </div>
     <div class="disclaimer p-site border-top">
@@ -80,6 +80,10 @@ const year = 2023
     &-legal {
       margin-top: .5rem;
     }
+
+    &-policy {
+      white-space: nowrap;
+    }
   }
 
   .disclaimer {
@@ -103,6 +107,7 @@ const year = 2023
       grid-template-areas:
         "details newsletter"
         "disclaimer disclaimer";
+      line-height: 1.25;
     }
   }
 

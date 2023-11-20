@@ -31,7 +31,7 @@
           />
           <span>
             I have read and agree to the
-            <a href="https://e-f-a.org/privacy-policy/" target="_blank" class="link-black-underlined">
+            <a href="https://e-f-a.org/privacy-policy/" target="_blank" class="link-black-underlined terms">
               Terms and Conditions
             </a>
           </span>
@@ -87,6 +87,10 @@
 
     &-legal {
       margin-top: .5rem;
+
+      .terms {
+        white-space: nowrap;
+      }
     }
   }
   </style>

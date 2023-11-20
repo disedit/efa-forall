@@ -72,8 +72,9 @@ defineProps({
   }
 
   &-text {
-    font-size: var(--text-lg);
+    font-size: var(--text-md);
     line-height: 1.25;
+    margin: 0;
   }
 
   &-more {
