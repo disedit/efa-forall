@@ -11,16 +11,16 @@ onMounted(() => {
     mm = $gsap.matchMedia()
     mm.add("(min-width: 992px)", () => {
       rellax = new Rellax('.block-wrapper')
-    })
 
-    $gsap.fromTo('.block', {
-      y: 100
-    }, {
-      y: 0,
-      duration: .75,
-      delay: 3.25,
-      stagger: .1,
-      ease: "back.out(1.7)",
+      $gsap.fromTo('.block', {
+        y: 100
+      }, {
+        y: 0,
+        duration: .75,
+        delay: 3.25,
+        stagger: .1,
+        ease: "back.out(1.7)",
+      })
     })
   }, 500)
 })
@@ -89,7 +89,6 @@ onUnmounted(() => {
 @include media('<lg') {
   .blocks {
     grid-template-columns: 1fr;
-    margin-top: -100px;
   }
 
   .about {

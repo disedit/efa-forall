@@ -104,14 +104,14 @@ function scrollIntoView(id, shouldFocus) {
   background: var(--secondary);
   border-radius: 100%;
   transition: .25s ease-in-out;
-  border: 2px var(--secondary) solid;
+  border: .15em var(--secondary) solid;
   text-decoration: none;
-  font-size: var(--text-md);
+  font-size: .95rem;
 
   &.hovering,
   &:hover,
   &:focus-visible {
-    border: 2px var(--black) solid;
+    border: .15em var(--black) solid;
     transform: scale(1.5);
     z-index: 100;
 
@@ -131,7 +131,7 @@ function scrollIntoView(id, shouldFocus) {
   &.tooltip-right {
     .name {
       left: auto;
-      right: 1.6em;
+      right: 1.25em;
       text-align: right;
     }
   }
@@ -152,6 +152,16 @@ function scrollIntoView(id, shouldFocus) {
       color: var(--white);
       box-decoration-break: clone;
       padding: .2em .35em;
+    }
+  }
+}
+
+@include media('<lg') {
+  .map-marker {
+    font-size: .5rem;
+
+    .name {
+      font-size: .5rem;
     }
   }
 }

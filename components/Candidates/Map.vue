@@ -120,10 +120,13 @@ defineProps({
       grid-area: map;
       transform: none;
       height: auto;
+      align-items: flex-end;
 
       .with-items {
         width: 100%;
         height: auto;
+        transform: scale(1.3);
+        margin: 3vh 0 9vh;
       }
 
       .blind {
