@@ -26,7 +26,6 @@ defineProps({
         <img src="~/assets/images/maps/europe.svg" alt="Map of Europe">
         <CandidatesMapItems :candidates="candidates" :parties="parties" />
       </div>
-      <div class="blind" />
     </div>
     <div class="candidates-map-cards">
       <CandidatesCards :candidates="candidates" :parties="parties" />
@@ -37,12 +36,15 @@ defineProps({
 <style lang="scss" scoped>
 .candidates-map {
   display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: auto 1fr;
+  grid-template-columns:  1fr;
+  grid-template-rows: 1fr auto;
   overflow: hidden;
+  height: calc(100vh - var(--navbar-safe-area));
+  gap: var(--site-padding-sm);
 
   &-title {
     grid-area: 1 / 1 / 2 / 2;
+    width: 50%;
 
     h2 {
       font-size: var(--headline-chapter);
@@ -61,37 +63,28 @@ defineProps({
   &-holder {
     position: relative;
     z-index: 2;
-    grid-area: 1 / 2 / 3 / 3;
+    grid-area: 1 / 1 / 2 / 2;
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
-    transform: translateX(15%);
     user-select: none;
 
     img {
       position: relative;
       display: block;
-      height: calc(100vh - var(--navbar-safe-area));
+      height: 100%;
+      width: 100%;
       z-index: 2;
     }
 
     .with-items {
       position: relative;
-    }
-
-    .blind {
-      position: absolute;
-      z-index: 0;
-      background: linear-gradient(to right, rgba($beige, 0), $beige 50%);
-      top: 0;
-      right: 0;
-      bottom: 15px;
-      left: 9%;
+      height: 100%;
     }
   }
 
   &-cards {
-    grid-area: 2 / 1 / 3 / 3;
+    grid-area: 2 / 1 / 3 / 2;
     user-select: none;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
@@ -102,10 +95,13 @@ defineProps({
   }
 }
 
-@include media('<lg') {
+@media (max-aspect-ratio: 4/3) {
   .candidates-map {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto 1fr auto;
+    height: auto;
+    min-height: calc(100vh - var(--navbar-safe-area));
+    gap: 0;
     grid-template-areas:
       "title"
       "map"
@@ -113,6 +109,7 @@ defineProps({
 
     &-title {
       grid-area: title;
+      width: auto;
 
       h2, p {
         max-width: unset;
@@ -121,14 +118,12 @@ defineProps({
 
     &-holder {
       grid-area: map;
-      height: 100vh;
       transform: none;
       height: auto;
 
       .with-items {
-        width: fit-content;
-        min-height: 40vh;
-        transform: translateX(20%);
+        width: 100%;
+        height: auto;
       }
 
       .blind {
@@ -138,14 +133,11 @@ defineProps({
       img {
         width: 100%;
         height: auto;
-        min-height: 40vh;
-        max-height: 75vh;
       }
     }
 
     &-cards {
       grid-area: cards;
-      height: 40vh;
     }
   }
 }

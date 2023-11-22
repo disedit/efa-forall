@@ -19,7 +19,6 @@ defineProps({
         :candidate="candidate"
         :parties="parties"
       />
-      <div class="filler" />
   </SiteSlider>
 </template>
 
@@ -27,16 +26,5 @@ defineProps({
 .candidates-cards {
   padding-top: 4px;
   padding-bottom: 1rem;
-}
-
-.filler {
-  width: 40vw;
-  flex-shrink: 0;
-}
-
-@include media('<lg') {
-  .filler {
-    width: 0;
-  }
 }
 </style>

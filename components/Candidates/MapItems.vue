@@ -99,13 +99,14 @@ function scrollIntoView(id, shouldFocus) {
 .map-marker {
   display: block;
   position: absolute;
-  height: 20px;
-  width: 20px;
+  height: 1em;
+  width: 1em;
   background: var(--secondary);
   border-radius: 100%;
   transition: .25s ease-in-out;
   border: 2px var(--secondary) solid;
   text-decoration: none;
+  font-size: var(--text-md);
 
   &.hovering,
   &:hover,
@@ -130,14 +131,14 @@ function scrollIntoView(id, shouldFocus) {
   &.tooltip-right {
     .name {
       left: auto;
-      right: 25px;
+      right: 1.6em;
       text-align: right;
     }
   }
 
   .name {
     position: absolute;
-    left: 25px;
+    left: 1.6em;
     pointer-events: none;
     opacity: 0;
     transition: .25s ease;
