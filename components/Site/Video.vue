@@ -4,7 +4,8 @@ const props = defineProps({
   video: { type: [String, Object], required: true },
   poster: { type: [String, Object],  default: null },
   showTime: { type: Boolean, default: false },
-  fit: { type: String, default: null }
+  fit: { type: String, default: null },
+  objectPosition: { type: String, default: 'center' }
 })
 
 const { $emitter } = useNuxtApp()
@@ -33,6 +34,12 @@ onMounted(() => {
       playVideo()
     }
   })
+
+  $emitter.on('video:pause-all', (id) => {
+    if (id !== props.id) {
+      pauseVideo()
+    }
+  })
 })
 
 onUnmounted(() => {
@@ -47,7 +54,7 @@ watch(breakpoint, () => {
 })
 
 function updateBreakpoint ()  {
-  breakpoint.value = window.innerWidth < 992 ? 'mobile' : 'desktop'
+  breakpoint.value = window.innerWidth < 768 ? 'mobile' : 'desktop'
 }
 
 /* Video controls */
@@ -55,6 +62,7 @@ async function playVideo () {
   try {
     await player.value.play()
     playing.value = true
+    $emitter.emit('video:pause-all', props.id)
   } catch(e) {
     playing.value = false
   }
@@ -130,7 +138,7 @@ const objectFit = computed(() => {
       @pause="playing = false"
       @play="playing = true"
       class="video"
-      :style="{ objectFit }">
+      :style="{ objectFit, objectPosition }">
     </video>
     <Transition name="video">
       <button
@@ -193,6 +201,8 @@ const objectFit = computed(() => {
     .icon {
       width: calc(2rem + 4vw);
       height: calc(2rem + 4vw);
+      max-width: 7rem;
+      max-height: 7rem;
       transition: .25s ease;
 
       &:hover {

@@ -14,7 +14,16 @@ defineProps({
       <div class="text" v-html="content" />
     </div>
     <div class="values-video">
-      <SiteVideo video="/video/about.mp4" class="video-holder" fit="cover" />
+      <SiteVideo
+        id="AboutValues"
+        :video="{
+          desktop: '/video/what-is-efa-43.mp4',
+          mobile: '/video/what-is-efa-916.mp4'
+        }"
+        class="video-holder"
+        fit="cover"
+        object-position="center bottom"
+      />
     </div>
     <nuxt-link to="/manifesto" class="manifesto py-sm p-site">
       <AnimatedArrowLink class="manifesto-link">
@@ -30,7 +39,7 @@ defineProps({
   position: relative;
   min-height: calc(100vh - var(--navbar-safe-area));
   min-height: calc(100svh - var(--navbar-safe-area));
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr auto;
   grid-template-areas:
     "content video"
@@ -79,7 +88,7 @@ defineProps({
       position: sticky;
       top: var(--navbar-safe-area);
       @include border-left; 
-      margin-left: auto;
+      width: 100%;
     }
   }
 }
@@ -106,7 +115,7 @@ defineProps({
   }
 }
 
-@include media('<lg') {
+@include media('<xl') {
   .values {
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -127,11 +136,8 @@ defineProps({
       @include border-top;
       .video-holder {
         width: 100%;
+        height: auto;
         border: 0;
-
-        :deep(.video) {
-          object-fit: contain !important;
-        }
       }
     }
   }

@@ -1,5 +1,5 @@
 <script setup>
-const { $gsap } = useNuxtApp()
+const { $gsap, $emitter } = useNuxtApp()
 const { setDark, unsetDark } = useColorMode()
 const sources = {
   desktop: '/video/for-all-169.mp4',
@@ -26,7 +26,10 @@ onMounted(() => {
           start: 'top 200px',
           end: 'top 95px',
           scrub: 1,
-          onLeave: setDark,
+          onLeave: () => {
+            $emitter.emit('video:play', 'HomeVideo')
+            setDark()
+          },
           onLeaveBack: unsetDark,
           onEnterBack: unsetDark,
           onEnter: unsetDark

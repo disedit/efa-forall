@@ -113,7 +113,9 @@
 
   .links-in-text {
     a {
-      text-decoration-color: rgba($primary, .25);
+      text-decoration-color: rgba($primary, .5);
+      text-decoration-thickness: .125em;
+      text-underline-offset: .125em;
   
       &:hover {
         background: var(--primary);

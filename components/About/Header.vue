@@ -14,7 +14,8 @@ defineProps({
     </template>
 
     <template #heading>
-      {{ fields.headline }}
+      European<br>
+      Free Alliance
     </template>
 
     <template #subheading>
@@ -22,15 +23,24 @@ defineProps({
     </template>
 
     <template #aside>
-      <SiteVideo video="/video/about.mp4" class="about-video" fit="cover" />
+      <SiteVideo
+        id="AboutHeader"
+        :video="{
+          desktop: '/video/what-is-efa-43.mp4',
+          mobile: '/video/what-is-efa-916.mp4'
+        }"
+        class="about-video"
+        fit="cover"
+      />
     </template>
   </SitePageHeader>
 </template>
 
 <style lang="scss" scoped>
-.about-header {
+.about-header:not(.single-column) {
   min-height: calc(100vh - var(--navbar-safe-area)) !important;
   min-height: calc(100svh - var(--navbar-safe-area)) !important;
+  grid-template-columns: 1fr 1fr;
 
   :deep(.heading p) {
     font-size: var(--text-lg);
@@ -51,9 +61,14 @@ defineProps({
   background-position: center;
 }
 
-@include media('<lg') {
-  .page-header {
+@include media('<xl') {
+  .about-header:not(.single-column) {
     min-height: unset;
+    grid-template-columns: 1fr;
+
+    &:not(.collapse) :deep(.heading) {
+      padding-bottom: 0;
+    }
 
     :deep(.title) {
       position: static !important;
@@ -64,10 +79,7 @@ defineProps({
     @include border-top;
     border-left: 0;
     width: 100%;
-
-    :deep(.video) {
-      object-fit: contain !important;
-    }
+    height: auto;
   }
 }
 </style>

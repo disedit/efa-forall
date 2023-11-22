@@ -57,8 +57,8 @@ defineProps({
     line-height: 1.25;
   }
 
-  &:first-child {
-    @include border-right;
+  &:last-child {
+    @include border-left;
   }
 }
 
