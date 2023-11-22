@@ -13,6 +13,7 @@ const { $emitter } = useNuxtApp()
 const breakpoint = ref('desktop')
 const player = ref(null)
 const playing = ref(false)
+const muted = ref(false)
 const time = ref(0) // Updated every second
 const lastCurrentTime = ref(0) // Updated on breakpoint changes
 const duration = ref(0)
@@ -21,17 +22,22 @@ const showControls = ref(false)
 onMounted(() => {
   updateBreakpoint()
   window.addEventListener('resize', updateBreakpoint)
-  duration.value = player.value.duration
-
-  $emitter.on('video:pause', (id) => {
-    if (id === props.id) {
-      pauseVideo()
-    }
-  })
 
   $emitter.on('video:play', (id) => {
     if (id === props.id) {
       playVideo()
+    }
+  })
+
+  $emitter.on('video:autoplay', (id) => {
+    if (id === props.id) {
+      autoplayVideo()
+    }
+  })
+
+  $emitter.on('video:pause', (id) => {
+    if (id === props.id) {
+      pauseVideo()
     }
   })
 
@@ -59,18 +65,34 @@ function updateBreakpoint ()  {
 
 /* Video controls */
 async function playVideo () {
+  muted.value = false
   try {
     await player.value.play()
     playing.value = true
     $emitter.emit('video:pause-all', props.id)
   } catch(e) {
     playing.value = false
+    console.log('failed play', e)
   }
 }
 
-function pauseVideo () {
+async function autoplayVideo() {
+  try {
+    await player.value.play()
+  } catch(e) {
+    muted.value = true
+    nextTick(() => { player.value.play() })
+    console.log('failed autoplay', e)
+  } finally {
+    $emitter.emit('video:pause-all', props.id)
+    playing.value = true
+  }
+}
+
+async function pauseVideo () {
+  if (!player.value) return
+  await player.value.pause()
   playing.value = false
-  player.value.pause()
 }
 
 function togglePlay () {
@@ -81,7 +103,15 @@ function togglePlay () {
   }
 }
 
+function unmute () {
+  muted.value = false
+  nextTick(() => {
+    player.value.currentTime = 0
+  })
+}
+
 function onLoadedMetadata() {
+  if (!player.value) return
   player.value.currentTime = lastCurrentTime.value
   if (playing.value) {
     player.value.play()
@@ -90,6 +120,7 @@ function onLoadedMetadata() {
 
 function onTimeUpdate (event) {
   time.value = event.target.currentTime
+  duration.value = event.target.duration
 }
 
 /* Sources */
@@ -130,6 +161,7 @@ const objectFit = computed(() => {
       ref="player"
       :src="videoSources[breakpoint]"
       :poster="videoPosters[breakpoint]"
+      :muted="muted"
       playsinline
       :controls="showControls"
       @timeupdate="onTimeUpdate"
@@ -149,9 +181,21 @@ const objectFit = computed(() => {
         <IconPlay class="icon" />
       </button>
     </Transition>
+    <Transition name="video">
+      <button
+        v-if="muted && playing"
+        class="video-button"
+        aria-label="Unmute video"
+        @click="unmute">
+        <div class="muted">
+          <IconPlay class="muted-icon" />
+          <div class="mt-1">Play with sound</div>
+        </div>
+      </button>
+    </Transition>
     <Transition name="slide">
       <SiteVideoControls
-        v-if="playing && !showControls"
+        v-if="playing && !showControls && !muted"
         :time="time"
         :duration="duration"
         :show-time="showTime"
@@ -204,6 +248,23 @@ const objectFit = computed(() => {
       max-width: 7rem;
       max-height: 7rem;
       transition: .25s ease;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    .muted {
+      transition: .25s ease;
+      font-size: var(--text-lg);
+      font-weight: bold;
+
+      .muted-icon {
+        width: calc(2rem + 4vw);
+        height: calc(2rem + 4vw);
+        max-width: 7rem;
+        max-height: 7rem;
+      }
 
       &:hover {
         transform: scale(1.2);

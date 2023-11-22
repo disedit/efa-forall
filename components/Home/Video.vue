@@ -27,7 +27,7 @@ onMounted(() => {
           end: 'top 95px',
           scrub: 1,
           onLeave: () => {
-            $emitter.emit('video:play', 'HomeVideo')
+            $emitter.emit('video:autoplay', 'HomeVideo')
             setDark()
           },
           onLeaveBack: unsetDark,
@@ -51,7 +51,6 @@ onUnmounted(() => {
       <SiteVideo
         id="HomeVideo"
         :video="sources"
-        :poster="posters"
         show-time
         class="video-player">
         A Europe<br />For All

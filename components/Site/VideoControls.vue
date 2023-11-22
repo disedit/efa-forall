@@ -1,7 +1,7 @@
 <script setup>
 const props = defineProps({
   time: { type: Number, required: true },
-  duration: { type: Number, required: true },
+  duration: { type: Number, default: 0 },
   showTime: { type: Boolean, default: false }
 })
 
@@ -28,7 +28,7 @@ function width(seconds) {
       <button @click="$emit('showControls')" title="Show more controls" class="controls">
         <IconSlider class="icon" />
       </button>
-      <div class="progress">
+      <div class="progress" v-if="duration > 0">
         <div class="progress-bar" :style="{ width: width(time) }" />
       </div>
     </div>

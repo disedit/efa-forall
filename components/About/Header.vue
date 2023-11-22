@@ -50,9 +50,9 @@ defineProps({
 
 .about-video {
   @include border-left;
-  margin-left: auto;
   height: calc(100vh - var(--navbar-safe-area));
   height: calc(100svh - var(--navbar-safe-area));
+  width: 100%;
   display: flex;
   position: sticky;
   top: var(--navbar-safe-area);
