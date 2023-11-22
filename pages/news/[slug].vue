@@ -121,7 +121,7 @@ useHead({ title })
   }
 
   &-title {
-    font-size: 6rem;
+    font-size: clamp(4rem, 4.75vw, 6rem);
     line-height: 1;
     margin-top: 1rem;
     text-wrap: balance;
@@ -150,6 +150,14 @@ useHead({ title })
 .sticky {
   position: sticky;
   top: calc(var(--navbar-safe-area) + var(--site-padding));
+}
+
+@include media('<=xxl') {
+  .story {
+    &-text {
+      font-size: var(--text-lg);
+    }
+  }
 }
 
 @include media('<lg') {
@@ -236,6 +244,14 @@ useHead({ title })
     p:last-child {
       margin-bottom: 0;
     }
+  }
+
+  :is(h2, h3, h4):first-child em,
+  :is(h2, h3, h4):first-child strong,
+  p:first-child strong {
+    font-style: normal;
+    display: block;
+    margin: -1.75rem 0 2.25rem;
   }
 }
 </style>
