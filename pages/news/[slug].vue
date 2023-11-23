@@ -63,7 +63,7 @@ useHead({ title })
       <img :src="thumbnail.src" :alt="thumbnail.alt">
     </div>
     <div class="story-page">
-      <article class="story p-site">
+      <article class="story">
         <div class="story-date">{{ date }}</div>
         <h1 class="story-title" v-html="story.title.rendered" />
         <div class="story-inline-picture" v-if="thumbnail && story.acf?.picture_in_text">
@@ -71,7 +71,7 @@ useHead({ title })
         </div>
         <div class="story-text links-in-text" v-html="story.content.rendered" />
       </article>
-      <aside class="aside p-site">
+      <aside class="aside">
         <div class="sticky">
           <NewsPressCorner in-story />
           <NewsOther :stories="latestPosts" />
@@ -92,7 +92,11 @@ useHead({ title })
 
   &-page {
     display: grid;
-    grid-template-columns: 2fr minmax(300px, 30vw);
+    grid-template-columns: 1fr minmax(400px, calc(200px + 15vw));
+    max-width: 1700px;
+    margin: 0 auto;
+    gap: var(--site-padding);
+    padding: var(--site-padding);
   }
 
   &-picture {
@@ -121,7 +125,7 @@ useHead({ title })
   }
 
   &-title {
-    font-size: clamp(4rem, 4.75vw, 6rem);
+    font-size: clamp(4rem, .5rem + 4.75vw, 6rem);
     line-height: 1;
     margin-top: 1rem;
     text-wrap: balance;
@@ -130,7 +134,7 @@ useHead({ title })
   &-text {
     font-size: var(--text-xl);
     line-height: 1.5;
-    max-width: 60ch;
+    max-width: 70ch;
     hyphens: auto;
   }
 
