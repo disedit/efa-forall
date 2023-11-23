@@ -24,6 +24,7 @@ defineProps({
           desktop: '/video/what-is-efa-43.jpg',
           mobile: '/video/what-is-efa-916.jpg'
         }"
+        autoplay
         class="video-holder"
         fit="cover"
         object-position="center bottom"

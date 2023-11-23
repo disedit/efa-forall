@@ -5,7 +5,8 @@ const props = defineProps({
   poster: { type: [String, Object],  default: null },
   showTime: { type: Boolean, default: false },
   fit: { type: String, default: null },
-  objectPosition: { type: String, default: 'center' }
+  objectPosition: { type: String, default: 'center' },
+  autoplay: { type: Boolean, default: false }
 })
 
 const { $emitter } = useNuxtApp()
@@ -13,7 +14,7 @@ const { $emitter } = useNuxtApp()
 const breakpoint = ref('desktop')
 const player = ref(null)
 const playing = ref(false)
-const muted = ref(false)
+const muted = ref(true)
 const time = ref(0) // Updated every second
 const lastCurrentTime = ref(0) // Updated on breakpoint changes
 const duration = ref(0)
@@ -72,7 +73,6 @@ async function playVideo () {
     $emitter.emit('video:pause-all', props.id)
   } catch(e) {
     playing.value = false
-    console.log('failed play', e)
   }
 }
 
@@ -82,7 +82,6 @@ async function autoplayVideo() {
   } catch(e) {
     muted.value = true
     nextTick(() => { player.value.play() })
-    console.log('failed autoplay', e)
   } finally {
     $emitter.emit('video:pause-all', props.id)
     playing.value = true
@@ -162,6 +161,7 @@ const objectFit = computed(() => {
       :src="videoSources[breakpoint]"
       :poster="videoPosters[breakpoint]"
       :muted="muted"
+      :autoplay="autoplay"
       playsinline
       :controls="showControls"
       @timeupdate="onTimeUpdate"

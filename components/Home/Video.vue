@@ -26,10 +26,7 @@ onMounted(() => {
           start: 'top 200px',
           end: 'top 95px',
           scrub: 1,
-          onLeave: () => {
-            $emitter.emit('video:autoplay', 'HomeVideo')
-            setDark()
-          },
+          onLeave: setDark,
           onLeaveBack: unsetDark,
           onEnterBack: unsetDark,
           onEnter: unsetDark
@@ -52,6 +49,7 @@ onUnmounted(() => {
         id="HomeVideo"
         :video="sources"
         :poster="posters"
+        autoplay
         show-time
         class="video-player">
         A Europe<br />For All

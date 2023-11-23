@@ -33,6 +33,7 @@ defineProps({
           desktop: '/video/what-is-efa-43.jpg',
           mobile: '/video/what-is-efa-916.jpg'
         }"
+        autoplay
         class="about-video"
         fit="cover"
       />
