@@ -29,6 +29,10 @@ defineProps({
           desktop: '/video/what-is-efa-43.mp4',
           mobile: '/video/what-is-efa-916.mp4'
         }"
+        :poster="{
+          desktop: '/video/what-is-efa-43.jpg',
+          mobile: '/video/what-is-efa-916.jpg'
+        }"
         class="about-video"
         fit="cover"
       />

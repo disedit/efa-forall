@@ -240,6 +240,7 @@ const objectFit = computed(() => {
     align-items: center;
     justify-content: center;
     color: var(--white);
+    width: 100%;
     cursor: pointer;
 
     .icon {

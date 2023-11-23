@@ -75,6 +75,7 @@ onUnmounted(() => {
 .animated-text {
   height: 1em;
   margin: -.1em 0;
+  white-space: nowrap;
 }
 
 .cursor {

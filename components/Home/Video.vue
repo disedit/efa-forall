@@ -51,7 +51,7 @@ onUnmounted(() => {
       <SiteVideo
         id="HomeVideo"
         :video="sources"
-        :posters="posters"
+        :poster="posters"
         show-time
         class="video-player">
         A Europe<br />For All

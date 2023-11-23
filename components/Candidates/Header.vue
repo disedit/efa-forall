@@ -14,7 +14,7 @@ defineProps({
     </template>
 
     <template #heading>
-      <div class="visually-hidden">We are looking for a new Europe for all</div>
+      <div class="visually-hidden">Candidates that will work for all</div>
       <div aria-hidden="true">
         <AnimatedHomeText text="CANDIDATES" :speed="100" :delay="250" />
         <AnimatedHomeText text="THAT WILL WORK" :delay="10 * 100 + 500" />
@@ -23,24 +23,25 @@ defineProps({
     </template>
 
     <template #aside>
-      <div class="spitzenkandidaten-photo">
-        <img :src="candidates.spitzenkandidaten.sizes.large" :alt="candidates.spitzenkandidaten.alt">
-      </div>
+      <div
+        class="spitzenkandidaten-photo"
+        :style="{
+          backgroundImage: `url(${candidates.spitzenkandidaten.sizes.large})`
+        }"
+      />
     </template>
   </SitePageHeader>
 </template>
 
 <style lang="scss" scoped>
 .spitzenkandidaten-photo {
+  position: relative;
   display: flex;
   @include border-left;
-
-  img {
-    display: block;
-    width: 100%;
-    height: calc(100svh - var(--navbar-safe-area));
-    object-fit: cover;
-  }
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
 }
 
 .highlight {
@@ -48,7 +49,7 @@ defineProps({
 }
 
 .page-header.candidates-header {
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 1fr;
   min-height: calc(100vh - var(--navbar-safe-area));
   min-height: calc(100svh - var(--navbar-safe-area));
 }
@@ -56,14 +57,24 @@ defineProps({
 @include media('<lg') {
   .page-header.candidates-header {
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+
+    .spitzenkandidaten-photo {
+      aspect-ratio: 1;
+    }
+
+    :deep(.heading) {
+      padding-bottom: 1rem;
+    }
 
     :deep(.heading h2) {
       font-size: 3.75rem;
     }
   }
 
-  .spitzenkandidaten-photo img {
-    height: auto;
+  .spitzenkandidaten-photo {
+    @include border-top;
+    border-left: 0;
   }
 }
 </style>
