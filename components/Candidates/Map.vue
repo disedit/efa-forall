@@ -18,10 +18,10 @@ defineProps({
 <template>
   <section class="candidates-map border-top">
     <div class="candidates-map-title p-site">
-      <h2>Find your candidate</h2>
+      <h2>Find your<br> candidate</h2>
       <p>{{ text }}</p>
     </div>
-    <div class="candidates-map-holder">
+    <div class="candidates-map-interactive">
       <div class="with-items">
         <img src="~/assets/images/maps/europe.svg" alt="Map of Europe">
         <CandidatesMapItems :candidates="candidates" :parties="parties" />
@@ -37,9 +37,8 @@ defineProps({
 .candidates-map {
   display: grid;
   grid-template-columns:  1fr;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: calc(75vh - var(--navbar-safe-area) - var(--site-padding-sm)) 25vh;
   overflow: hidden;
-  height: calc(100vh - var(--navbar-safe-area));
   gap: var(--site-padding-sm);
 
   &-title {
@@ -49,7 +48,6 @@ defineProps({
     h2 {
       font-size: var(--headline-chapter);
       line-height: .9;
-      max-width: 320px;
       margin: 0;
     }
 
@@ -60,7 +58,7 @@ defineProps({
     }
   }
 
-  &-holder {
+  &-interactive {
     position: relative;
     z-index: 2;
     grid-area: 1 / 1 / 2 / 2;
@@ -79,7 +77,7 @@ defineProps({
 
     .with-items {
       position: relative;
-      height: 100%;
+      height: calc(75vh - var(--navbar-safe-area) - var(--site-padding-sm));
     }
   }
 
@@ -100,7 +98,6 @@ defineProps({
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
     height: auto;
-    min-height: calc(100vh - var(--navbar-safe-area));
     gap: 0;
     grid-template-areas:
       "title"
@@ -116,7 +113,7 @@ defineProps({
       }
     }
 
-    &-holder {
+    &-interactive {
       grid-area: map;
       transform: none;
       height: auto;
