@@ -6,7 +6,8 @@ const props = defineProps({
   showTime: { type: Boolean, default: false },
   fit: { type: String, default: null },
   objectPosition: { type: String, default: 'center' },
-  autoplay: { type: Boolean, default: false }
+  autoplay: { type: Boolean, default: false },
+  autoplayMuted: { type: Boolean, default: false }
 })
 
 const { $emitter } = useNuxtApp()
@@ -19,10 +20,17 @@ const time = ref(0) // Updated every second
 const lastCurrentTime = ref(0) // Updated on breakpoint changes
 const duration = ref(0)
 const showControls = ref(false)
+const dismissAutoplay = ref(true)
 
 onMounted(() => {
   updateBreakpoint()
   window.addEventListener('resize', updateBreakpoint)
+
+  // Set playing state if autoplay
+  if (props.autoplay || props.autoplayMuted) {
+    playing.value = true
+    dismissAutoplay.value = !props.autoplayMuted
+  }
 
   $emitter.on('video:play', (id) => {
     if (id === props.id) {
@@ -102,11 +110,16 @@ function togglePlay () {
   }
 }
 
-function unmute () {
+function replayWithSound () {
   muted.value = false
+  dismissAutoplay.value = true
   nextTick(() => {
     player.value.currentTime = 0
   })
+}
+
+function toggleMute () {
+  muted.value = !muted.value
 }
 
 function onLoadedMetadata() {
@@ -161,7 +174,7 @@ const objectFit = computed(() => {
       :src="videoSources[breakpoint]"
       :poster="videoPosters[breakpoint]"
       :muted="muted"
-      :autoplay="autoplay"
+      :autoplay="autoplay || autoplayMuted"
       playsinline
       :controls="showControls"
       @timeupdate="onTimeUpdate"
@@ -183,10 +196,9 @@ const objectFit = computed(() => {
     </Transition>
     <Transition name="video">
       <button
-        v-if="muted && playing"
+        v-if="autoplayMuted && playing && muted && !dismissAutoplay"
         class="video-button"
-        aria-label="Unmute video"
-        @click="unmute">
+        @click="replayWithSound">
         <div class="muted">
           <IconPlay class="muted-icon" />
           <div class="mt-1">Play with sound</div>
@@ -195,11 +207,13 @@ const objectFit = computed(() => {
     </Transition>
     <Transition name="slide">
       <SiteVideoControls
-        v-if="playing && !showControls && !muted"
+        v-if="playing && !showControls && dismissAutoplay"
         :time="time"
         :duration="duration"
         :show-time="showTime"
+        :muted="muted"
         @toggle-play="togglePlay"
+        @toggle-mute="toggleMute"
         @show-controls="showControls = true" />
     </Transition>
   </div>

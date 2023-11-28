@@ -66,7 +66,7 @@ defineProps({
   background-position: center;
 }
 
-@include media('<xl') {
+@media (max-aspect-ratio: 4/3) {
   .about-header:not(.single-column) {
     min-height: unset;
     grid-template-columns: 1fr;

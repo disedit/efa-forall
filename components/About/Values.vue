@@ -10,7 +10,7 @@ defineProps({
 <template>
   <section class="values">
     <div class="values-content p-site">
-      <h3>Our<br>values</h3>
+      <h3>Our values</h3>
       <div class="text" v-html="content" />
     </div>
     <div class="values-video">
@@ -47,26 +47,23 @@ defineProps({
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr auto;
   grid-template-areas:
-    "content video"
-    "manifesto video";
+    "video content"
+    "video manifesto";
 
   &-content {
-    grid-area: content;
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 2rem;
-    flex-shrink: 0;
+    @include border-left; 
 
     h3 {
       font-size: var(--headline-block);
       line-height: .9;
       margin-top: .15em;
+      margin-bottom: .5em;
     }
 
     .text {
       font-size: var(--text-lg);
       line-height: 1.5;
-      max-width: 50ch;
+      max-width: 80ch;
 
       :deep(p) {
         margin-top: 0;
@@ -92,7 +89,6 @@ defineProps({
       background-position: center;
       position: sticky;
       top: var(--navbar-safe-area);
-      @include border-left; 
       width: 100%;
     }
   }
@@ -105,6 +101,7 @@ defineProps({
   background: var(--secondary);
   text-decoration: none;
   @include border-top;
+  @include border-left;
   width: 100%;
 
   &:hover {
@@ -120,7 +117,7 @@ defineProps({
   }
 }
 
-@include media('<xl') {
+@media (max-aspect-ratio: 4/3) {
   .values {
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -131,10 +128,7 @@ defineProps({
     &-content {
       grid-template-columns: 1fr;
       gap: 1rem;
-
-      .text {
-        font-size: var(--text-md);
-      }
+      border-left: 0;
     }
 
     &-video {
@@ -143,6 +137,20 @@ defineProps({
         width: 100%;
         height: auto;
         border: 0;
+      }
+    }
+  }
+
+  .manifesto {
+    border-left: 0;
+  }
+}
+
+@include media('<xl') {
+  .values {
+    &-content {
+      .text {
+        font-size: var(--text-md);
       }
     }
   }

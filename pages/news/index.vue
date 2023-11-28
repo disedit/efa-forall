@@ -20,12 +20,20 @@ const perPage = 10
 const loading = ref(false)
 
 /* Fetch posts */
+const loadSticky = async () => {
+  return await $wp.posts()
+    .embed()
+    .param('_fields', 'id,title,excerpt,date,slug,_links,_embedded')
+    .param('sticky', 'true')
+}
+
 const loadPosts = async () => {
   const { _paging, ...stories } = await $wp.posts()
     .embed()
     .perPage(perPage)
     .page(page.value)
     .param('_fields', 'id,title,excerpt,date,slug,_links,_embedded')
+    .param('sticky', 'false')
 
   return {
     stories: Object.values(stories),
@@ -35,9 +43,10 @@ const loadPosts = async () => {
 
 /* Fetch initial posts */
 const { data: posts } = await useAsyncData('articles', () => loadPosts())
+const { data: sticky } = await useAsyncData('sticky', () => loadSticky())
 
 /* Set initial posts */
-articles.value = posts.value.stories
+articles.value = [...sticky.value , ...posts.value.stories]
 totalPages.value = posts.value.totalPages
 
 /* Fetch more posts */

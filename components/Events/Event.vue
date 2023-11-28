@@ -75,7 +75,7 @@ const tag = computed(() => {
   flex-direction: column;
   gap: var(--site-padding);
   background: var(--bg-color);
-  min-height: 45vh;
+  min-height: 400px;
   max-height: 33vw;
   font-size: var(--text-md);
   @include border-right;

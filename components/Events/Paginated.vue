@@ -55,4 +55,24 @@ const limitedEvents = computed(() => {
     border-left: 0;
   }
 }
+
+@include media('>=md','<=lg') {
+  .events-grid {
+    margin-bottom: -1px;
+
+    .event:nth-child(even) {
+      @include border-left;
+    }
+  }
+
+  .past-events .events-grid .event:last-child {
+    @include border-bottom;
+  }
+}
+
+@include media('>sup') {
+  .events-grid {
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  }
+}
 </style>

@@ -2,7 +2,8 @@
 const props = defineProps({
   time: { type: Number, required: true },
   duration: { type: Number, default: 0 },
-  showTime: { type: Boolean, default: false }
+  showTime: { type: Boolean, default: false },
+  muted: { type: Boolean, default: true }
 })
 
 function human(seconds) {
@@ -25,6 +26,10 @@ function width(seconds) {
         {{ human(time) }}
         <span class="total-time">/ {{ human(duration) }}</span>
       </span>
+      <button @click="$emit('toggleMute')" :title="muted ? 'Unmute volume' : 'Mute volume'" class="mute">
+        <IconUnmute v-if="muted" class="icon" />
+        <IconMute v-else class="icon" />
+      </button>
       <button @click="$emit('showControls')" title="Show more controls" class="controls">
         <IconSlider class="icon" />
       </button>
@@ -74,7 +79,7 @@ function width(seconds) {
   }
 }
 
-.controls {
+.mute {
   margin-left: auto;
 }
 

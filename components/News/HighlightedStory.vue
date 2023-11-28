@@ -24,6 +24,7 @@ const { thumbnail, category, date } = useStory(story, 'large')
         </div>
         <h2 class="story-title reset-heading" v-html="story.title.rendered" />
         <div class="story-excerpt" v-html="story.excerpt.rendered" />
+        <div class="story-read-more">Read more</div>
       </div>
     </nuxt-link>
   </article>
@@ -32,7 +33,8 @@ const { thumbnail, category, date } = useStory(story, 'large')
 <style lang="scss" scoped>
 .story {
   display: flex;
-  min-height: calc(100vh - var(--headline-page) * 0.9 - var(--navbar-safe-area) - 8.75rem);
+  height: calc(100vh - var(--headline-page) * 0.9 - var(--navbar-safe-area) - 8.75rem);
+  max-height: 700px;
 
   &-header {
     display: flex;
@@ -47,12 +49,15 @@ const { thumbnail, category, date } = useStory(story, 'large')
   &-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto auto;
     grid-template-areas:
       "thumbnail title"
-      "thumbnail excerpt";
+      "thumbnail excerpt"
+      "thumbnail readmore";
     background-color: var(--white);
     gap: var(--site-padding-sm);
     height: 100%;
+    font-size: clamp(1.1rem, .85vw, 1.5rem);
   }
 
   &-category {
@@ -68,15 +73,19 @@ const { thumbnail, category, date } = useStory(story, 'large')
   &-excerpt {
     grid-area: excerpt;
     color: var(--muted);
-    margin-top: auto;
     display: -webkit-box;
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;  
     overflow: hidden;
+    line-height: 1.35;
 
     :deep(p) {
       margin: 0;
     }
+  }
+
+  &-read-more {
+    grid-area: readmore;
   }
 
   &-thumbnail {
@@ -100,7 +109,8 @@ const { thumbnail, category, date } = useStory(story, 'large')
     &:hover {
       outline: 0;
 
-      .story-title {
+      .story-title,
+      .story-read-more {
         text-decoration: underline;
       }
 
@@ -122,7 +132,7 @@ const { thumbnail, category, date } = useStory(story, 'large')
 
 @include media('>lg', '<xxl') {
   .story {
-    &-excerpt {
+    &-content {
       font-size: var(--text-sm);
     }
   }
@@ -134,10 +144,11 @@ const { thumbnail, category, date } = useStory(story, 'large')
 
     &-content {
       grid-template-columns: 1fr;
-      grid-template-rows: 30vh auto;
+      grid-template-rows: 30vh 1fr auto;
       grid-template-areas:
         "thumbnail"
-        "title";
+        "title"
+        "readmore";
     }
 
     &-title {
