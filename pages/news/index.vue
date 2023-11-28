@@ -16,7 +16,7 @@ const { $wp } = useNuxtApp()
 const articles = ref([])
 const page = ref(1)
 const totalPages = ref(0)
-const perPage = 10
+const perPage = 5
 const loading = ref(false)
 
 /* Fetch posts */

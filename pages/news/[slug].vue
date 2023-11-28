@@ -250,6 +250,17 @@ useHead({ title })
     }
   }
 
+  .wp-block-embed {
+    margin: 1em 0;
+
+    iframe {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16/9;
+      @include border;
+    }
+  }
+
   :is(h2, h3, h4):first-child em,
   :is(h2, h3, h4):first-child strong,
   p:first-child strong {

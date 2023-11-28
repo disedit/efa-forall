@@ -50,6 +50,8 @@ defineProps({
   :deep(.heading p) {
     font-size: var(--text-lg);
     line-height: 1.5;
+    text-wrap: wrap;
+    max-width: 70ch;
   }
 }
 

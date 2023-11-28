@@ -63,7 +63,7 @@ defineProps({
     .text {
       font-size: var(--text-lg);
       line-height: 1.5;
-      max-width: 80ch;
+      max-width: 70ch;
 
       :deep(p) {
         margin-top: 0;

@@ -33,6 +33,7 @@ const { thumbnail, category, date } = useStory(story, 'large')
 <style lang="scss" scoped>
 .story {
   display: flex;
+  min-height: 500px;
   height: calc(100vh - var(--headline-page) * 0.9 - var(--navbar-safe-area) - 8.75rem);
   max-height: 700px;
 
@@ -57,7 +58,7 @@ const { thumbnail, category, date } = useStory(story, 'large')
     background-color: var(--white);
     gap: var(--site-padding-sm);
     height: 100%;
-    font-size: clamp(1.1rem, .85vw, 1.5rem);
+    font-size: clamp(1.15rem, .9vw, 1.25rem);
   }
 
   &-category {
@@ -67,7 +68,7 @@ const { thumbnail, category, date } = useStory(story, 'large')
 
   &-title {
     grid-area: title;
-    font-size: clamp(2rem, 2vw, 3.5rem);
+    font-size: clamp(2.25rem, 2.5vw, 3rem);
   }
 
   &-excerpt {
@@ -130,17 +131,42 @@ const { thumbnail, category, date } = useStory(story, 'large')
   }
 }
 
-@include media('>lg', '<xxl') {
+@include media('>lg', '<xl') {
   .story {
     &-content {
       font-size: var(--text-sm);
+      grid-template-columns: 1fr;
+      grid-template-rows: 30vh 1fr auto;
+      grid-template-areas:
+      "thumbnail"
+      "title"
+      "readmore";
+    }
+
+    &-thumbnail {
+      position: relative;
+
+      img {
+        position: absolute;
+        inset: 0;
+        object-fit: cover;
+      }
+    }
+
+    &-excerpt {
+      display: none;
     }
   }
 }
 
 @include media('<lg') {
   .story {
-    min-height: 40vh;
+    height: auto;
+    min-height: 30vh;
+    
+    a {
+      width: 100%;
+    }
 
     &-content {
       grid-template-columns: 1fr;

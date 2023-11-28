@@ -55,6 +55,8 @@ defineProps({
     margin: 0;
     font-size: var(--text-lg);
     line-height: 1.25;
+    max-width: 70ch;
+    text-wrap: balance;
   }
 
   &:last-child {
