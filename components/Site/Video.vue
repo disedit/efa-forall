@@ -229,6 +229,7 @@ const objectFit = computed(() => {
     display: block;
     height: 100%;
     width: 100%;
+    position: relative;
 
     &-title {
       color: var(--white);
