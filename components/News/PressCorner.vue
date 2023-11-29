@@ -5,16 +5,26 @@ defineProps({
     default: false
   }
 })
+
+const { $wp } = useNuxtApp()
+const { data } = await useAsyncData(
+  'press-corner',
+  () => $wp.pages()
+    .param('_fields', 'id,title,acf')
+    .param('acf_format', 'standard')
+    .slug('news')
+)
+const pressCorner = data.value[0]
 </script>
 
 <template>
   <article :class="['press-corner', { 'in-story': inStory }, { 'in-news': !inStory }]">
     <div class="press-corner-content">
       <h2>Press<br>corner</h2>
-      <p>Text</p>
+      <p>{{ pressCorner.acf.press_corner_text }}</p>
       <p><a href="mailto:press@e-f-a.org">press@e-f-a.org</a></p>
     </div>
-    <a href="/" download class="press-corner-kit">
+    <a :href="pressCorner.acf.press_kit" download class="press-corner-kit">
       <IconPressKit class="icon" />
       Download Press Kit
     </a>

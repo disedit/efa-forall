@@ -11,12 +11,16 @@ defineProps({
   presentational: {
     type: Boolean,
     default: false
-  }
+  },
+  halfHalf: {
+    type: Boolean,
+    default: false
+  } 
 })
 </script>
 
 <template>
-  <header :class="['page-header', { 'border-bottom': !borderless }, { collapse }, { 'single-column': !$slots.aside }]">
+  <header :class="['page-header', { 'border-bottom': !borderless, collapse, 'half-half': halfHalf, 'single-column': !$slots.aside }]">
     <div class="column content py-sm p-site">
       <Component :is="presentational ? 'div' : 'h1'" class="title" v-if="$slots.title">
         <slot name="title" />
@@ -57,6 +61,10 @@ defineProps({
     .heading {
       padding: 4rem 0;
     }
+  }
+
+  &.half-half:not(.single-column) {
+    grid-template-columns: 1fr 1fr;
   }
 
   &.collapse {

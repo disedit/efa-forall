@@ -13,7 +13,7 @@ defineProps({
 </script>
 
 <template>
-  <SitePageHeader :class="['manifesto-header', { compact }]">
+  <SitePageHeader :class="['manifesto-header', { compact }]" half-half>
     <template #title>
         <NuxtLink to="/manifesto" class="manifesto-link link-black-to-underlined">
           <span class="icon-holder">
@@ -24,6 +24,7 @@ defineProps({
     </template>
 
     <template #heading>
+      <img src="~/assets/images/manifesto/cover.svg" alt="For All" class="for-all-mobile" />
       2024 EU<br>Elections<br>Manifesto
     </template>
 
@@ -33,7 +34,7 @@ defineProps({
 
     <template #aside>
       <div class="for-all-circle ml-auto p-site">
-        <LogoForAll />
+        <span class="visually-hidden">For All</span>
       </div>
     </template>
   </SitePageHeader>
@@ -50,20 +51,27 @@ defineProps({
   }
 
   .for-all-circle {
-    position: relative;
     color: var(--primary);
     transition: .3s ease;
-    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(~/assets/images/manifesto/cover.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    margin: var(--site-padding);
 
-    svg {
-      width: 27vw;
-      height: 27vw;
-      position: absolute;
-      bottom: 2vw;
-      right: 2vw;
-      transform: rotate(-8deg);
+    img {
+      height: 100%;
+      width: auto;
     }
   }
+}
+
+.for-all-mobile {
+  display: none;
 }
 
 .manifesto-link {
@@ -105,10 +113,38 @@ defineProps({
 }
 
 @include media('<lg') {
-  .manifesto-header {
+  .page-header.half-half.manifesto-header {
+    grid-template-columns: 1fr;
+    max-height: unset;
+
     :deep(.aside) {
       display: none;
     }
+
+    :deep(.heading) {
+      padding: 0;
+      text-align: center;
+    } 
+
+    :deep(.heading h2) {
+      text-align: center;
+      font-family: var(--base-font);
+      font-weight: bold;
+      text-transform: unset;
+      font-size: 2.5rem;
+    }
+
+    :deep(.heading p) {
+      font-size: var(--text-lg);
+      margin-top: .5rem;
+      max-width: unset;
+    } 
+  }
+
+  .for-all-mobile {
+    display: block;
+    width: 100%;
+    margin-bottom: 2rem;
   }
 
   .compact {

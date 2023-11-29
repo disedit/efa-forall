@@ -34,7 +34,6 @@ const { thumbnail, category, date } = useStory(story, 'large')
 .story {
   display: flex;
   min-height: 500px;
-  height: calc(100vh - var(--headline-page) * 0.9 - var(--navbar-safe-area) - 8.75rem);
   max-height: 700px;
 
   &-header {
@@ -130,6 +129,12 @@ const { thumbnail, category, date } = useStory(story, 'large')
     }
   }
 }
+
+@include media('height>lg') {
+  .story {
+    height: calc(100vh - var(--headline-page) * 0.9 - var(--navbar-safe-area) - 8.75rem);
+  } 
+}  
 
 @include media('>lg', '<xl') {
   .story {
