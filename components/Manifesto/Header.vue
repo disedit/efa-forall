@@ -115,7 +115,7 @@ defineProps({
 @include media('<lg') {
   .page-header.half-half.manifesto-header {
     grid-template-columns: 1fr;
-    max-height: unset;
+    max-height: 200vh;
 
     :deep(.aside) {
       display: none;
@@ -125,6 +125,10 @@ defineProps({
       padding: 0;
       text-align: center;
     } 
+
+    :deep(.title) {
+      z-index: 100;
+    }
 
     :deep(.heading h2) {
       text-align: center;
@@ -148,7 +152,7 @@ defineProps({
   }
 
   .compact {
-    max-height: 2.534375rem;
+    max-height: 2.534375rem !important;
   }
 }
 </style>
