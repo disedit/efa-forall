@@ -19,6 +19,11 @@ function getScrollAmount() {
   return -(width - window.innerWidth)
 }
 
+function getNavbarHeight() {
+  const navbar = document.querySelector('.nav')
+  return navbar.offsetHeight
+}
+
 onMounted(() => {
   setTimeout(() => {
     animations = $gsap.matchMedia()
@@ -32,7 +37,7 @@ onMounted(() => {
 
       scroller = $ScrollTrigger.create({
         trigger: wrapper.value,
-        start: 'top 65px',
+        start: `top ${getNavbarHeight()}`,
         end: () => `+=${getScrollAmount() * -1}`,
         pin: true,
         animation,

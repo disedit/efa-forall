@@ -112,6 +112,7 @@ const { thumbnail, category, date } = useStory(story)
 
     &-title {
       padding-top: 0;
+      min-height: 200px;
     }
 
     &-category {
@@ -138,7 +139,7 @@ const { thumbnail, category, date } = useStory(story)
     --date-size: 140px;
     
     a {
-      min-height: 22vh;
+      min-height: 180px;
     }
 
     &-thumbnail {

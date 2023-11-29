@@ -32,6 +32,10 @@ const pdfs = computed(() => {
 </template>
 
 <style lang="scss" scoped>
+.manifesto-languages {
+  font-size: var(--text-md);
+}
+
 .language {
   a {
     color: var(--black);

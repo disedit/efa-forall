@@ -33,7 +33,7 @@ const { thumbnail, category, date } = useStory(story, 'large')
 <style lang="scss" scoped>
 .story {
   display: flex;
-  min-height: 500px;
+  min-height: 400px;
   max-height: 700px;
 
   &-header {
@@ -57,7 +57,7 @@ const { thumbnail, category, date } = useStory(story, 'large')
     background-color: var(--white);
     gap: var(--site-padding-sm);
     height: 100%;
-    font-size: clamp(1.15rem, .9vw, 1.25rem);
+    font-size: clamp(1rem, .9vw, 1.25rem);
   }
 
   &-category {

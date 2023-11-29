@@ -92,7 +92,7 @@ const socialLinks = computed(() => socials.split("\r\n").map(item => {
     padding: var(--site-padding);
     align-self: end;
     margin: 0;
-    font-size: var(--text-md);
+    font-size: var(--text-base);
   }
 
   &-socials {

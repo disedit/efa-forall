@@ -15,6 +15,7 @@
   --site-padding: #{$site-padding};
   --site-padding-xl: #{$site-padding-xl};
   --text-sm: #{$text-sm};
+  --text-base: #{$text-base};
   --text-md: #{$text-md};
   --text-lg: #{$text-lg};
   --text-xl: #{$text-xl};
@@ -37,6 +38,12 @@
   --bg-color: var(--black);
   --text-color: var(--white);
   --border-color: #{rgba($white, .5)};
+}
+
+@include media('>xxl') {
+  :root {
+    --text-base: var(--text-md);
+  }
 }
 
 @include media('<lg') {

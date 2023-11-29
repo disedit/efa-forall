@@ -32,4 +32,15 @@ defineProps({
   @include border;
   border-top: 0;
 }
+
+@include media('<lg') {
+  .more-stories {
+    border: 0;
+    @include border-top;
+   
+    button {
+      height: 5rem;
+    }
+  }
+}
 </style>

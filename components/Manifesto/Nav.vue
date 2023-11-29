@@ -21,6 +21,8 @@ defineProps({
 
 <style lang="scss" scoped>
 .manifesto-nav {
+  font-size: var(--text-md);
+
   .chapters {
     display: flex;
     
