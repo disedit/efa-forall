@@ -25,7 +25,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       wpApiEndpoint: 'https://content.forall2024.eu/wp-json',
-      manifestoPage: 22
+      manifestoPage: 22,
+      baseUrl: 'https://forall2024.eu'
     }
   },
 

@@ -1,4 +1,6 @@
 <script setup>
+/* SEO Metatags */
+const config = useRuntimeConfig()
 const title = 'News - For All: EU Elections 2024 - EFA European Free Alliance'
 const description = 'Keep up to date with the latest news from EFA'
 useServerSeoMeta({
@@ -6,12 +8,13 @@ useServerSeoMeta({
   ogTitle: title,
   description,
   ogDescription: description,
-  ogImage: '/',
+  ogImage: config.public.baseUrl + '/images/og/news.png',
   twitterCard: 'summary_large_image',
 })
 
 useHead({ title })
 
+/* Retreive news */
 const { $wp } = useNuxtApp()
 const articles = ref([])
 const page = ref(1)

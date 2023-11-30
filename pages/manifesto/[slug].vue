@@ -21,13 +21,15 @@ if (!chapter.value.length) {
   throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
 }
 
+/* SEO Metatags */
+const config = useRuntimeConfig()
 const title = `${chapter.value[0].title.rendered} - 2024 EU Elections Manifesto - EFA European Free Alliance`
 useServerSeoMeta({
   title,
   ogTitle: title,
   description: chapter.value[0].exceprt,
   ogDescription: chapter.value[0].exceprt,
-  ogImage: '/',
+  ogImage: `${config.public.baseUrl}/images/og/${params.slug}.png`,
   twitterCard: 'summary_large_image',
 })
 

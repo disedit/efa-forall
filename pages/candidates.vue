@@ -1,4 +1,5 @@
 <script setup>
+/* Retreive candidates page data */
 const { $wp } = useNuxtApp()
 const { data: candidatesPage } = await useAsyncData(
   'candidates-page',
@@ -32,13 +33,15 @@ const parties = computed(() => {
   }, {})
 })
 
+/* SEO Metadata */
+const config = useRuntimeConfig()
 const title = 'Candidates - For All: EU Elections 2024 - EFA European Free Alliance'
 useServerSeoMeta({
   title,
   ogTitle: title,
   description: candidatesPage.value[0].acf.subheading,
   ogDescription: candidatesPage.value[0].acf.subheading,
-  ogImage: '/',
+  ogImage: config.public.baseUrl + '/images/og/candidates.png',
   twitterCard: 'summary_large_image',
 })
 

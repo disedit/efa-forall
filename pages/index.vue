@@ -1,19 +1,7 @@
 <script setup>
-const title = 'For All - EFA European Free Alliance - EU Elections 2024'
-const description = 'We are looking for a new Europe for all'
-useServerSeoMeta({
-  title,
-  ogTitle: title,
-  description,
-  ogDescription: description,
-  ogImage: '/',
-  twitterCard: 'summary_large_image',
-})
-
-useHead({ title })
+const config = useRuntimeConfig()
 
 /* Retreive Manifesto chapters */
-const config = useRuntimeConfig()
 const { $wp } = useNuxtApp()
 const { data: chapters } = await useAsyncData(
   'manifesto-chapters',
@@ -23,6 +11,20 @@ const { data: chapters } = await useAsyncData(
     .param('parent', config.public.manifestoPage)
     .param('acf_format', 'standard')
 )
+
+/* SEO Metatags */
+const title = 'For All - EFA European Free Alliance - EU Elections 2024'
+const description = 'We are looking for a new Europe for all'
+useServerSeoMeta({
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
+  ogImage: config.public.baseUrl + '/images/og/index.png',
+  twitterCard: 'summary_large_image',
+})
+
+useHead({ title })
 </script>
 
 <template>

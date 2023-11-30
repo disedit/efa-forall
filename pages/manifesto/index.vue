@@ -10,14 +10,15 @@ const { manifesto } = defineProps({
   }
 })
 
-/* Meta tags */
+/* SEO Metatags */
+const config = useRuntimeConfig()
 const title = 'Manifesto - For All: EU Elections 2024 - EFA European Free Alliance'
 useServerSeoMeta({
   title,
   ogTitle: title,
   description: manifesto.acf.subheading,
   ogDescription: manifesto.acf.subheadin,
-  ogImage: '/',
+  ogImage: config.public.baseUrl + '/images/og/manifesto.png',
   twitterCard: 'summary_large_image',
 })
 
