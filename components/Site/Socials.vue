@@ -1,11 +1,11 @@
 <script setup>
 const socials = [
-  { name: 'Facebook', url: '', icon: resolveComponent('IconFacebook') },
-  { name: 'X / Twitter', url: '', icon: resolveComponent('IconTwitter') },
-  { name: 'Instagram', url: '', icon: resolveComponent('IconInstagram') },
-  { name: 'YouTube', url: '', icon: resolveComponent('IconYouTube') },
-  { name: 'TikTok', url: '', icon: resolveComponent('IconTikTok') },
-  { name: 'LinkedIn', url: '', icon: resolveComponent('IconLinkedIn') },
+  { name: 'Facebook', url: 'https://www.facebook.com/EFAparty/', icon: resolveComponent('IconFacebook') },
+  { name: 'X / Twitter', url: 'https://x.com/EFAparty', icon: resolveComponent('IconTwitter') },
+  { name: 'Instagram', url: 'https://www.instagram.com/efaparty/', icon: resolveComponent('IconInstagram') },
+  { name: 'YouTube', url: 'https://www.youtube.com/user/EUPARTYEFA', icon: resolveComponent('IconYouTube') },
+  { name: 'TikTok', url: 'https://www.tiktok.com/@efa_party', icon: resolveComponent('IconTikTok') },
+  { name: 'LinkedIn', url: 'https://linkedin.com/company/efaparty', icon: resolveComponent('IconLinkedIn') },
 ]
 </script>
 
