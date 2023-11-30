@@ -162,6 +162,11 @@ const { thumbnail, category, date } = useStory(story)
   .story a:active {
     background: transparent;
     color: var(--black);
+
+    .story-date,
+    .story-category {
+      color: var(--black);
+    }
   }
 }
 </style>
