@@ -33,12 +33,12 @@ const { $gsap } = useNuxtApp()
 const clickedIndex = ref(0)
 let timeline
 
-function beforeEnter(el, done) {
+function beforeEnter(el) {
   $gsap.set(el, { y: '-100%' })
 }
 
 function onEnter(el, done) {
-  $gsap.set('.mobile-menu a div', { y: '100%' })
+  $gsap.set('.mobile-menu .animate', { y: '100%' })
   $gsap.set('.decoration', { y: '150%' })
   timeline = $gsap.timeline()
 
@@ -46,7 +46,7 @@ function onEnter(el, done) {
     y: 0,
     duration: .5,
     ease: 'power4.out',
-  }).to('.mobile-menu a div', {
+  }).to('.mobile-menu .animate', {
     y: 0,
     duration: .25,
     ease: 'power4.out',
@@ -61,7 +61,7 @@ function onEnter(el, done) {
 
 function onLeave (el, done) {
   timeline = $gsap.timeline()
-  timeline.to('.mobile-menu a div', {
+  timeline.to('.mobile-menu .animate', {
     y: '100%',
     duration: .25,
     stagger: {
@@ -94,7 +94,11 @@ function onLeaveCancelled() {
     <NuxtLink to="/" class="nav-brand">
       <LogoEfa class="logo-efa" aria-label="European Free Alliance" />
       <LogoForAll class="logo-for-all" aria-label="For all" />
-      <div class="title">EU Elections 2024</div>
+      <div class="title">
+        <span class="no-wrap">EU Elections</span>
+        <br class="d-none d-lg-block">
+        2024
+      </div>
     </NuxtLink>
 
     <nav class="nav-menu" aria-label="Main navigation">
@@ -106,6 +110,7 @@ function onLeaveCancelled() {
         {{ item.label }}
       </NuxtLink>
     </nav>
+    <SiteSocials class="nav-socials" />
     <a href="https://e-f-a.org/donate/" class="donate">Donate</a>
     <button
       class="nav-toggle"
@@ -123,7 +128,7 @@ function onLeaveCancelled() {
     @enter="onEnter"
     @enter-cancelled="onEnterCancelled"
     @leave="onLeave"
-    @leave-cancelled="onEnterCancelled">
+    @leave-cancelled="onLeaveCancelled">
     <nav
       id="mainNav"
       v-if="menuOpen"
@@ -136,11 +141,16 @@ function onLeaveCancelled() {
         :to="item.to"
         :data-hover="item.label"
         @click="hideMenu(i)">
-        <div>{{ item.label }}</div>
+        <div class="animate">{{ item.label }}</div>
       </NuxtLink>
       <a href="https://e-f-a.org/donate/" target="_blank">
-        <div>Donate</div>
+        <div class="animate">Donate</div>
       </a>
+      <div class="menu-socials">
+        <div class="animate">
+          <SiteSocials />
+        </div>
+      </div>
       <div class="decoration-wrapper">
         <LogoForAll class="decoration" />
       </div>
@@ -231,6 +241,11 @@ function onLeaveCancelled() {
       height: 1em;
       width: 1em;
     }
+  }
+
+  &-socials {
+    margin-right: 1rem;
+    font-size: 1.1em;
   }
 }
 
@@ -329,6 +344,25 @@ function onLeaveCancelled() {
       overflow: hidden;
     }
   }
+
+  .menu-socials {
+    position: relative;
+    margin: auto 0 0;
+    z-index: 5;
+    overflow: hidden;
+    color: var(--beige);
+    font-size: 1.75rem;
+
+    .social-networks {
+      gap: 1em;
+    }
+
+    :deep(a) {
+      &:hover {
+        color: var(--beige);
+      }
+    }
+  }
 }
 
 @include media('<xxl') {
@@ -360,6 +394,7 @@ function onLeaveCancelled() {
     }
 
     &-menu,
+    &-socials,
     .donate {
       display: none;
     }

@@ -18,6 +18,7 @@ const year = 2023
           <a href="mailto:press@e-f-a.org">press@e-f-a.org</a>
         </div>
       </div>
+      <SiteSocials />
       <div class="details-legal">
         &copy; {{ year }} EFA – European Free Alliance -
         <a href="https://e-f-a.org/privacy-policy/" target="_blank" class="details-policy">Privacy policy</a>
@@ -90,6 +91,7 @@ const year = 2023
     grid-area: disclaimer;
     display: flex;
     gap: 1rem;
+    align-items: center;
 
     p {
       text-wrap: balance;
@@ -99,6 +101,11 @@ const year = 2023
     .logo-euparl {
       height: 2rem;
     }
+  }
+
+  .social-networks {
+    margin: 1rem 0;
+    font-size: var(--text-md);
   }
 
   @include media('<lg') {
@@ -126,6 +133,16 @@ const year = 2023
 
       .disclaimer {
         font-size: .75rem;
+      }
+
+      .details-contact {
+        line-height: 1.75;
+      }
+
+      .social-networks {
+        gap: 1em;
+        font-size: 1.5rem;
+        margin: 1.75rem 0;
       }
     }
   }

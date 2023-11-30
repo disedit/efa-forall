@@ -52,7 +52,7 @@
   }
 }
 
-@include media('>lg', '<xxl') {
+@include media('>=lg', '<xxl') {
   html,body {
     font-size: 0.9rem;
   } 
