@@ -50,8 +50,6 @@ defineProps({
 
 .page-header.candidates-header {
   grid-template-columns: 1fr 1fr;
-  min-height: calc(100vh - var(--navbar-safe-area));
-  min-height: calc(100svh - var(--navbar-safe-area));
 }
 
 @include media('<lg') {

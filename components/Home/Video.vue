@@ -1,6 +1,7 @@
 <script setup>
-const { $gsap, $emitter } = useNuxtApp()
+const { $gsap } = useNuxtApp()
 const { setDark, unsetDark } = useColorMode()
+
 const sources = {
   desktop: '/video/for-all-169.mp4',
   mobile: '/video/for-all-916.mp4'
@@ -11,7 +12,14 @@ const posters = {
 }
 
 const video = ref(null)
+const videoIsVisible = useElementVisibility(video)
 let mm = null
+
+watch(videoIsVisible, (visible) => {
+  if (!visible) {
+    unsetDark()
+  }
+})
 
 onMounted(() => {
   setTimeout(() => {

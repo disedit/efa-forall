@@ -41,8 +41,10 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
-.manifesto-header {
+.manifesto-header:not(.collapse) {
   transition: max-height .5s ease, min-height .5s ease;
+  min-height: calc(100vh - var(--navbar-safe-area) - 6.65375rem);
+  min-height: calc(100svh - var(--navbar-safe-area) - 6.65375rem);
   max-height: 100vh;
   overflow: hidden;
 

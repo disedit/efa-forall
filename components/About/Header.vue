@@ -43,8 +43,6 @@ defineProps({
 
 <style lang="scss" scoped>
 .about-header:not(.single-column) {
-  min-height: calc(100vh - var(--navbar-safe-area)) !important;
-  min-height: calc(100svh - var(--navbar-safe-area)) !important;
   grid-template-columns: 1fr 1fr;
 
   :deep(.heading p) {

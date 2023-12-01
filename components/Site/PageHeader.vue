@@ -51,8 +51,8 @@ defineProps({
   }
 
   &:not(.collapse) {
-    min-height: calc(100vh - var(--navbar-safe-area) - 100px);
-    min-height: calc(100svh - var(--navbar-safe-area) - 100px);
+    min-height: calc(100vh - var(--navbar-safe-area));
+    min-height: calc(100svh - var(--navbar-safe-area));
 
     .title {
       position: absolute;
