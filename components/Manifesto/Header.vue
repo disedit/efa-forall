@@ -100,7 +100,7 @@ defineProps({
 
 .compact {
   min-height: 0 !important;
-  max-height: 3.1rem;
+  max-height: 3.1rem !important;
   overflow: hidden;
 
   :deep(.heading) {

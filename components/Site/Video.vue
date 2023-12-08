@@ -22,6 +22,7 @@ const lastCurrentTime = ref(0) // Updated on breakpoint changes
 const duration = ref(0)
 const showControls = ref(false)
 const dismissAutoplay = ref(true)
+const mutedFromAutoplay = ref(true)
 
 onMounted(() => {
   updateBreakpoint()
@@ -121,6 +122,7 @@ function replayWithSound () {
 
 function toggleMute () {
   muted.value = !muted.value
+  mutedFromAutoplay.value = false
 }
 
 function onLoadedMetadata() {
@@ -139,6 +141,10 @@ function onTimeUpdate (event) {
 function seek(seconds) {
   if (player.value) {
     player.value.currentTime = seconds
+  }
+
+  if (mutedFromAutoplay.value) {
+    muted.value = false
   }
 }
 
