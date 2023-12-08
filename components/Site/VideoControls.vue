@@ -3,8 +3,16 @@ const props = defineProps({
   time: { type: Number, required: true },
   duration: { type: Number, default: 0 },
   showTime: { type: Boolean, default: false },
-  muted: { type: Boolean, default: true }
+  muted: { type: Boolean, default: true },
+  showUnmuteTooltip: { type: Boolean, default: false }
 })
+
+const emit = defineEmits(['showControls', 'toggleMute', 'togglePlay', 'seek'])
+
+const progress = ref(null)
+const seeking = ref(false)
+const seekPosition = ref(0)
+const dismissUnmuteTooltip = ref(false)
 
 function human(seconds) {
   return [parseInt((seconds / 60) % 60, 10), parseInt(seconds  % 60, 10)]
@@ -15,10 +23,26 @@ function human(seconds) {
 function width(seconds) {
   return (seconds * 100 / props.duration) + '%'
 }
+
+function setSeekPosition(e) {
+  const rect = progress.value.getBoundingClientRect()
+  const x = e.pageX - rect.left
+  seekPosition.value = (x * 100 / rect.width)
+}
+
+function seek() {
+  const seconds = (seekPosition.value * props.duration) / 100
+  emit('seek', seconds)
+}
+
+function unmute() {
+  emit('toggleMute')
+  dismissUnmuteTooltip.value = true
+}
 </script>
 
 <template>
-   <div class="video-controls">
+   <div :class="['video-controls', { seeking }]">
       <button @click="$emit('togglePlay')" title="Pause Video">
         <IconPause class="icon" />
       </button>
@@ -26,15 +50,30 @@ function width(seconds) {
         {{ human(time) }}
         <span class="total-time">/ {{ human(duration) }}</span>
       </span>
-      <button @click="$emit('toggleMute')" :title="muted ? 'Unmute volume' : 'Mute volume'" class="mute">
+      <button @click="unmute" :title="muted ? 'Unmute volume' : 'Mute volume'" class="mute">
         <IconUnmute v-if="muted" class="icon" />
         <IconMute v-else class="icon" />
+        <Transition name="slide">
+          <span class="mute-tooltip" v-if="showUnmuteTooltip && !dismissUnmuteTooltip && muted">
+            Unmute video
+          </span>
+        </Transition>
       </button>
       <button @click="$emit('showControls')" title="Show more controls" class="controls">
         <IconSlider class="icon" />
       </button>
-      <div class="progress" v-if="duration > 0">
+      <div
+        class="progress"
+        v-if="duration > 0"
+        @mouseenter="seeking = true"
+        @mousemove="setSeekPosition"
+        @mouseleave="seeking = false"
+        @click="seek"
+        ref="progress">
         <div class="progress-bar" :style="{ width: width(time) }" />
+        <div class="progress-track">
+          <div class="progress-track-thumb" :style="{ width: seekPosition + '%' }" />
+        </div>
       </div>
     </div>
 </template>
@@ -50,6 +89,7 @@ function width(seconds) {
   align-items: center;
   gap: var(--site-padding-sm);
   color: var(--white);
+  transition: .5s ease;
 
   button {
     appearance: none;
@@ -77,10 +117,39 @@ function width(seconds) {
       opacity: .5;
     }
   }
+
+  &.seeking {
+    padding-bottom: 2rem;
+  }
 }
 
 .mute {
   margin-left: auto;
+  position: relative;
+
+  &-tooltip {
+    position: absolute;
+    bottom: 1.25rem;
+    right: 0;
+    background: var(--white);
+    color: var(--black);
+    white-space: nowrap;
+    transform: translateY(-100%);
+    padding: .4rem .5rem;
+    font-weight: 600;
+
+    &::before {
+      content: '';
+      position: absolute;
+      right: 1rem;
+      bottom: -.25rem;
+      width: .751rem;
+      height: .75rem;
+      background: var(--white);
+      transform: rotate(45deg);
+      z-index: -1;
+    }
+  }
 }
 
 .progress {
@@ -88,11 +157,35 @@ function width(seconds) {
   bottom: 0;
   left: 0;
   right: 0;
+  --track-full-height: 1.5rem;
+  --track-min-height: .25rem;
 
   &-bar {
-    height: .25rem;
+    height: var(--track-min-height);
     background: var(--primary);
-    transition: width 1s linear;
+    transition: width 1s linear, height .5s ease;
+  }
+
+  &-track {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--track-full-height);
+    cursor: pointer;
+
+    &-thumb {
+      background: rgb($primary, .6);
+      transform: translateY(100%);
+      transition: transform .5s ease;
+    }
+  }
+
+  &:hover {
+    .progress-track-thumb {
+      transform: translateY(0);
+    }
   }
 }
 </style>

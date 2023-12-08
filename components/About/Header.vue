@@ -64,6 +64,7 @@ defineProps({
   background-image: url(~/assets/images/tile.svg);
   background-size: 100px;
   background-position: center;
+  font-size: var(--text-md);
 }
 
 @media (max-aspect-ratio: 4/3) {

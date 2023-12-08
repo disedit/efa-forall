@@ -59,6 +59,7 @@ onUnmounted(() => {
         :poster="posters"
         autoplay
         show-time
+        show-unmute-tooltip
         class="video-player">
         A Europe<br />For All
       </SiteVideo>

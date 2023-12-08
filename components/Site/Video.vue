@@ -7,7 +7,8 @@ const props = defineProps({
   fit: { type: String, default: null },
   objectPosition: { type: String, default: 'center' },
   autoplay: { type: Boolean, default: false },
-  autoplayMuted: { type: Boolean, default: false }
+  autoplayMuted: { type: Boolean, default: false },
+  showUnmuteTooltip: { type: Boolean, default: false }
 })
 
 const { $emitter } = useNuxtApp()
@@ -135,6 +136,12 @@ function onTimeUpdate (event) {
   duration.value = event.target.duration
 }
 
+function seek(seconds) {
+  if (player.value) {
+    player.value.currentTime = seconds
+  }
+}
+
 /* Sources */
 const videoSources = computed(() => {
   if (typeof props.video !== 'object') {
@@ -212,9 +219,11 @@ const objectFit = computed(() => {
         :duration="duration"
         :show-time="showTime"
         :muted="muted"
+        :show-unmute-tooltip="showUnmuteTooltip"
         @toggle-play="togglePlay"
         @toggle-mute="toggleMute"
-        @show-controls="showControls = true" />
+        @show-controls="showControls = true"
+        @seek="seek" />
     </Transition>
   </div>
 </template>
