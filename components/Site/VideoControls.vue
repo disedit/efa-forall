@@ -4,7 +4,8 @@ const props = defineProps({
   duration: { type: Number, default: 0 },
   showTime: { type: Boolean, default: false },
   muted: { type: Boolean, default: true },
-  showUnmuteTooltip: { type: Boolean, default: false }
+  showUnmuteTooltip: { type: Boolean, default: false },
+  controlsHaveShadow: { type: Boolean, default: false }
 })
 
 const emit = defineEmits(['showControls', 'toggleMute', 'togglePlay', 'seek'])
@@ -42,7 +43,7 @@ function unmute() {
 </script>
 
 <template>
-   <div :class="['video-controls', { seeking }]">
+   <div :class="['video-controls', { seeking, shadow: controlsHaveShadow }]">
       <button @click="$emit('togglePlay')" title="Pause Video">
         <IconPause class="icon" />
       </button>
@@ -120,6 +121,14 @@ function unmute() {
 
   &.seeking {
     padding-bottom: 2rem;
+  }
+
+  &.shadow {
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+
+    .icon {
+      filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.8));
+    }
   }
 }
 

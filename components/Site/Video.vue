@@ -8,7 +8,8 @@ const props = defineProps({
   objectPosition: { type: String, default: 'center' },
   autoplay: { type: Boolean, default: false },
   autoplayMuted: { type: Boolean, default: false },
-  showUnmuteTooltip: { type: Boolean, default: false }
+  showUnmuteTooltip: { type: Boolean, default: false },
+  controlsHaveShadow: { type: Boolean, default: false }
 })
 
 const { $emitter } = useNuxtApp()
@@ -226,6 +227,7 @@ const objectFit = computed(() => {
         :show-time="showTime"
         :muted="muted"
         :show-unmute-tooltip="showUnmuteTooltip"
+        :controls-have-shadow="controlsHaveShadow"
         @toggle-play="togglePlay"
         @toggle-mute="toggleMute"
         @show-controls="showControls = true"
