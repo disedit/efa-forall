@@ -27,7 +27,7 @@ const { data: latest } = await useAsyncData(
 )
 
 const latestPosts = computed(() => {
-  return latest.value.filter(post => post.id !== story.id).slice(0, 4)
+  return latest.value.filter(post => post.id !== story.id).slice(0, 5)
 })
 
 /* Meta tags */
@@ -73,7 +73,6 @@ useHead({ title })
       </article>
       <aside class="aside">
         <div class="sticky">
-          <NewsPressCorner in-story />
           <NewsOther :stories="latestPosts" />
         </div>
       </aside>

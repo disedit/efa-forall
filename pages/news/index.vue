@@ -82,9 +82,6 @@ const otherArticles = computed(() => {
         <NewsStories :stories="otherArticles" />
         <NewsPagination :page="page" :total-pages="totalPages" :loading="loading" @load="loadMorePosts" />
       </div>
-      <div class="news-press-corner">
-        <NewsPressCorner class="sticky" />
-      </div>
     </div>
   </main>
 </template>
@@ -92,7 +89,7 @@ const otherArticles = computed(() => {
 <style lang="scss" scoped>
 .news-columns {
   display: grid;
-  grid-template-columns: 1fr 350px;
+  grid-template-columns: 1fr;
   gap: var(--site-padding);
 }
 
