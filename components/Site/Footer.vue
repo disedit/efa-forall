@@ -9,7 +9,7 @@ const year = 2023
       <LogoEfa class="logo-efa" mono />
       <div class="details-contact">
         <address class="details-address">
-          Boomkwekerijstraat, 11000 Brussels
+          Boomkwekerijstraat, 1000 Brussels
         </address>
         <div class="details-tel">
           <a href="tel:003225133476">+32 (0) 2513 34 76</a></div>

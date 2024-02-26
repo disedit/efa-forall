@@ -25,6 +25,8 @@ defineProps({
           mobile: '/video/what-is-efa-916.jpg'
         }"
         autoplay
+        show-unmute-tooltip
+        controls-have-shadow
         class="video-holder"
         fit="cover"
         object-position="center bottom"

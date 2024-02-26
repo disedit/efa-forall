@@ -129,6 +129,12 @@ function unmute() {
     .icon {
       filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.8));
     }
+
+    .mute-tooltip,
+    .mute-tooltip::before {
+      background: var(--black);
+      color: var(--white);
+    }
   }
 }
 

@@ -26,9 +26,11 @@ defineProps({
       <SiteVideo
         id="AboutHeader"
         video="/video/about-us-43.mp4"
+        poster="/video/about-us-43.png"
         autoplay
         class="about-video"
         fit="cover"
+        show-unmute-tooltip
         controls-have-shadow
       />
     </template>
