@@ -5,7 +5,7 @@ const socials = [
   { name: 'Instagram', url: 'https://www.instagram.com/efaparty/', icon: resolveComponent('IconInstagram') },
   { name: 'YouTube', url: 'https://www.youtube.com/user/EUPARTYEFA', icon: resolveComponent('IconYouTube') },
   { name: 'TikTok', url: 'https://www.tiktok.com/@efa_party', icon: resolveComponent('IconTikTok') },
-  { name: 'LinkedIn', url: 'https://linkedin.com/company/efaparty', icon: resolveComponent('IconLinkedIn') },
+  { name: 'LinkedIn', url: 'https://be.linkedin.com/company/european-free-alliance', icon: resolveComponent('IconLinkedIn') },
 ]
 </script>
 
