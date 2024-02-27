@@ -49,7 +49,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/google-fonts',
     'nuxt-og-image',
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
+    'nuxt-cloudflare-analytics'
   ],
 
   googleFonts: {
@@ -70,5 +71,9 @@ export default defineNuxtConfig({
     fonts: [
       'DM+Sans:900'
     ],
+  },
+
+  cloudflareAnalytics: {
+    token: '3cb4e184e4ba4998bdc2bd83ff97e3cd'
   }
 })
