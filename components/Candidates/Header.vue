@@ -14,10 +14,10 @@ defineProps({
     </template>
 
     <template #heading>
-      <div class="visually-hidden">Candidates that will work for all</div>
+      <div class="visually-hidden">Candidates who will work for all</div>
       <div aria-hidden="true">
         <AnimatedHomeText text="CANDIDATES" :speed="100" :delay="250" />
-        <AnimatedHomeText text="THAT WILL WORK" :delay="10 * 100 + 500" />
+        <AnimatedHomeText text="WHO WILL WORK" :delay="10 * 100 + 500" />
         <AnimatedHomeText text="FOR" ends-in-logo class="highlight" :delay="10 * 100 + 14 * 75 + 500" :speed="180" />
       </div>
     </template>
