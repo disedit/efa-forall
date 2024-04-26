@@ -50,7 +50,8 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'nuxt-og-image',
     '@vueuse/nuxt',
-    'nuxt-cloudflare-analytics'
+    'nuxt-cloudflare-analytics',
+    'nuxt-gtag'
   ],
 
   googleFonts: {
@@ -75,5 +76,9 @@ export default defineNuxtConfig({
 
   cloudflareAnalytics: {
     token: '3cb4e184e4ba4998bdc2bd83ff97e3cd'
+  },
+
+  gtag: {
+    id: 'G-48PXE0X2LE',
   }
 })
